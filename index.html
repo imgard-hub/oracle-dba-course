@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oracle 19c DBA Career Training Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:    #0f1b2d;
+  --navy2:   #162236;
+  --navy3:   #1e3150;
+  --blue:    #2e74b5;
+  --lblue:   #4a9fe8;
+  --teal:    #00b8a0;
+  --lteal:   #00d9be;
+  --gold:    #f0a500;
+  --lgold:   #ffe066;
+  --green:   #22c55e;
+  --lgreen:  #4ade80;
+  --red:     #ef4444;
+  --purple:  #a78bfa;
+  --white:   #f0f4f8;
+  --grey:    #8899aa;
+  --card:    #162236;
+  --border:  #1e3a5f;
+  --code-bg: #090f1a;
+  --code-fg: #a8ff60;
+  --sidebar-w: 280px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: #0a1220;
+  border-right: 1px solid var(--border);
+  overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+
+#sidebar-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, #0f1b2d 0%, #162236 100%);
+}
+
+#sidebar-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem; color: var(--teal);
+  line-height: 1.3; margin-bottom: 4px;
+}
+#sidebar-header p { font-size: 0.72rem; color: var(--grey); }
+
+#search-box {
+  margin: 12px 14px;
+  padding: 8px 12px;
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  width: calc(100% - 28px);
+  outline: none;
+}
+#search-box::placeholder { color: var(--grey); }
+#search-box:focus { border-color: var(--teal); }
+
+.nav-week {
+  padding: 0 0 8px;
+}
+.nav-week-header {
+  padding: 10px 16px 6px;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none;
+}
+.nav-week-header:hover { color: var(--lgold); }
+.nav-week-header .arrow { transition: transform 0.2s; font-size: 0.7rem; }
+.nav-week-header.collapsed .arrow { transform: rotate(-90deg); }
+
+.nav-items { overflow: hidden; }
+.nav-items.hidden { display: none; }
+
+.nav-item {
+  display: block; padding: 6px 16px 6px 24px;
+  font-size: 0.75rem; color: var(--grey);
+  cursor: pointer; text-decoration: none;
+  transition: all 0.15s; border-left: 2px solid transparent;
+}
+.nav-item:hover { color: var(--white); background: rgba(46,116,181,0.08); border-left-color: var(--blue); }
+.nav-item.active { color: var(--teal); background: rgba(0,184,160,0.1); border-left-color: var(--teal); }
+.nav-item .tag {
+  display: inline-block; margin-left: 6px;
+  padding: 1px 5px; border-radius: 3px;
+  font-size: 0.6rem; font-weight: 700; vertical-align: middle;
+}
+.tag-lesson { background: rgba(46,116,181,0.2); color: var(--lblue); }
+.tag-sheet  { background: rgba(0,184,160,0.2); color: var(--teal); }
+.tag-quiz   { background: rgba(240,165,0,0.2);  color: var(--gold); }
+.tag-lab    { background: rgba(34,197,94,0.2);  color: var(--green); }
+.tag-run    { background: rgba(167,139,250,0.2);color: var(--purple); }
+
+/* ── MAIN CONTENT ── */
+#main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+#hero {
+  background: linear-gradient(135deg, #0a1220 0%, #0f2040 50%, #0a1a2e 100%);
+  padding: 70px 60px;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 40px,
+    rgba(0,184,160,0.03) 40px, rgba(0,184,160,0.03) 41px
+  );
+}
+.hero-badge {
+  display: inline-block; padding: 4px 12px;
+  background: rgba(0,184,160,0.12); border: 1px solid rgba(0,184,160,0.3);
+  border-radius: 20px; font-size: 0.72rem; color: var(--teal);
+  font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+#hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem; line-height: 1.1;
+  color: var(--white); margin-bottom: 12px;
+}
+#hero h1 span { color: var(--teal); }
+#hero p { font-size: 1.05rem; color: var(--grey); max-width: 600px; margin-bottom: 32px; }
+
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.stat {
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.stat-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem; font-weight: 700; color: var(--gold);
+  line-height: 1;
+}
+.stat-label { font-size: 0.72rem; color: var(--grey); margin-top: 3px; }
+
+.progress-bar-outer {
+  margin-top: 32px; max-width: 500px;
+}
+.progress-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem; color: var(--grey); margin-bottom: 6px;
+}
+.progress-track {
+  height: 6px; background: var(--navy3); border-radius: 3px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 33%;
+  background: linear-gradient(90deg, var(--teal), var(--lblue));
+  border-radius: 3px; animation: fillBar 1.5s ease forwards;
+}
+@keyframes fillBar { from { width: 0; } to { width: 33%; } }
+
+/* ── PHASE HEADERS ── */
+.phase-header {
+  padding: 40px 60px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-tag {
+  display: inline-block; padding: 3px 10px;
+  border-radius: 4px; font-size: 0.65rem;
+  font-family: 'Space Mono', monospace; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.phase-1 { background: rgba(46,116,181,0.15); color: var(--lblue); }
+.phase-2 { background: rgba(0,184,160,0.15); color: var(--teal); }
+.phase-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem; color: var(--white);
+}
+.phase-header p { font-size: 0.9rem; color: var(--grey); margin-top: 6px; }
+
+/* ── WEEK CARD ── */
+.week-section {
+  padding: 32px 60px 0;
+}
+.week-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 40px;
+}
+.week-card-header {
+  padding: 20px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #1a2e4a, #162236);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+.week-card-header:hover { background: linear-gradient(135deg, #1e3555, #1a2a40); }
+.week-title { display: flex; align-items: center; gap: 14px; }
+.week-num {
+  width: 36px; height: 36px;
+  background: var(--teal); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace; font-size: 0.8rem;
+  font-weight: 700; color: #000; flex-shrink: 0;
+}
+.week-card-header h3 { font-size: 1.05rem; font-weight: 600; color: var(--white); }
+.week-card-header p  { font-size: 0.75rem; color: var(--grey); }
+.week-toggle { color: var(--grey); font-size: 1.1rem; transition: transform 0.2s; }
+.week-toggle.open { transform: rotate(180deg); }
+
+.week-body { padding: 28px; }
+
+/* ── CONTENT SECTIONS ── */
+.content-section {
+  margin-bottom: 32px;
+}
+.section-title {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section-title h4 {
+  font-size: 1rem; font-weight: 600; color: var(--white);
+}
+.section-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; flex-shrink: 0;
+}
+.icon-lesson { background: rgba(46,116,181,0.2); }
+.icon-sheet  { background: rgba(0,184,160,0.2); }
+.icon-quiz   { background: rgba(240,165,0,0.2); }
+.icon-lab    { background: rgba(34,197,94,0.2); }
+.icon-run    { background: rgba(167,139,250,0.2); }
+
+p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom: 14px; }
+
+/* ── DEFINITION TABLE ── */
+.def-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.85rem; }
+.def-table th {
+  background: var(--navy3); color: var(--teal);
+  padding: 8px 12px; text-align: left;
+  font-family: 'Space Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.06em; border: 1px solid var(--border);
+}
+.def-table td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: top; }
+.def-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.def-table tr:hover td { background: rgba(0,184,160,0.05); }
+.def-table .key { color: var(--lblue); font-weight: 600; white-space: nowrap; }
+.def-table .val { color: #b8cce0; }
+
+/* ── CODE BLOCK ── */
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid #1a3050;
+  border-left: 3px solid var(--teal);
+  border-radius: 8px; padding: 16px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem; color: var(--code-fg);
+  line-height: 1.7; overflow-x: auto;
+  margin-bottom: 16px; white-space: pre;
+}
+.code-block .comment { color: #556677; }
+.code-block .keyword { color: #f0a500; }
+
+/* ── INFO / WARN BOXES ── */
+.info-box {
+  display: flex; gap: 0; margin-bottom: 16px;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid;
+}
+.info-box-label {
+  padding: 12px 14px; font-size: 0.72rem; font-weight: 700;
+  font-family: 'Space Mono', monospace; text-transform: uppercase;
+  letter-spacing: 0.06em; white-space: nowrap;
+  display: flex; align-items: center;
+  min-width: 80px; justify-content: center;
+}
+.info-box-body { padding: 12px 16px; font-size: 0.85rem; line-height: 1.7; }
+.info-tip    { border-color: rgba(46,116,181,0.4); }
+.info-tip .info-box-label    { background: rgba(46,116,181,0.25); color: var(--lblue); }
+.info-tip .info-box-body     { color: #b8cce0; }
+.info-warn   { border-color: rgba(240,165,0,0.4); }
+.info-warn .info-box-label   { background: rgba(240,165,0,0.2); color: var(--gold); }
+.info-warn .info-box-body    { color: #b8cce0; }
+.info-success{ border-color: rgba(34,197,94,0.4); }
+.info-success .info-box-label{ background: rgba(34,197,94,0.2); color: var(--green); }
+.info-success .info-box-body { color: #b8cce0; }
+.info-danger { border-color: rgba(239,68,68,0.4); }
+.info-danger .info-box-label { background: rgba(239,68,68,0.2); color: var(--red); }
+.info-danger .info-box-body  { color: #b8cce0; }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; margin-bottom: 16px; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 5px 0; font-size: 0.85rem; color: #b8cce0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.checklist li:last-child { border-bottom: none; }
+.check-box {
+  width: 18px; height: 18px; border: 2px solid var(--border);
+  border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; font-size: 0.7rem; color: transparent;
+}
+.check-box:hover { border-color: var(--teal); }
+.check-box.checked { background: var(--teal); border-color: var(--teal); color: #000; }
+
+/* ── QUIZ ── */
+.quiz-q { margin-bottom: 22px; }
+.quiz-q .q-text { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+.quiz-option {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 12px; border-radius: 6px;
+  font-size: 0.85rem; color: #b8cce0; cursor: pointer;
+  margin-bottom: 4px; border: 1px solid transparent;
+  transition: all 0.15s;
+}
+.quiz-option:hover { background: rgba(0,184,160,0.06); border-color: rgba(0,184,160,0.2); }
+.quiz-option.correct { background: rgba(34,197,94,0.12); border-color: var(--green); color: var(--lgreen); }
+.quiz-option.wrong   { background: rgba(239,68,68,0.1);  border-color: var(--red);   color: #fca5a5; }
+.quiz-option .opt-key {
+  font-family: 'Space Mono', monospace; font-size: 0.72rem;
+  color: var(--grey); flex-shrink: 0; width: 18px;
+}
+.quiz-btn {
+  padding: 8px 20px; background: var(--teal);
+  border: none; border-radius: 6px; color: #000;
+  font-weight: 700; font-size: 0.82rem; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: opacity 0.15s;
+  margin-top: 10px;
+}
+.quiz-btn:hover { opacity: 0.85; }
+.quiz-feedback { margin-top: 10px; padding: 10px 14px; border-radius: 6px; font-size: 0.82rem; }
+.quiz-feedback.correct { background: rgba(34,197,94,0.12); color: var(--lgreen); }
+.quiz-feedback.wrong   { background: rgba(239,68,68,0.1);  color: #fca5a5; }
+
+/* ── SCORE DISPLAY ── */
+.score-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: rgba(0,184,160,0.1);
+  border: 1px solid rgba(0,184,160,0.3); border-radius: 20px;
+  font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--teal);
+  margin: 12px 0;
+}
+
+/* ── FLASHCARD ── */
+.flashcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.flashcard {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px;
+  cursor: pointer; perspective: 1000px;
+  min-height: 90px; position: relative;
+  transition: border-color 0.2s;
+}
+.flashcard:hover { border-color: var(--teal); }
+.flashcard .fc-front, .flashcard .fc-back {
+  backface-visibility: hidden; transition: transform 0.4s;
+}
+.flashcard .fc-front { font-size: 0.82rem; font-weight: 600; color: var(--white); }
+.flashcard .fc-back  { font-size: 0.78rem; color: #b8cce0; display: none; }
+.flashcard.flipped .fc-front { display: none; }
+.flashcard.flipped .fc-back  { display: block; }
+.fc-hint { font-size: 0.62rem; color: var(--grey); margin-top: 6px; }
+
+/* ── RUNBOOK STEP ── */
+.runbook-day { margin-bottom: 20px; }
+.runbook-day h5 {
+  font-size: 0.8rem; font-weight: 700; color: var(--gold);
+  font-family: 'Space Mono', monospace; margin-bottom: 10px;
+  padding: 6px 12px; background: rgba(240,165,0,0.08);
+  border-radius: 4px; display: inline-block;
+}
+.step-list { list-style: none; }
+.step-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 5px 0; font-size: 0.84rem; color: #b8cce0;
+}
+.step-num {
+  width: 20px; height: 20px; background: var(--navy3);
+  border: 1px solid var(--border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; font-family: 'Space Mono', monospace;
+  color: var(--teal); flex-shrink: 0; margin-top: 2px;
+}
+
+/* ── TABS ── */
+.tab-bar {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  padding: 6px 14px; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 600; cursor: pointer;
+  background: var(--navy3); color: var(--grey);
+  border: 1px solid var(--border); transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--white); border-color: var(--blue); }
+.tab-btn.active { background: var(--teal); color: #000; border-color: var(--teal); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ── STICKY PROGRESS ── */
+#sticky-progress {
+  position: fixed; bottom: 0; left: var(--sidebar-w);
+  right: 0; height: 4px;
+  background: var(--navy3); z-index: 50;
+}
+#reading-bar {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 0.1s;
+}
+
+/* ── MOBILE ── */
+#menu-toggle {
+  display: none; position: fixed; top: 12px; left: 12px;
+  z-index: 200; background: var(--teal); border: none;
+  border-radius: 6px; color: #000; font-size: 1rem;
+  width: 36px; height: 36px; cursor: pointer;
+}
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar { transform: translateX(-280px); transition: transform 0.3s; width: 280px; }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; }
+  #menu-toggle { display: flex; align-items: center; justify-content: center; }
+  #hero { padding: 60px 24px 40px; }
+  #hero h1 { font-size: 2rem; }
+  .week-section { padding: 20px 20px 0; }
+  .week-body { padding: 16px; }
+  .phase-header { padding: 30px 20px 14px; }
+  #sticky-progress { left: 0; }
+}
+
+.hidden { display: none; }
+.fade-in { animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<button id="menu-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <h1>Oracle 19c DBA<br/>Training Program</h1>
+    <p>Module 1 &amp; 2 &mdash; Weeks 1&ndash;4</p>
+  </div>
+  <input id="search-box" type="text" placeholder="Search content..." oninput="filterNav(this.value)"/>
+
+  <div class="nav-week">
+    <div class="nav-week-header" onclick="toggleNav(this)">
+      Phase 1 &mdash; Foundations <span class="arrow">&#9660;</span>
+    </div>
+    <div class="nav-items">
+      <a class="nav-item" onclick="navTo('hero')">&#127968; Course Home</a>
+      <a class="nav-item" onclick="navTo('w1')">&#128218; Week 1 &mdash; Intro to Oracle</a>
+      <a class="nav-item" onclick="navTo('l11')">Lesson 1.1 &mdash; What is a Database?<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l12')">Lesson 1.2 &mdash; What is Oracle?<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l13')">Lesson 1.3 &mdash; Relational Concepts<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l14')">Lesson 1.4 &mdash; The DBA Role<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('cs1')">Cheatsheet 1 &mdash; DB Terms<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs2')">Cheatsheet 2 &mdash; Oracle Products<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('q1')">Quiz 1 &mdash; 10 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('a1')">Assignment 1<span class="tag tag-lab">Lab</span></a>
+      <a class="nav-item" onclick="navTo('r1')">Week 1 Runbook<span class="tag tag-run">Run</span></a>
+
+      <a class="nav-item" onclick="navTo('w2')">&#128218; Week 2 &mdash; Linux Fundamentals</a>
+      <a class="nav-item" onclick="navTo('l21')">Lesson 2.1 &mdash; What is Linux?<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l22')">Lesson 2.2 &mdash; PuTTY<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l23')">Lesson 2.3 &mdash; File System<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l24')">Lesson 2.4 &mdash; Linux Commands<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l25')">Lesson 2.5 &mdash; Permissions<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l26')">Lesson 2.6 &mdash; vi Editor<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l27')">Lesson 2.7 &mdash; Env Variables<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l28')">Lesson 2.8 &mdash; Process Mgmt<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('cs3')">Cheatsheet 3 &mdash; 40 Commands<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs4')">Cheatsheet 4 &mdash; Permissions<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs5')">Cheatsheet 5 &mdash; Env Variables<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('q2')">Quiz 2 &mdash; 12 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('r2')">Week 2 Runbook<span class="tag tag-run">Run</span></a>
+    </div>
+  </div>
+
+  <div class="nav-week">
+    <div class="nav-week-header" onclick="toggleNav(this)">
+      Phase 1 cont. &mdash; Architecture <span class="arrow">&#9660;</span>
+    </div>
+    <div class="nav-items">
+      <a class="nav-item" onclick="navTo('w3')">&#128218; Week 3 &mdash; Oracle Architecture</a>
+      <a class="nav-item" onclick="navTo('l31')">Lesson 3.1 &mdash; Instance vs Database<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l32')">Lesson 3.2 &mdash; The SGA<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l33')">Lesson 3.3 &mdash; The PGA<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l34')">Lesson 3.4 &mdash; Background Processes<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l35')">Lesson 3.5 &mdash; Physical Files<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l36')">Lesson 3.6 &mdash; Logical Storage<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l37')">Lesson 3.7 &mdash; CDB and PDB<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l38')">Lesson 3.8 &mdash; Startup &amp; Shutdown<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('cs6')">Cheatsheet 6 &mdash; Architecture<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs7')">Cheatsheet 7 &mdash; BG Processes<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs8')">Cheatsheet 8 &mdash; Startup States<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('fc3')">Flashcard Set &mdash; 30 Terms<span class="tag tag-quiz">Flash</span></a>
+      <a class="nav-item" onclick="navTo('q3')">Quiz 3 &mdash; 15 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('r3')">Week 3 Runbook<span class="tag tag-run">Run</span></a>
+
+      <a class="nav-item" onclick="navTo('w4')">&#128218; Week 4 &mdash; Installation</a>
+      <a class="nav-item" onclick="navTo('l41')">Lesson 4.1 &mdash; Overview &amp; Requirements<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l42')">Lesson 4.2 &mdash; OS Configuration<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l43')">Lesson 4.3 &mdash; Oracle User &amp; Groups<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l44')">Lesson 4.4 &mdash; Install Software<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l45')">Lesson 4.5 &mdash; DBCA<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l46')">Lesson 4.6 &mdash; Listener<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l47')">Lesson 4.7 &mdash; Post-Install Verify<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l48')">Lesson 4.8 &mdash; Auto-Start<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('rbA')">Runbook A &mdash; Pre-Install Checklist<span class="tag tag-run">Run</span></a>
+      <a class="nav-item" onclick="navTo('rbB')">Runbook B &mdash; Full Install Steps<span class="tag tag-run">Run</span></a>
+      <a class="nav-item" onclick="navTo('cs9')">Cheatsheet 9 &mdash; Install Reference<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('q4')">Quiz 4 &mdash; 12 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('r4')">Week 4 Runbook<span class="tag tag-run">Run</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div id="main">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">Oracle 19c &bull; Linux RHEL &bull; Module 1 &amp; 2</div>
+  <h1>Oracle DBA<br/><span>Career Training</span></h1>
+  <p>From zero to Junior DBA in 6 months. Designed with care for the anxious learner. Bite-sized. Supportive. Comprehensive.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Weeks Covered</span></div>
+    <div class="stat"><span class="stat-num">28</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">9</span><span class="stat-label">Cheatsheets</span></div>
+    <div class="stat"><span class="stat-num">49</span><span class="stat-label">Quiz Questions</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Lab Scripts</span></div>
+  </div>
+  <div class="progress-bar-outer">
+    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-4 of 26</span></div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+</section>
+
+<!-- PHASE 1 HEADER -->
+<div class="phase-header">
+  <div class="phase-tag phase-1">Phase 1</div>
+  <h2>Foundations &mdash; Weeks 1&ndash;4</h2>
+  <p>Databases &bull; Oracle &bull; Linux &bull; Architecture &bull; Installation</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     WEEK 1
+════════════════════════════════════════════ -->
+<div class="week-section">
+<div class="week-card fade-in" id="w1">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num">W1</div>
+      <div>
+        <h3>Introduction to Databases &amp; Oracle</h3>
+        <p>ACID &bull; Relational Model &bull; Oracle Products &bull; DBA Role &bull; Salary Expectations</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w1-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w1-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w1-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w1-assign')">Assignment</button>
+      <button class="tab-btn" onclick="switchTab(this,'w1-runbook')">Runbook</button>
+    </div>
+
+    <!-- LESSONS -->
+    <div class="tab-pane active" id="w1-lessons">
+
+      <div class="content-section" id="l11">
+        <div class="section-title">
+          <div class="section-icon icon-lesson">&#128214;</div>
+          <h4>Lesson 1.1 &mdash; What is a Database?</h4>
+        </div>
+        <p class="body-text">A database is an organised, structured collection of data that can be stored, retrieved, updated, and managed efficiently and safely &mdash; even by thousands of users at the same time. Databases were invented to solve the problems of scale, concurrency, and reliability that spreadsheets and flat files cannot handle.</p>
+        <table class="def-table">
+          <thead><tr><th>Storage Type</th><th>What it means for you</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Flat file (CSV)</td><td class="val">Data in rows but no relationships, no security, no concurrent access.</td></tr>
+            <tr><td class="key">Spreadsheet</td><td class="val">Good for small data. Falls apart with large datasets, no real security or multi-user access.</td></tr>
+            <tr><td class="key">Relational Database</td><td class="val">Organised in related tables. Fast querying, security, transactions, concurrency &mdash; the industry standard.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:20px">
+          <h4 style="font-size:0.9rem; color:var(--teal)">ACID &mdash; The 4 Promises of Every Reliable Database</h4>
+        </div>
+        <div class="info-box info-tip">
+          <div class="info-box-label">INTERVIEW</div>
+          <div class="info-box-body">You will be asked about ACID in every Oracle DBA interview. Know all four properties perfectly.</div>
+        </div>
+        <table class="def-table">
+          <thead><tr><th>Property</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td class="key">A &mdash; Atomicity</td><td class="val">A transaction is ALL or NOTHING. Money transfer either fully completes or fully reverses. No half-transactions.</td></tr>
+            <tr><td class="key">C &mdash; Consistency</td><td class="val">The database must always be in a valid state. Business rules (e.g., balance cannot be negative) are always enforced.</td></tr>
+            <tr><td class="key">I &mdash; Isolation</td><td class="val">Multiple transactions happening at the same time cannot interfere with each other.</td></tr>
+            <tr><td class="key">D &mdash; Durability</td><td class="val">Once committed, a transaction is PERMANENT &mdash; even if the server crashes 1 second later. Oracle uses redo logs for this.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-section" id="l12">
+        <div class="section-title">
+          <div class="section-icon icon-lesson">&#128214;</div>
+          <h4>Lesson 1.2 &mdash; What is Oracle?</h4>
+        </div>
+        <p class="body-text">Oracle Corporation was founded in 1977 and built the world's first commercially available SQL-based relational database. Today Oracle powers the most critical systems on the planet &mdash; banks, hospitals, governments, and airlines.</p>
+        <table class="def-table">
+          <thead><tr><th>Oracle Product</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Oracle Database 19c</td><td class="val">Core database engine. Current Long Term Support (LTS) release. Runs until 2027.</td></tr>
+            <tr><td class="key">SQL*Plus</td><td class="val">Command-line interface for Oracle. Available on every server. Every DBA must master it.</td></tr>
+            <tr><td class="key">SQL Developer</td><td class="val">Free GUI tool for writing SQL, managing objects, running reports.</td></tr>
+            <tr><td class="key">OEM</td><td class="val">Oracle Enterprise Manager &mdash; the web-based control room for managing databases.</td></tr>
+            <tr><td class="key">RMAN</td><td class="val">Recovery Manager &mdash; built-in backup and recovery tool.</td></tr>
+            <tr><td class="key">Data Guard</td><td class="val">High availability &mdash; keeps a standby database ready if the primary fails.</td></tr>
+            <tr><td class="key">Golden Gate</td><td class="val">Real-time replication between databases.</td></tr>
+            <tr><td class="key">Oracle Net Services</td><td class="val">Network layer for client connections. Configured via listener.ora and tnsnames.ora.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-section" id="l13">
+        <div class="section-title">
+          <div class="section-icon icon-lesson">&#128214;</div>
+          <h4>Lesson 1.3 &mdash; Relational Database Concepts</h4>
+        </div>
+        <table class="def-table">
+          <thead><tr><th>Concept</th><th>Plain English</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Table</td><td class="val">A collection of related data in rows and columns, like a spreadsheet but far more powerful.</td></tr>
+            <tr><td class="key">Row (Record)</td><td class="val">One complete entry in a table &mdash; e.g., one employee's full information.</td></tr>
+            <tr><td class="key">Column (Field)</td><td class="val">One specific attribute &mdash; e.g., EMPLOYEE_ID, FIRST_NAME, SALARY.</td></tr>
+            <tr><td class="key">Primary Key (PK)</td><td class="val">Uniquely identifies each row. Cannot be NULL or duplicate. Example: EMPLOYEE_ID.</td></tr>
+            <tr><td class="key">Foreign Key (FK)</td><td class="val">References the PK of another table, creating a relationship between tables.</td></tr>
+            <tr><td class="key">Index</td><td class="val">Speeds up data retrieval &mdash; like a book's index.</td></tr>
+          </tbody>
+        </table>
+        <div class="section-title" style="margin-top:16px"><h4 style="font-size:0.88rem; color:var(--teal)">Your First SQL &mdash; Understanding the Structure</h4></div>
+        <div class="code-block"><span class="comment">-- Get all IT employees with salary over 80,000</span>
+SELECT employee_id,
+       first_name,
+       last_name,
+       salary
+FROM   employees
+WHERE  department = 'IT'
+AND    salary > 80000
+ORDER BY salary DESC;
+
+<span class="comment">-- Every SQL statement ends with a semicolon (;)</span></div>
+      </div>
+
+      <div class="content-section" id="l14">
+        <div class="section-title">
+          <div class="section-icon icon-lesson">&#128214;</div>
+          <h4>Lesson 1.4 &mdash; Where Does the DBA Fit In?</h4>
+        </div>
+        <table class="def-table">
+          <thead><tr><th>DBA Type</th><th>What they do</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Admin DBA</td><td class="val">Installs, configures, patches, maintains. Manages users, storage, security. Your primary focus.</td></tr>
+            <tr><td class="key">Developer DBA</td><td class="val">Writes stored procedures, functions, triggers, and complex SQL.</td></tr>
+            <tr><td class="key">Architect DBA</td><td class="val">Designs schema, data models, physical database structure. More senior role.</td></tr>
+          </tbody>
+        </table>
+        <div class="section-title" style="margin-top:16px"><h4 style="font-size:0.88rem; color:var(--teal)">Salary Expectations</h4></div>
+        <table class="def-table">
+          <thead><tr><th>Level</th><th>Salary Range (USA)</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Junior DBA (0-2 yr)</td><td class="val">$55,000 &ndash; $80,000 per year &mdash; where you will start</td></tr>
+            <tr><td class="key">Mid-Level (2-5 yr)</td><td class="val">$80,000 &ndash; $110,000 per year</td></tr>
+            <tr><td class="key">Senior DBA (5+ yr)</td><td class="val">$110,000 &ndash; $150,000+ per year</td></tr>
+            <tr><td class="key">DBA Consultant</td><td class="val">$65 &ndash; $120 per HOUR as an independent contractor</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box info-success">
+          <div class="info-box-label">GOOD NEWS</div>
+          <div class="info-box-body">As a Junior DBA with Oracle 19c, OEM, RMAN, and Data Guard knowledge &mdash; you are VERY hireable. That is exactly what we are building toward.</div>
+        </div>
+      </div>
+    </div><!-- /w1-lessons -->
+
+    <!-- CHEATSHEETS -->
+    <div class="tab-pane" id="w1-sheets">
+      <div class="content-section" id="cs1">
+        <div class="section-title">
+          <div class="section-icon icon-sheet">&#128203;</div>
+          <h4>Cheatsheet 1 &mdash; Key Database &amp; Oracle Terms</h4>
+        </div>
+        <table class="def-table">
+          <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Database</td><td class="val">An organised collection of structured data stored and accessed electronically.</td></tr>
+            <tr><td class="key">RDBMS</td><td class="val">Relational DBMS &mdash; stores data in related tables. Oracle is an RDBMS.</td></tr>
+            <tr><td class="key">SQL</td><td class="val">Structured Query Language &mdash; the language used to interact with relational databases.</td></tr>
+            <tr><td class="key">Tablespace</td><td class="val">A logical storage unit in Oracle &mdash; a group of one or more datafiles.</td></tr>
+            <tr><td class="key">Datafile</td><td class="val">A physical OS file storing actual data for a tablespace.</td></tr>
+            <tr><td class="key">Redo Log</td><td class="val">Records all changes made to the database &mdash; used for recovery.</td></tr>
+            <tr><td class="key">SGA</td><td class="val">System Global Area &mdash; shared memory area used by all Oracle processes.</td></tr>
+            <tr><td class="key">PGA</td><td class="val">Program Global Area &mdash; private memory for each Oracle server process.</td></tr>
+            <tr><td class="key">Instance</td><td class="val">The Oracle processes and memory running on the server.</td></tr>
+            <tr><td class="key">ACID</td><td class="val">Atomicity, Consistency, Isolation, Durability &mdash; properties of transactions.</td></tr>
+            <tr><td class="key">DDL</td><td class="val">Data Definition Language &mdash; CREATE, ALTER, DROP.</td></tr>
+            <tr><td class="key">DML</td><td class="val">Data Manipulation Language &mdash; INSERT, UPDATE, DELETE.</td></tr>
+            <tr><td class="key">TCL</td><td class="val">Transaction Control Language &mdash; COMMIT, ROLLBACK, SAVEPOINT.</td></tr>
+            <tr><td class="key">Commit</td><td class="val">Saves a transaction permanently.</td></tr>
+            <tr><td class="key">Rollback</td><td class="val">Undoes all changes since the last COMMIT.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content-section" id="cs2">
+        <div class="section-title">
+          <div class="section-icon icon-sheet">&#128203;</div>
+          <h4>Cheatsheet 2 &mdash; Oracle Products &amp; Tools Reference</h4>
+        </div>
+        <table class="def-table">
+          <thead><tr><th>Tool / Product</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td class="key">Oracle 19c</td><td class="val">Core engine. LTS release. The 'c' = container (Multitenant). Supported until 2027.</td></tr>
+            <tr><td class="key">CDB</td><td class="val">Container Database &mdash; root Oracle database that contains PDBs.</td></tr>
+            <tr><td class="key">PDB</td><td class="val">Pluggable Database &mdash; individual database inside a CDB.</td></tr>
+            <tr><td class="key">SQL*Plus</td><td class="val">CLI tool. Access via: sqlplus username/password@service</td></tr>
+            <tr><td class="key">SQL Developer</td><td class="val">Free GUI tool. Browse objects, write SQL, debug PL/SQL.</td></tr>
+            <tr><td class="key">OEM</td><td class="val">Web-based management console. Usually port 7803.</td></tr>
+            <tr><td class="key">Toad for Oracle</td><td class="val">Third-party GUI (Quest Software). Popular in enterprise environments.</td></tr>
+            <tr><td class="key">PuTTY</td><td class="val">Free SSH client for Windows to connect to Linux servers.</td></tr>
+            <tr><td class="key">RMAN</td><td class="val">Backup/recovery tool. Run via: rman target /</td></tr>
+            <tr><td class="key">LSNRCTL</td><td class="val">Listener Control utility. Start/stop/check the Oracle network listener.</td></tr>
+            <tr><td class="key">AWR</td><td class="val">Automatic Workload Repository &mdash; performance snapshots for analysis.</td></tr>
+            <tr><td class="key">Data Pump</td><td class="val">Fast export/import (expdp/impdp). Replacement for old exp/imp.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /w1-sheets -->
+
+    <!-- QUIZ -->
+    <div class="tab-pane" id="w1-quiz">
+      <div class="content-section" id="q1">
+        <div class="section-title">
+          <div class="section-icon icon-quiz">&#10067;</div>
+          <h4>Quiz 1 &mdash; Introduction to Databases &amp; Oracle</h4>
+        </div>
+        <div class="info-box info-warn">
+          <div class="info-box-label">OPEN BOOK</div>
+          <div class="info-box-body">This is open-book. Use your cheatsheets freely. Select your answer then click Check Answer. There are no grades &mdash; only learning.</div>
+        </div>
+        <div id="w1-score" class="score-badge" style="display:none">Score: <span id="w1-score-val">0</span>/5</div>
+
+        <div class="quiz-q" id="q1_1">
+          <p class="q-text">Q1. What does ACID stand for in the context of database transactions?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_1','B')"><span class="opt-key">A</span> Automated, Committed, Isolated, Distributed</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_1','B')"><span class="opt-key">B</span> Atomicity, Consistency, Isolation, Durability</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_1','B')"><span class="opt-key">C</span> Atomic, Concurrent, Integrated, Durable</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_1','B')"><span class="opt-key">D</span> Atomicity, Consistency, Integrated, Distributed</div>
+          <button class="quiz-btn" onclick="checkQ('q1_1','B','w1-score','w1-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q1_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q1_2">
+          <p class="q-text">Q2. Which Oracle tool is the command-line interface shipped with every Oracle installation?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_2','C')"><span class="opt-key">A</span> Oracle SQL Developer</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_2','C')"><span class="opt-key">B</span> Oracle Enterprise Manager (OEM)</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_2','C')"><span class="opt-key">C</span> SQL*Plus</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_2','C')"><span class="opt-key">D</span> Toad for Oracle</div>
+          <button class="quiz-btn" onclick="checkQ('q1_2','C','w1-score','w1-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q1_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q1_3">
+          <p class="q-text">Q3. A FOREIGN KEY in a table:</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_3','B')"><span class="opt-key">A</span> Uniquely identifies each row in its own table</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_3','B')"><span class="opt-key">B</span> References the Primary Key of another table</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_3','B')"><span class="opt-key">C</span> Is always made of two or more columns</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_3','B')"><span class="opt-key">D</span> Cannot contain NULL values</div>
+          <button class="quiz-btn" onclick="checkQ('q1_3','B','w1-score','w1-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q1_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q1_4">
+          <p class="q-text">Q4. Oracle 19c is a Long-Term Support (LTS) release. What does this mean?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_4','B')"><span class="opt-key">A</span> It will never be upgraded or patched</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_4','B')"><span class="opt-key">B</span> It receives extended support and patches for many years &mdash; stable for enterprises</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_4','B')"><span class="opt-key">C</span> It is the last Oracle version ever released</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_4','B')"><span class="opt-key">D</span> It is only for small companies</div>
+          <button class="quiz-btn" onclick="checkQ('q1_4','B','w1-score','w1-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q1_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q1_5">
+          <p class="q-text">Q5. Which SQL statement permanently saves a transaction to the database?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_5','C')"><span class="opt-key">A</span> SAVE</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_5','C')"><span class="opt-key">B</span> ROLLBACK</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_5','C')"><span class="opt-key">C</span> COMMIT</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q1_5','C')"><span class="opt-key">D</span> APPLY</div>
+          <button class="quiz-btn" onclick="checkQ('q1_5','C','w1-score','w1-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q1_5-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div><!-- /w1-quiz -->
+
+    <!-- ASSIGNMENT -->
+    <div class="tab-pane" id="w1-assign">
+      <div class="content-section" id="a1">
+        <div class="section-title">
+          <div class="section-icon icon-lab">&#128203;</div>
+          <h4>Assignment 1 &mdash; Database Detective</h4>
+        </div>
+        <div class="info-box info-tip">
+          <div class="info-box-label">TIME</div>
+          <div class="info-box-body">Estimated: 1.5&ndash;2 hours. No computer or tools needed &mdash; just your brain and maybe a web browser.</div>
+        </div>
+        <div class="checklist" id="a1-checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Task 1: Choose a company (bank, airline, retailer, hospital, or telecom)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Task 2.1: List at least 5 specific types of data that company stores</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Task 2.2: Design 3 tables with columns and Primary Keys</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Task 2.3: Describe business impact of a 1-hour and 1-day database outage</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Task 3: Write a 3&ndash;5 sentence reflection on what you learned this week</li>
+        </div>
+        <div class="info-box info-success">
+          <div class="info-box-label">MARKING</div>
+          <div class="info-box-body">25 points total. 5 per task. Full marks for genuine engagement and specific, realistic answers. There are no wrong reflections in Task 3.</div>
+        </div>
+      </div>
+    </div><!-- /w1-assign -->
+
+    <!-- RUNBOOK -->
+    <div class="tab-pane" id="w1-runbook">
+      <div class="content-section" id="r1">
+        <div class="section-title">
+          <div class="section-icon icon-run">&#128218;</div>
+          <h4>Week 1 Runbook &mdash; Your Daily Guide</h4>
+        </div>
+        <div class="info-box info-warn">
+          <div class="info-box-label">GUIDE</div>
+          <div class="info-box-body">This is a guide, not a rule. If a day feels too hard, split it across two days. What matters is finishing, not speed.</div>
+        </div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1 hour</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Read Lesson 1.1 &mdash; What is a Database? (45 mins)</li>
+            <li><span class="step-num">2</span>Write ACID in your own words &mdash; one sentence per letter (15 mins)</li>
+          </ul>
+        </div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1 hour</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Read Lesson 1.2 &mdash; What is Oracle? (40 mins)</li>
+            <li><span class="step-num">2</span>List 5 Oracle products from memory, then check Cheatsheet 2 (20 mins)</li>
+          </ul>
+        </div>
+        <div class="runbook-day"><h5>Day 3 &mdash; approx 1.5 hours</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Read Lesson 1.3 &mdash; Relational Concepts (60 mins) &mdash; take breaks as needed</li>
+            <li><span class="step-num">2</span>Draw two related tables showing PK and FK (30 mins)</li>
+          </ul>
+        </div>
+        <div class="runbook-day"><h5>Day 4 &mdash; approx 45 minutes</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Read Lesson 1.4 &mdash; Where Does the DBA Fit In? (30 mins)</li>
+            <li><span class="step-num">2</span>Find one Oracle DBA job posting on LinkedIn &mdash; read the requirements (15 mins)</li>
+          </ul>
+        </div>
+        <div class="runbook-day"><h5>Day 5 &mdash; approx 1.5 hours</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Review Cheatsheets 1 and 2 (20 mins)</li>
+            <li><span class="step-num">2</span>Complete Quiz 1 &mdash; open-book is fine! (20 mins)</li>
+            <li><span class="step-num">3</span>Start Assignment 1 (60 mins or split)</li>
+          </ul>
+        </div>
+        <div class="runbook-day"><h5>Day 6-7 &mdash; flexible</h5>
+          <ul class="step-list">
+            <li><span class="step-num">1</span>Complete and review Assignment 1</li>
+            <li><span class="step-num">2</span>Write your self-reflection (Task 3)</li>
+            <li><span class="step-num">3</span>Celebrate completing Week 1!</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /w1-runbook -->
+
+  </div><!-- /week-body -->
+</div><!-- /week-card w1 -->
+</div><!-- /week-section -->
+
+<!-- ═══════════════════════════════════════════
+     WEEK 2
+════════════════════════════════════════════ -->
+<div class="week-section">
+<div class="week-card fade-in" id="w2">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--blue)">W2</div>
+      <div>
+        <h3>Linux Fundamentals for DBAs</h3>
+        <p>PuTTY &bull; Navigation &bull; Permissions &bull; vi Editor &bull; Environment Variables &bull; Process Management</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w2-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w2-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w2-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w2-runbook')">Runbook</button>
+    </div>
+
+    <div class="tab-pane active" id="w2-lessons">
+      <div class="content-section" id="l21">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.1 &mdash; What is Linux and Why DBAs Need It?</h4></div>
+        <p class="body-text">Linux is an operating system built to run servers. It is free, open-source, extremely stable, and powers the majority of the world's servers. Over 80% of Oracle databases in production run on Linux. Knowing Linux is not optional for a DBA &mdash; it is mandatory.</p>
+        <table class="def-table"><thead><tr><th>Reason</th><th>Why it matters</th></tr></thead><tbody>
+          <tr><td class="key">Stability</td><td class="val">Linux servers run for years without reboots. Windows requires frequent updates &mdash; unacceptable for production databases.</td></tr>
+          <tr><td class="key">Performance</td><td class="val">Linux gives Oracle direct, efficient access to CPU, memory, and disk. Oracle runs faster on Linux than Windows.</td></tr>
+          <tr><td class="key">Cost</td><td class="val">Linux is free. Oracle Linux costs far less than Windows Server licences at enterprise scale.</td></tr>
+          <tr><td class="key">Industry Standard</td><td class="val">80%+ of Oracle databases run on Linux. Knowing Linux means being marketable.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l22">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.2 &mdash; PuTTY: Your Gateway to the Linux Server</h4></div>
+        <p class="body-text">PuTTY is a free SSH (Secure Shell) client for Windows. SSH lets you connect to a remote Linux server and control it from your Windows laptop securely. Think of it as a secure phone call between your laptop and the server.</p>
+        <table class="def-table"><thead><tr><th>PuTTY Setting</th><th>What to set</th></tr></thead><tbody>
+          <tr><td class="key">Host Name</td><td class="val">IP address or hostname of your Linux server. Example: 192.168.1.100</td></tr>
+          <tr><td class="key">Port</td><td class="val">Always 22 for SSH. Never change this unless your admin says to.</td></tr>
+          <tr><td class="key">Scrollback</td><td class="val">Window &gt; Lines of scrollback: 5000. Never lose output again.</td></tr>
+          <tr><td class="key">Keep-alive</td><td class="val">Connection &gt; Seconds between keepalives: 60. Prevents timeout.</td></tr>
+          <tr><td class="key">Logging</td><td class="val">Session &gt; Logging &gt; All session output. ALWAYS log production sessions.</td></tr>
+          <tr><td class="key">Saved Sessions</td><td class="val">Always save with a clear name (e.g., PROD_DB1, DEV_DB2). Saves huge time.</td></tr>
+        </tbody></table>
+        <div class="info-box info-danger">
+          <div class="info-box-label">WARNING</div>
+          <div class="info-box-body">NEVER log in as root to do DBA work. Always use the oracle user. Root access can accidentally destroy things.</div>
+        </div>
+      </div>
+
+      <div class="content-section" id="l23">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.3 &mdash; Navigating the Linux File System</h4></div>
+        <p class="body-text">Linux organises ALL files in a single tree structure starting from / (root). Everything hangs from /. Oracle uses the OFA (Optimal Flexible Architecture) standard for organising its files.</p>
+        <div class="code-block">/u01/app/oracle/                    &larr; ORACLE_BASE
+/u01/app/oracle/product/19.3.0/dbhome_1/  &larr; ORACLE_HOME
+/u01/app/oracle/oradata/ORCL/     &larr; Database datafiles
+/u01/app/oracle/fast_recovery_area/ &larr; RMAN backups & archive logs
+/u01/app/oracle/diag/rdbms/orcl/ORCL/trace/alert_ORCL.log &larr; Alert log</div>
+        <div class="info-box info-tip">
+          <div class="info-box-label">DBA TIP</div>
+          <div class="info-box-body">Memorise the alert log path. When something goes wrong with Oracle, the alert log is the FIRST place you check. You will look at this file hundreds of times in your career.</div>
+        </div>
+      </div>
+
+      <div class="content-section" id="l24">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.4 &mdash; Essential Linux Commands for DBAs</h4></div>
+        <p class="body-text">Open your terminal and TYPE each command as you read. Muscle memory is built by doing.</p>
+        <div class="code-block"><span class="comment"># Navigation</span>
+pwd                    <span class="comment"># Print Working Directory</span>
+ls -la                 <span class="comment"># List all files with permissions</span>
+cd /u01/app/oracle     <span class="comment"># Change directory</span>
+cd ~                   <span class="comment"># Go to home directory</span>
+cd ..                  <span class="comment"># Go up one level</span>
+
+<span class="comment"># File Management</span>
+mkdir -p /u01/scripts  <span class="comment"># Create directory (and parents)</span>
+cp file.sql /u01/      <span class="comment"># Copy a file</span>
+mv old.sql new.sql     <span class="comment"># Move or rename</span>
+rm -rf /tmp/test_dir   <span class="comment"># Delete directory (CAREFUL!)</span>
+find / -name alert_ORCL.log   <span class="comment"># Find a file</span>
+
+<span class="comment"># Viewing Files</span>
+cat /etc/oratab        <span class="comment"># Print whole file</span>
+tail -f alert_ORCL.log <span class="comment"># Follow file in real-time (Ctrl+C to stop)</span>
+grep -i 'ORA-' alert_ORCL.log  <span class="comment"># Search for errors</span>
+
+<span class="comment"># System Info</span>
+df -h /u01             <span class="comment"># Disk space</span>
+free -h                <span class="comment"># RAM usage</span>
+ps -ef | grep pmon     <span class="comment"># Is Oracle running?</span></div>
+      </div>
+
+      <div class="content-section" id="l25">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.5 &mdash; File Permissions</h4></div>
+        <div class="code-block">drwxr-xr-x  oracle  oinstall  /u01/scripts
+&uarr;&uarr;&uarr;
+|||
+||+-- Others:  r-x = read + execute (no write)
+|+--- Group:   r-x = read + execute (no write)
++---- Owner:   rwx = full access (read + write + execute)
+
+<span class="comment"># Number system: r=4, w=2, x=1</span>
+chmod 755 script.sh    <span class="comment"># rwxr-xr-x (most common for scripts)</span>
+chmod 640 data.dbf     <span class="comment"># rw-r----- (Oracle datafiles)</span>
+chmod 600 .bash_profile <span class="comment"># rw------- (private files)</span></div>
+      </div>
+
+      <div class="content-section" id="l26">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.6 &mdash; The vi Editor</h4></div>
+        <p class="body-text">vi is available on EVERY Linux server. As a DBA you MUST know it. The key: vi has MODES. Press <strong style="color:var(--teal)">i</strong> to type, press <strong style="color:var(--teal)">Esc</strong> to stop typing.</p>
+        <table class="def-table"><thead><tr><th>vi Command</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">i</td><td class="val">Enter Insert Mode &mdash; now you can type</td></tr>
+          <tr><td class="key">Esc</td><td class="val">Return to Command Mode</td></tr>
+          <tr><td class="key">:wq then Enter</td><td class="val">Save and quit (Write + Quit)</td></tr>
+          <tr><td class="key">:q! then Enter</td><td class="val">Quit WITHOUT saving (discard changes)</td></tr>
+          <tr><td class="key">:set number</td><td class="val">Show line numbers</td></tr>
+          <tr><td class="key">dd</td><td class="val">Delete the current line</td></tr>
+          <tr><td class="key">u</td><td class="val">Undo last action</td></tr>
+          <tr><td class="key">/ORA- then Enter</td><td class="val">Search forward for 'ORA-'</td></tr>
+          <tr><td class="key">n</td><td class="val">Find next search result</td></tr>
+          <tr><td class="key">gg / G</td><td class="val">Jump to first / last line</td></tr>
+          <tr><td class="key">:50 then Enter</td><td class="val">Jump to line 50</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l27">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.7 &mdash; Oracle Environment Variables</h4></div>
+        <div class="info-box info-danger">
+          <div class="info-box-label">CRITICAL</div>
+          <div class="info-box-body">Environment variables are the most common source of DBA connection errors. When someone says "I can't connect to sqlplus", the FIRST thing you check is their environment variables.</div>
+        </div>
+        <div class="code-block"><span class="comment"># The 4 critical Oracle environment variables:</span>
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=$ORACLE_BASE/product/19.3.0/dbhome_1
+export ORACLE_SID=ORCL
+export PATH=$ORACLE_HOME/bin:$PATH
+
+<span class="comment"># Add to ~/.bash_profile for permanent effect</span>
+<span class="comment"># Apply without logout:</span>
+source ~/.bash_profile
+
+<span class="comment"># Verify:</span>
+echo $ORACLE_HOME
+echo $ORACLE_SID</div>
+      </div>
+
+      <div class="content-section" id="l28">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 2.8 &mdash; Process Management: Is Oracle Running?</h4></div>
+        <div class="code-block"><span class="comment"># Quickest check: look for PMON process</span>
+ps -ef | grep pmon | grep -v grep
+
+<span class="comment"># If Oracle is running:</span>
+oracle 1234 1 0 09:15 ? 00:00:01 ora_pmon_ORCL
+
+<span class="comment"># Check all Oracle background processes</span>
+ps -ef | grep ora_ | grep -v grep
+
+<span class="comment"># Check listener</span>
+lsnrctl status
+
+<span class="comment"># Ultimate test: connect as SYSDBA</span>
+sqlplus / as sysdba</div>
+        <div class="info-box info-danger">
+          <div class="info-box-label">WARNING</div>
+          <div class="info-box-body">NEVER kill an Oracle background process (pmon, smon, dbwr, lgwr) with kill -9. This will crash the database immediately.</div>
+        </div>
+      </div>
+    </div><!-- /w2-lessons -->
+
+    <div class="tab-pane" id="w2-sheets">
+      <div class="content-section" id="cs3">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 3 &mdash; 40 Essential Linux Commands for DBAs</h4></div>
+        <table class="def-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+          <tr><td class="key">pwd</td><td class="val">Where am I right now?</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">pwd &rarr; /home/oracle</td></tr>
+          <tr><td class="key">ls -la</td><td class="val">List all files with permissions</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">ls -la /u01</td></tr>
+          <tr><td class="key">cd /path</td><td class="val">Go to directory</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">cd /u01/app/oracle</td></tr>
+          <tr><td class="key">cd ~</td><td class="val">Go to home directory</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">cd ~</td></tr>
+          <tr><td class="key">mkdir -p</td><td class="val">Create directory tree</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">mkdir -p /u01/scripts/rman</td></tr>
+          <tr><td class="key">tail -f file</td><td class="val">Follow file in real-time</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">tail -f alert_ORCL.log</td></tr>
+          <tr><td class="key">grep -i 'ORA-' file</td><td class="val">Search for errors (case-insensitive)</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">grep -i ORA- alert_ORCL.log</td></tr>
+          <tr><td class="key">df -h</td><td class="val">Disk space on all filesystems</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">df -h /u01</td></tr>
+          <tr><td class="key">du -sh /path</td><td class="val">Disk used by directory</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">du -sh /u01/app/oracle</td></tr>
+          <tr><td class="key">free -h</td><td class="val">RAM and swap usage</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">free -h</td></tr>
+          <tr><td class="key">ps -ef | grep pmon</td><td class="val">Check if Oracle is running</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">ps -ef | grep pmon</td></tr>
+          <tr><td class="key">chmod 755 file</td><td class="val">Set permissions (rwxr-xr-x)</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">chmod 755 startup.sh</td></tr>
+          <tr><td class="key">chown oracle:oinstall</td><td class="val">Change owner</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">chown oracle:oinstall file</td></tr>
+          <tr><td class="key">lsnrctl status</td><td class="val">Check Oracle listener</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">lsnrctl status</td></tr>
+          <tr><td class="key">sqlplus / as sysdba</td><td class="val">Connect to Oracle as SYSDBA</td><td class="val" style="font-family:monospace;font-size:0.78rem;color:var(--code-fg)">sqlplus / as sysdba</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs4">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 4 &mdash; File Permissions Decoder</h4></div>
+        <table class="def-table"><thead><tr><th>Number</th><th>Permission</th><th>Oracle Usage</th></tr></thead><tbody>
+          <tr><td class="key">7 (rwx)</td><td class="val">Full access: read, write, execute</td><td class="val">ORACLE_HOME/bin executables (owner)</td></tr>
+          <tr><td class="key">6 (rw-)</td><td class="val">Read and write, no execute</td><td class="val">Config files, datafiles (owner)</td></tr>
+          <tr><td class="key">5 (r-x)</td><td class="val">Read and execute, no write</td><td class="val">Scripts (group/others)</td></tr>
+          <tr><td class="key">4 (r--)</td><td class="val">Read only</td><td class="val">Log files (group/others)</td></tr>
+          <tr><td class="key">0 (---)</td><td class="val">No permissions</td><td class="val">Sensitive files (others)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs5">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 5 &mdash; Oracle Environment Variables</h4></div>
+        <div class="code-block"><span class="comment"># Complete ~/.bash_profile template for oracle user</span>
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=$ORACLE_BASE/product/19.3.0/dbhome_1
+export ORACLE_SID=ORCL
+export PATH=$ORACLE_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+export NLS_DATE_FORMAT='DD-MON-YYYY HH24:MI:SS'
+export PS1='[$ORACLE_SID@h W]$ '
+
+<span class="comment"># Apply: source ~/.bash_profile</span>
+<span class="comment"># Verify: echo $ORACLE_HOME && echo $ORACLE_SID</span></div>
+      </div>
+    </div><!-- /w2-sheets -->
+
+    <div class="tab-pane" id="w2-quiz">
+      <div class="content-section" id="q2">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 2 &mdash; Linux Fundamentals</h4></div>
+        <div id="w2-score" class="score-badge" style="display:none">Score: <span id="w2-score-val">0</span>/4</div>
+
+        <div class="quiz-q" id="q2_1">
+          <p class="q-text">Q1. Which command shows the last 50 lines of the alert log AND watches it update in real-time?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_1','C')"><span class="opt-key">A</span> cat -50 alert_ORCL.log</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_1','C')"><span class="opt-key">B</span> tail -50f alert_ORCL.log</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_1','C')"><span class="opt-key">C</span> tail -f -n 50 alert_ORCL.log</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_1','C')"><span class="opt-key">D</span> less +50 alert_ORCL.log</div>
+          <button class="quiz-btn" onclick="checkQ('q2_1','C','w2-score','w2-score-val',4)">Check Answer</button>
+          <div class="quiz-feedback" id="q2_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q2_2">
+          <p class="q-text">Q2. A file has permissions -rw-r-----. What can the GROUP do with this file?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_2','C')"><span class="opt-key">A</span> Read, write, and execute</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_2','C')"><span class="opt-key">B</span> Read and write only</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_2','C')"><span class="opt-key">C</span> Read only</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_2','C')"><span class="opt-key">D</span> Nothing &mdash; no permissions</div>
+          <button class="quiz-btn" onclick="checkQ('q2_2','C','w2-score','w2-score-val',4)">Check Answer</button>
+          <div class="quiz-feedback" id="q2_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q2_3">
+          <p class="q-text">Q3. What is the purpose of ORACLE_SID environment variable?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_3','B')"><span class="opt-key">A</span> It specifies the path to the Oracle software</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_3','B')"><span class="opt-key">B</span> It identifies which database instance to connect to</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_3','B')"><span class="opt-key">C</span> It sets the Oracle admin password</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_3','B')"><span class="opt-key">D</span> It points to the Oracle backup directory</div>
+          <button class="quiz-btn" onclick="checkQ('q2_3','B','w2-score','w2-score-val',4)">Check Answer</button>
+          <div class="quiz-feedback" id="q2_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q2_4">
+          <p class="q-text">Q4. How do you SAVE and EXIT the vi editor after making changes?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_4','C')"><span class="opt-key">A</span> Press Ctrl+S then Ctrl+Q</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_4','C')"><span class="opt-key">B</span> Type :save and press Enter</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_4','C')"><span class="opt-key">C</span> Press Esc, then type :wq and press Enter</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q2_4','C')"><span class="opt-key">D</span> Press Ctrl+X, then Y, then Enter</div>
+          <button class="quiz-btn" onclick="checkQ('q2_4','C','w2-score','w2-score-val',4)">Check Answer</button>
+          <div class="quiz-feedback" id="q2_4-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div><!-- /w2-quiz -->
+
+    <div class="tab-pane" id="w2-runbook">
+      <div class="content-section" id="r2">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 2 Runbook &mdash; Your Daily Guide</h4></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 2.1 &mdash; What is Linux? (30 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 2.2 &mdash; PuTTY (45 mins). Install PuTTY if not already done.</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 2.3 &mdash; File System (40 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 2.4 &mdash; Linux Commands (40 mins) &mdash; TYPE every command as you read</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; Lab Day (approx 1.5 hours)</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Connect to your server via PuTTY</li>
+          <li><span class="step-num">2</span>Spend 30 mins exploring with ls, cd, pwd</li>
+          <li><span class="step-num">3</span>Run tail -f on the alert log. Watch for 2 minutes, then Ctrl+C</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 2.5 &mdash; Permissions (45 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 2.6 &mdash; vi Editor (50 mins). Practice opening and editing a test file 3 times.</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 2.7 and 2.8 (70 mins)</li>
+          <li><span class="step-num">2</span>Set up .bash_profile with all Oracle variables</li>
+          <li><span class="step-num">3</span>Run ps -ef | grep pmon to confirm Oracle is running</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 6-7 &mdash; approx 3 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Review Cheatsheets 3, 4, 5 (20 mins)</li>
+          <li><span class="step-num">2</span>Complete Quiz 2 and check answers (25 mins)</li>
+          <li><span class="step-num">3</span>Work through Assignment 2 &mdash; Linux Navigator on your server</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- WEEKS 3 and 4 summary cards (collapsed by default) -->
+<!-- ═══════════════════════════════════════════
+     WEEK 3
+════════════════════════════════════════════ -->
+<div class="week-section">
+<div class="week-card fade-in" id="w3">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--gold);color:#000">W3</div>
+      <div>
+        <h3>Oracle 19c Architecture</h3>
+        <p>Instance vs Database &bull; SGA &bull; PGA &bull; Background Processes &bull; Files &bull; Storage &bull; CDB/PDB &bull; Startup/Shutdown</p>
+      </div>
+    </div>
+    <span class="week-toggle">&#9660;</span>
+  </div>
+  <div class="week-body hidden">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w3-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w3-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w3-flash')">Flashcards</button>
+      <button class="tab-btn" onclick="switchTab(this,'w3-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w3-runbook')">Runbook</button>
+    </div>
+
+    <div class="tab-pane active" id="w3-lessons">
+      <div class="content-section" id="l31">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.1 &mdash; Oracle Instance vs Oracle Database</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">INTERVIEW</div><div class="info-box-body">This is the most fundamental Oracle concept. "What is the difference between an instance and a database?" is asked in every DBA interview.</div></div>
+        <table class="def-table"><thead><tr><th>Component</th><th>What it actually is</th></tr></thead><tbody>
+          <tr><td class="key">Oracle DATABASE</td><td class="val">The physical FILES on disk &mdash; datafiles, control files, redo log files. Exists even when server is off.</td></tr>
+          <tr><td class="key">Oracle INSTANCE</td><td class="val">The MEMORY and PROCESSES running on the server. Only exists while the server is running.</td></tr>
+        </tbody></table>
+        <div class="info-box info-tip"><div class="info-box-label">ANALOGY</div><div class="info-box-body">The DATABASE is a Blu-ray disc &mdash; it exists on the shelf whether anyone is watching. The INSTANCE is the Blu-ray player running right now. No player = no movie playing, but the disc is still there.</div></div>
+      </div>
+
+      <div class="content-section" id="l32">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.2 &mdash; Memory Architecture: The SGA</h4></div>
+        <p class="body-text">The System Global Area (SGA) is shared memory used by ALL Oracle processes. When you tune Oracle for performance, you are largely tuning the SGA.</p>
+        <table class="def-table"><thead><tr><th>SGA Component</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">Database Buffer Cache</td><td class="val">Caches data blocks from datafiles. Most important SGA area. Target: 95%+ cache hit ratio.</td></tr>
+          <tr><td class="key">Shared Pool</td><td class="val">Library Cache (parsed SQL) + Data Dictionary Cache (metadata). Avoids re-parsing SQL.</td></tr>
+          <tr><td class="key">Redo Log Buffer</td><td class="val">Circular buffer for redo entries. LGWR flushes to disk on every COMMIT. Guarantees Durability.</td></tr>
+          <tr><td class="key">Large Pool</td><td class="val">For RMAN, parallel query, shared server. Keeps large allocations out of Shared Pool.</td></tr>
+          <tr><td class="key">Java Pool</td><td class="val">For Java stored procedures. Most shops set to minimum (64MB).</td></tr>
+          <tr><td class="key">Streams Pool</td><td class="val">For GoldenGate LogMiner capture. Set to 0 if not using GoldenGate on this database.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l33">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.3 &mdash; The PGA</h4></div>
+        <p class="body-text">The Program Global Area (PGA) is PRIVATE memory allocated for each individual user session. Unlike the SGA which is shared, each session gets its OWN PGA.</p>
+        <table class="def-table"><thead><tr><th>Memory Area</th><th>Key Difference</th></tr></thead><tbody>
+          <tr><td class="key">SGA</td><td class="val">SHARED by all sessions. Allocated once at startup. Contains caches and shared structures.</td></tr>
+          <tr><td class="key">PGA</td><td class="val">PRIVATE to each session. Allocated on connect. Freed on disconnect. Contains sort area, hash area.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l34">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.4 &mdash; Oracle Background Processes</h4></div>
+        <table class="def-table"><thead><tr><th>Process</th><th>What it does &mdash; Key Facts</th></tr></thead><tbody>
+          <tr><td class="key">PMON</td><td class="val">Process Monitor. Cleans up failed user processes. Rolls back uncommitted transactions. IF PMON IS RUNNING, THE DATABASE IS UP.</td></tr>
+          <tr><td class="key">SMON</td><td class="val">System Monitor. Crash recovery after unclean shutdown. Coalesces free space in SYSTEM tablespace.</td></tr>
+          <tr><td class="key">DBWR</td><td class="val">Database Writer. Writes dirty buffers from Buffer Cache to datafiles. Writes in batches, not on every DML.</td></tr>
+          <tr><td class="key">LGWR</td><td class="val">Log Writer. Writes redo buffer to redo log files on COMMIT. This is what makes COMMIT durable (ACID D).</td></tr>
+          <tr><td class="key">CKPT</td><td class="val">Checkpoint. Signals DBWR, updates datafile headers with checkpoint SCN. Reduces crash recovery time.</td></tr>
+          <tr><td class="key">ARCn</td><td class="val">Archiver. Copies filled redo logs to archive destination. Required for ARCHIVELOG mode and RMAN backups.</td></tr>
+          <tr><td class="key">MMON</td><td class="val">Manageability Monitor. Takes AWR snapshots every 60 minutes. Sends threshold alerts.</td></tr>
+        </tbody></table>
+        <div class="code-block"><span class="comment"># Check all running background processes</span>
+SELECT name, description FROM v$bgprocess WHERE paddr != '00' ORDER BY name;</div>
+      </div>
+
+      <div class="content-section" id="l35">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.5 &mdash; Physical Database Files</h4></div>
+        <table class="def-table"><thead><tr><th>File Type</th><th>Purpose &amp; What happens if lost</th></tr></thead><tbody>
+          <tr><td class="key">Datafiles (.dbf)</td><td class="val">Store all data &mdash; tables, indexes, undo, temp. One or more per tablespace. Loss = must restore from backup. CRITICAL.</td></tr>
+          <tr><td class="key">Control Files (.ctl)</td><td class="val">Database roadmap &mdash; lists all files, checkpoint info. ALWAYS multiplex (2-3 copies). ALL copies lost = cannot mount.</td></tr>
+          <tr><td class="key">Online Redo Logs (.log)</td><td class="val">Change journal. Circular. LGWR writes here. ALWAYS multiplex members. Current group lost = instance aborts.</td></tr>
+          <tr><td class="key">Archive Redo Logs</td><td class="val">Saved copies of filled redo logs. Required for point-in-time recovery. Stored in FRA.</td></tr>
+          <tr><td class="key">SPFILE</td><td class="val">Binary parameter file. Read at startup. Edit via ALTER SYSTEM SET command.</td></tr>
+          <tr><td class="key">Alert Log</td><td class="val">Database diary. FIRST place to check when something goes wrong.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l36">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.6 &mdash; Logical Storage Structures</h4></div>
+        <table class="def-table"><thead><tr><th>Level</th><th>Description</th></tr></thead><tbody>
+          <tr><td class="key">DATABASE (largest)</td><td class="val">The whole Oracle database. Contains all tablespaces.</td></tr>
+          <tr><td class="key">TABLESPACE</td><td class="val">Named logical container. Examples: SYSTEM, SYSAUX, USERS, UNDOTBS1, TEMP. Contains datafiles.</td></tr>
+          <tr><td class="key">SEGMENT</td><td class="val">One per database object (table, index, undo). All space allocated to that object.</td></tr>
+          <tr><td class="key">EXTENT</td><td class="val">A contiguous set of Oracle blocks. Oracle allocates another extent when a segment fills up.</td></tr>
+          <tr><td class="key">DATA BLOCK (smallest)</td><td class="val">Smallest I/O unit. Default 8KB. Set at database creation. Cannot be changed.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l37">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.7 &mdash; Oracle 19c Multitenant: CDB and PDB</h4></div>
+        <table class="def-table"><thead><tr><th>Concept</th><th>What it means</th></tr></thead><tbody>
+          <tr><td class="key">CDB</td><td class="val">Container Database. One instance. One SGA. Hosts many PDBs inside it.</td></tr>
+          <tr><td class="key">CDB$ROOT</td><td class="val">Root container. Holds shared data dictionary. SYSDBA connects here.</td></tr>
+          <tr><td class="key">PDB$SEED</td><td class="val">Read-only template for creating new PDBs. Never modify.</td></tr>
+          <tr><td class="key">Application PDB</td><td class="val">Your actual database. Has its own users, schemas, objects. Looks like a regular DB to apps.</td></tr>
+          <tr><td class="key">Common User</td><td class="val">Exists in CDB$ROOT and all PDBs. Name must start with C##.</td></tr>
+          <tr><td class="key">Local User</td><td class="val">Exists only in one specific PDB. Regular application users are local users.</td></tr>
+        </tbody></table>
+        <div class="code-block">SELECT con_id, name, open_mode FROM v$pdbs ORDER BY con_id;
+ALTER PLUGGABLE DATABASE ORCLPDB1 OPEN;
+ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE;</div>
+      </div>
+
+      <div class="content-section" id="l38">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 3.8 &mdash; Database Startup and Shutdown</h4></div>
+        <table class="def-table"><thead><tr><th>Stage</th><th>What happened &amp; When to use</th></tr></thead><tbody>
+          <tr><td class="key">SHUTDOWN</td><td class="val">No instance. No memory. Files exist on disk only.</td></tr>
+          <tr><td class="key">NOMOUNT</td><td class="val">SPFILE read. SGA allocated. Processes running. Control file NOT read. Use for: CREATE DATABASE.</td></tr>
+          <tr><td class="key">MOUNT</td><td class="val">Control file read. All file locations known. Datafiles NOT open. Use for: ARCHIVELOG mode change, offline recovery.</td></tr>
+          <tr><td class="key">OPEN</td><td class="val">All datafiles open. Users can connect. Normal operating state.</td></tr>
+        </tbody></table>
+        <div class="code-block">STARTUP;                               <span class="comment">-- Full startup</span>
+SHUTDOWN IMMEDIATE;                    <span class="comment">-- Most common shutdown</span>
+SHUTDOWN ABORT;                        <span class="comment">-- Emergency only (crash recovery needed after)</span>
+ALTER PLUGGABLE DATABASE ALL OPEN;    <span class="comment">-- Open all PDBs after CDB startup</span></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w3-sheets">
+      <div class="content-section" id="cs6">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 6 &mdash; Oracle Architecture Quick Reference</h4></div>
+        <table class="def-table"><thead><tr><th>Component</th><th>Description</th></tr></thead><tbody>
+          <tr><td class="key">SGA</td><td class="val">Shared Global Area &mdash; shared memory for ALL users. Buffer Cache + Shared Pool + Redo Log Buffer + Large/Java/Streams Pool.</td></tr>
+          <tr><td class="key">PGA</td><td class="val">PRIVATE memory per session. Sort area, hash area, session info. NOT shared.</td></tr>
+          <tr><td class="key">Datafiles (.dbf)</td><td class="val">Store all data. One or more per tablespace. Loss = restore from backup.</td></tr>
+          <tr><td class="key">Control Files (.ctl)</td><td class="val">Database roadmap. ALWAYS multiplex (2-3 copies). Loss = cannot mount.</td></tr>
+          <tr><td class="key">Redo Logs (.log)</td><td class="val">Change journal. Circular. Multiplex members. Current group loss = abort.</td></tr>
+          <tr><td class="key">Buffer Cache</td><td class="val">Caches data blocks. Largest SGA area. Target 95%+ hit ratio.</td></tr>
+          <tr><td class="key">Shared Pool</td><td class="val">Library Cache (SQL plans) + Dictionary Cache (metadata).</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs7">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 7 &mdash; Background Processes Reference Card</h4></div>
+        <table class="def-table"><thead><tr><th>Process</th><th>Key Facts</th></tr></thead><tbody>
+          <tr><td class="key">PMON</td><td class="val">Cleanup crew. Rolls back failed sessions. If running = DB is up. Check: ps -ef | grep pmon</td></tr>
+          <tr><td class="key">SMON</td><td class="val">Crash recovery. Runs automatically on startup after SHUTDOWN ABORT.</td></tr>
+          <tr><td class="key">DBWR</td><td class="val">Writes dirty blocks to datafiles. NOT on every DML &mdash; batches and checkpoints.</td></tr>
+          <tr><td class="key">LGWR</td><td class="val">Writes redo to log files on COMMIT. Critical for ACID Durability.</td></tr>
+          <tr><td class="key">CKPT</td><td class="val">Signals DBWR. Updates checkpoint SCN in file headers. Reduces recovery time.</td></tr>
+          <tr><td class="key">ARCn</td><td class="val">Archives filled redo logs. Required for ARCHIVELOG mode. Multiple processes possible.</td></tr>
+          <tr><td class="key">MMON</td><td class="val">AWR snapshots hourly. Threshold alerts.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs8">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 8 &mdash; Startup/Shutdown States and Commands</h4></div>
+        <div class="code-block">STARTUP;                         <span class="comment">-- NOMOUNT -> MOUNT -> OPEN</span>
+STARTUP NOMOUNT;                 <span class="comment">-- Stop at NOMOUNT</span>
+STARTUP MOUNT;                   <span class="comment">-- Stop at MOUNT</span>
+ALTER DATABASE MOUNT;            <span class="comment">-- Advance NOMOUNT -> MOUNT</span>
+ALTER DATABASE OPEN;             <span class="comment">-- Advance MOUNT -> OPEN</span>
+ALTER PLUGGABLE DATABASE ALL OPEN;  <span class="comment">-- Open all PDBs</span>
+
+SHUTDOWN NORMAL;                 <span class="comment">-- Wait for all users</span>
+SHUTDOWN TRANSACTIONAL;          <span class="comment">-- Wait for transactions</span>
+SHUTDOWN IMMEDIATE;              <span class="comment">-- Most common. Clean.</span>
+SHUTDOWN ABORT;                  <span class="comment">-- Emergency only.</span>
+
+SELECT status FROM v$instance;  <span class="comment">-- Check current state</span></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w3-flash">
+      <div class="content-section" id="fc3">
+        <div class="section-title"><div class="section-icon icon-quiz">&#127183;</div><h4>Flashcard Set &mdash; 30 Architecture Terms</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">HOW TO</div><div class="info-box-body">Click each card to reveal the answer. Study 5-10 per day. Repeat any you get wrong.</div></div>
+        <div class="flashcard-grid">
+          
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Instance<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Memory + processes running on server. Exists only while running.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Database<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Physical files on disk. Persists even when server is off.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">SGA<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">System Global Area. Shared memory for all users.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">PGA<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Program Global Area. Private memory per user session. NOT shared.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Buffer Cache<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">SGA area caching data blocks from datafiles. Target 95%+ hit ratio.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Shared Pool<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Library Cache + Dictionary Cache. Avoids re-parsing SQL.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Redo Log Buffer<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Small SGA buffer for redo entries before LGWR writes them to disk.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">PMON<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Process Monitor. Cleans up failed processes. If running = DB is up.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">SMON<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">System Monitor. Crash recovery. Coalesces free space.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">DBWR<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Database Writer. Writes dirty buffers to datafiles.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">LGWR<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Log Writer. Writes redo to disk on every COMMIT.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">CKPT<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Checkpoint. Signals DBWR. Updates file headers.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">ARCn<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Archiver. Copies filled redo logs to archive destination.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Datafile<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Physical file storing Oracle data. One or more per tablespace.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Control File<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Database roadmap. Small but critical. Always multiplex.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Online Redo Log<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Change journal. Circular. LGWR writes here.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">SPFILE<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Binary parameter file. Read at startup.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Alert Log<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Database diary. First place to check when things go wrong.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Tablespace<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Named logical storage container.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Segment<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Storage for one database object (table, index, undo).</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Extent<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Contiguous set of Oracle blocks allocated to a segment.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Data Block<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Smallest Oracle I/O unit. Default 8KB. Set at creation.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">CDB<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Container Database. One instance hosting many PDBs.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">PDB<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Pluggable Database. Self-contained DB inside a CDB.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">CDB$ROOT<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Root container. Holds shared data dictionary. SYSDBA connects here.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Common User<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Starts with C##. Exists in CDB$ROOT and ALL PDBs.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">Local User<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Exists only in one specific PDB.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">NOMOUNT<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Instance started. SGA allocated. Control file NOT yet read.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">MOUNT<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">Control file read. All files located. Datafiles NOT open.</div>
+          </div>
+          <div class="flashcard" onclick="flipCard(this)">
+            <div class="fc-front">OPEN<div class="fc-hint" style="color:var(--grey);font-size:0.6rem;margin-top:6px">click to reveal</div></div>
+            <div class="fc-back">All files open. Users can connect. Normal operating state.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w3-quiz">
+      <div class="content-section" id="q3">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 3 &mdash; Oracle 19c Architecture</h4></div>
+        <div id="w3-score" class="score-badge" style="display:none">Score: <span id="w3-score-val">0</span>/5</div>
+
+        <div class="quiz-q" id="q3_1">
+          <p class="q-text">Q1. Which statement best describes the difference between an Oracle INSTANCE and DATABASE?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_1','B')"><span class="opt-key">A</span> The instance is the data files; the database is the running software</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_1','B')"><span class="opt-key">B</span> The instance is memory and processes; the database is files on disk</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_1','B')"><span class="opt-key">C</span> They are the same thing &mdash; different names for the same concept</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_1','B')"><span class="opt-key">D</span> The instance is the backup; the database is the primary copy</div>
+          <button class="quiz-btn" onclick="checkQ('q3_1','B','w3-score','w3-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q3_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q3_2">
+          <p class="q-text">Q2. Which SGA component caches data blocks from datafiles to reduce disk I/O?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_2','C')"><span class="opt-key">A</span> Shared Pool</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_2','C')"><span class="opt-key">B</span> Redo Log Buffer</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_2','C')"><span class="opt-key">C</span> Database Buffer Cache</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_2','C')"><span class="opt-key">D</span> Large Pool</div>
+          <button class="quiz-btn" onclick="checkQ('q3_2','C','w3-score','w3-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q3_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q3_3">
+          <p class="q-text">Q3. Which startup stage is required to change the database from NOARCHIVELOG to ARCHIVELOG mode?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_3','C')"><span class="opt-key">A</span> OPEN</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_3','C')"><span class="opt-key">B</span> NOMOUNT</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_3','C')"><span class="opt-key">C</span> MOUNT</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_3','C')"><span class="opt-key">D</span> SHUTDOWN</div>
+          <button class="quiz-btn" onclick="checkQ('q3_3','C','w3-score','w3-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q3_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q3_4">
+          <p class="q-text">Q4. Which physical file, if ALL copies are lost, would prevent the database from being MOUNTED?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_4','C')"><span class="opt-key">A</span> Datafiles</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_4','C')"><span class="opt-key">B</span> Online Redo Log Files</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_4','C')"><span class="opt-key">C</span> Control Files</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_4','C')"><span class="opt-key">D</span> Archive Log Files</div>
+          <button class="quiz-btn" onclick="checkQ('q3_4','C','w3-score','w3-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q3_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q3_5">
+          <p class="q-text">Q5. Which shutdown mode is most commonly used in production and rolls back uncommitted transactions cleanly?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_5','C')"><span class="opt-key">A</span> SHUTDOWN NORMAL</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_5','C')"><span class="opt-key">B</span> SHUTDOWN ABORT</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_5','C')"><span class="opt-key">C</span> SHUTDOWN IMMEDIATE</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q3_5','C')"><span class="opt-key">D</span> SHUTDOWN TRANSACTIONAL</div>
+          <button class="quiz-btn" onclick="checkQ('q3_5','C','w3-score','w3-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q3_5-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w3-runbook">
+      <div class="content-section" id="r3">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 3 Runbook</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">NOTE</div><div class="info-box-body">Architecture week is the toughest conceptually. Do not rush. Give yourself the full week. Draw diagrams. Re-read confusing sections. The payoff is huge.</div></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 3.1 &mdash; Instance vs Database (30 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 3.2 &mdash; The SGA (60 mins). Draw each SGA component as you read.</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 3.3 &mdash; The PGA (25 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 3.4 &mdash; Background Processes (60 mins). Cover the page and name as many as you can.</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3-4 &mdash; approx 3 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 3.5, 3.6, 3.7, 3.8</li>
+          <li><span class="step-num">2</span>Draw the logical storage hierarchy from memory</li>
+          <li><span class="step-num">3</span>Practice startup and shutdown on your lab database</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5-7 &mdash; Cheatsheets, Flashcards, Quiz, Assignment</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Study Cheatsheets 6, 7, 8</li>
+          <li><span class="step-num">2</span>Work through the Flashcard set (10 per day)</li>
+          <li><span class="step-num">3</span>Complete Quiz 3 then mark yourself</li>
+          <li><span class="step-num">4</span>Complete Assignment 3 on your live database</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     WEEK 4
+════════════════════════════════════════════ -->
+<div class="week-section">
+<div class="week-card fade-in" id="w4">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--green);color:#000">W4</div>
+      <div>
+        <h3>Oracle 19c Installation on Linux</h3>
+        <p>Pre-install &bull; OS Config &bull; oracle User &bull; Software Install &bull; DBCA &bull; Listener &bull; Verification &bull; Auto-Start</p>
+      </div>
+    </div>
+    <span class="week-toggle">&#9660;</span>
+  </div>
+  <div class="week-body hidden">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w4-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w4-runbooks')">Runbooks</button>
+      <button class="tab-btn" onclick="switchTab(this,'w4-sheet')">Cheatsheet</button>
+      <button class="tab-btn" onclick="switchTab(this,'w4-quiz')">Quiz</button>
+    </div>
+
+    <div class="tab-pane active" id="w4-lessons">
+      <div class="content-section" id="l41">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.1 &mdash; Overview &amp; Requirements</h4></div>
+        <table class="def-table"><thead><tr><th>Requirement</th><th>Details</th></tr></thead><tbody>
+          <tr><td class="key">RAM</td><td class="val">Minimum 2GB. Recommended for learning: 4GB.</td></tr>
+          <tr><td class="key">Disk</td><td class="val">Minimum 7.5GB for ORACLE_HOME. Recommended: 30GB total.</td></tr>
+          <tr><td class="key">OS</td><td class="val">Oracle Linux 7/8/9, RHEL 7/8/9. We use Oracle Linux 8.</td></tr>
+          <tr><td class="key">Architecture</td><td class="val">x86_64 (64-bit) ONLY.</td></tr>
+          <tr><td class="key">What we build</td><td class="val">CDB named ORCL with one PDB named ORCLPDB1. Listener on port 1521.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="l42">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.2 &mdash; Pre-Installation: OS Configuration</h4></div>
+        <div class="code-block"><span class="comment"># Install Oracle preinstall RPM (does 80% of OS config for you)</span>
+dnf install -y oracle-database-preinstall-19c
+
+<span class="comment"># Disable SELinux (learning environment)</span>
+setenforce 0
+vi /etc/selinux/config   <span class="comment"># Change to SELINUX=disabled</span>
+
+<span class="comment"># Open firewall port for listener</span>
+firewall-cmd --permanent --add-port=1521/tcp
+firewall-cmd --reload
+
+<span class="comment"># Key kernel parameters (verify after preinstall)</span>
+sysctl kernel.shmmax    <span class="comment"># Should be > 4294967295</span>
+sysctl -p               <span class="comment"># Apply /etc/sysctl.conf changes</span></div>
+      </div>
+      <div class="content-section" id="l43">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.3 &mdash; Oracle User, Groups &amp; Directories</h4></div>
+        <div class="code-block"><span class="comment"># Verify oracle user and groups exist</span>
+id oracle
+grep oinstall /etc/group
+
+<span class="comment"># Create OFA directory structure</span>
+mkdir -p /u01/app/oracle/product/19.3.0/dbhome_1
+chown -R oracle:oinstall /u01
+chmod -R 775 /u01
+
+<span class="comment"># Configure oracle user environment</span>
+su - oracle
+vi ~/.bash_profile
+<span class="comment"># Add: export ORACLE_BASE=/u01/app/oracle</span>
+<span class="comment">#      export ORACLE_HOME=$ORACLE_BASE/product/19.3.0/dbhome_1</span>
+<span class="comment">#      export ORACLE_SID=ORCL</span>
+<span class="comment">#      export PATH=$ORACLE_HOME/bin:$PATH</span>
+source ~/.bash_profile</div>
+      </div>
+      <div class="content-section" id="l44">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.4 &mdash; Installing Oracle 19c Software (RPM Method)</h4></div>
+        <div class="code-block"><span class="comment"># Install the Oracle 19c RPM (as root) -- takes 5-15 mins</span>
+dnf -y localinstall /tmp/oracle-database-ee-19c-1.0-1.x86_64.rpm
+
+<span class="comment"># Verify installation (as oracle)</span>
+sqlplus -version
+<span class="comment"># Expected: SQL*Plus: Release 19.0.0.0.0</span>
+
+which sqlplus
+<span class="comment"># Expected: /opt/oracle/product/19c/dbhome_1/bin/sqlplus</span></div>
+      </div>
+      <div class="content-section" id="l45">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.5 &mdash; Creating a Database with DBCA</h4></div>
+        <div class="code-block"><span class="comment"># Create CDB with one PDB (silent mode)</span>
+dbca -silent -createDatabase \
+  -templateName General_Purpose.dbc \
+  -gdbname ORCL -sid ORCL \
+  -createAsContainerDatabase true \
+  -numberOfPDBs 1 -pdbName ORCLPDB1 \
+  -sysPassword Oracle_19c# \
+  -systemPassword Oracle_19c# \
+  -pdbAdminPassword Oracle_19c# \
+  -totalMemory 1024 \
+  -datafileDestination /u01/app/oracle/oradata/ \
+  -emConfiguration NONE
+
+<span class="comment"># Verify (after 100% complete)</span>
+sqlplus / as sysdba
+SQL> SELECT instance_name, status FROM v$instance;
+SQL> SELECT name, open_mode FROM v$pdbs;
+SQL> ALTER PLUGGABLE DATABASE ORCLPDB1 OPEN;</div>
+      </div>
+      <div class="content-section" id="l46">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.6 &mdash; Configuring the Oracle Listener</h4></div>
+        <div class="code-block"><span class="comment"># Check listener status</span>
+lsnrctl status
+
+<span class="comment"># Start if not running</span>
+lsnrctl start
+
+<span class="comment"># Test TNS connectivity</span>
+tnsping ORCL
+tnsping ORCLPDB1
+
+<span class="comment"># Register services with listener</span>
+sqlplus / as sysdba
+SQL> ALTER SYSTEM REGISTER;</div>
+      </div>
+      <div class="content-section" id="l47">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.7 &mdash; Post-Installation Verification</h4></div>
+        <div class="code-block"><span class="comment">-- Run as: sqlplus / as sysdba</span>
+SELECT instance_name, status, database_status FROM v$instance;
+SELECT name, log_mode, open_mode FROM v$database;
+SELECT con_id, name, open_mode FROM v$pdbs ORDER BY con_id;
+SELECT file#, round(bytes/1024/1024) AS mb, status FROM v$datafile;
+SELECT name FROM v$controlfile;
+SELECT group#, members, status FROM v$log;
+SELECT tablespace_name, status FROM dba_tablespaces;</div>
+      </div>
+      <div class="content-section" id="l48">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 4.8 &mdash; Auto-Start Oracle on Server Reboot</h4></div>
+        <div class="code-block"><span class="comment"># Step 1: Edit /etc/oratab -- change N to Y</span>
+vi /etc/oratab
+<span class="comment"># Change: ORCL:/opt/oracle/product/19c/dbhome_1:N</span>
+<span class="comment"># To:     ORCL:/opt/oracle/product/19c/dbhome_1:Y</span>
+
+<span class="comment"># Step 2: Save PDB open state</span>
+sqlplus / as sysdba
+SQL> ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE;
+SQL> SELECT con_name, state FROM dba_pdb_saved_states;
+
+<span class="comment"># Step 3: Enable systemd service</span>
+systemctl enable oracle-db
+systemctl start oracle-db
+systemctl status oracle-db</div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w4-runbooks">
+      <div class="content-section" id="rbA">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Runbook A &mdash; Pre-Installation Checklist</h4></div>
+        <div class="info-box info-danger"><div class="info-box-label">IMPORTANT</div><div class="info-box-body">Tick every item before starting the installation. A failed pre-check causes a failed installation.</div></div>
+        <ul class="checklist" id="rba-checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>RAM >= 2GB &mdash; verify: free -h</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Swap >= 2GB &mdash; verify: free -h | grep Swap</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Disk /u01 >= 20GB free &mdash; verify: df -h /u01</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Hostname resolves &mdash; verify: ping -c 1 $(hostname -f)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>SELinux disabled or permissive &mdash; verify: getenforce</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>oracle user exists &mdash; verify: id oracle</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>oinstall group exists &mdash; verify: grep oinstall /etc/group</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>ORACLE_HOME directory exists &mdash; verify: ls -la /u01/app/oracle</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>oracle owns ORACLE_HOME &mdash; verify: ls -la /u01/app/</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Port 1521 open in firewall &mdash; verify: firewall-cmd --list-ports</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>.bash_profile configured &mdash; verify: echo $ORACLE_HOME</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Oracle 19c RPM downloaded and transferred to server</li>
+        </ul>
+      </div>
+      <div class="content-section" id="rbB">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Runbook B &mdash; Full Installation Steps</h4></div>
+        <div class="runbook-day"><h5>Phase 1: OS Configuration (as root)</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Install preinstall RPM: dnf install -y oracle-database-preinstall-19c</li>
+          <li><span class="step-num">2</span>Set kernel params: vi /etc/sysctl.conf then sysctl -p</li>
+          <li><span class="step-num">3</span>Set OS limits: vi /etc/security/limits.conf</li>
+          <li><span class="step-num">4</span>Disable SELinux: setenforce 0</li>
+          <li><span class="step-num">5</span>Open firewall: firewall-cmd --permanent --add-port=1521/tcp &amp;&amp; firewall-cmd --reload</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Phase 2: Oracle Setup (as root then oracle)</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Create directories: mkdir -p /u01/app/oracle/product/19.3.0/dbhome_1</li>
+          <li><span class="step-num">2</span>Set ownership: chown -R oracle:oinstall /u01</li>
+          <li><span class="step-num">3</span>Switch to oracle: su - oracle</li>
+          <li><span class="step-num">4</span>Configure .bash_profile and source it</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Phase 3: Install Software (as root)</h5><ul class="step-list">
+          <li><span class="step-num">1</span>dnf -y localinstall /tmp/oracle-database-ee-19c*.rpm</li>
+          <li><span class="step-num">2</span>Verify: su - oracle -c 'sqlplus -version'</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Phase 4: Create Database (as oracle)</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Run DBCA silent command (full command in Lesson 4.5)</li>
+          <li><span class="step-num">2</span>Wait for 100% complete message</li>
+          <li><span class="step-num">3</span>Verify: sqlplus / as sysdba then SELECT status FROM v$instance;</li>
+          <li><span class="step-num">4</span>Open PDB: ALTER PLUGGABLE DATABASE ORCLPDB1 OPEN;</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Phase 5: Listener &amp; Verification</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Check: lsnrctl status</li>
+          <li><span class="step-num">2</span>Test: tnsping ORCL and tnsping ORCLPDB1</li>
+          <li><span class="step-num">3</span>Run post-install health check script</li>
+          <li><span class="step-num">4</span>Edit /etc/oratab: change N to Y</li>
+          <li><span class="step-num">5</span>Save PDB state and enable systemd service</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w4-sheet">
+      <div class="content-section" id="cs9">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 9 &mdash; Oracle 19c Installation Quick Reference</h4></div>
+        <table class="def-table"><thead><tr><th>Location</th><th>Path</th></tr></thead><tbody>
+          <tr><td class="key">ORACLE_BASE</td><td class="val">/u01/app/oracle</td></tr>
+          <tr><td class="key">ORACLE_HOME</td><td class="val">/u01/app/oracle/product/19.3.0/dbhome_1 (or /opt/oracle/product/19c/dbhome_1 for RPM)</td></tr>
+          <tr><td class="key">Datafiles</td><td class="val">/u01/app/oracle/oradata/ORCL/</td></tr>
+          <tr><td class="key">Fast Recovery Area</td><td class="val">/u01/app/oracle/fast_recovery_area/</td></tr>
+          <tr><td class="key">Alert log</td><td class="val">$ORACLE_BASE/diag/rdbms/orcl/ORCL/trace/alert_ORCL.log</td></tr>
+          <tr><td class="key">Listener config</td><td class="val">$ORACLE_HOME/network/admin/listener.ora</td></tr>
+          <tr><td class="key">TNS names</td><td class="val">$ORACLE_HOME/network/admin/tnsnames.ora</td></tr>
+          <tr><td class="key">oratab</td><td class="val">/etc/oratab</td></tr>
+        </tbody></table>
+        <div class="section-title" style="margin-top:16px"><h4 style="font-size:0.88rem;color:var(--teal)">Common Installation Errors</h4></div>
+        <table class="def-table"><thead><tr><th>Error</th><th>Fix</th></tr></thead><tbody>
+          <tr><td class="key">DBCA: insufficient memory</td><td class="val">Reduce -totalMemory value. Minimum 800MB for DBCA.</td></tr>
+          <tr><td class="key">sqlplus: command not found</td><td class="val">Run: source ~/.bash_profile</td></tr>
+          <tr><td class="key">ORA-12541: no listener</td><td class="val">Run: lsnrctl start</td></tr>
+          <tr><td class="key">ORA-12514: listener does not know service</td><td class="val">Run: ALTER SYSTEM REGISTER; as SYSDBA</td></tr>
+          <tr><td class="key">Permission denied on /u01</td><td class="val">Run: chown -R oracle:oinstall /u01 (as root)</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w4-quiz">
+      <div class="content-section" id="q4">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 4 &mdash; Oracle 19c Installation</h4></div>
+        <div id="w4-score" class="score-badge" style="display:none">Score: <span id="w4-score-val">0</span>/5</div>
+
+        <div class="quiz-q" id="q4_1">
+          <p class="q-text">Q1. Which file tells Oracle's dbstart script which databases to auto-start on server reboot?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_1','B')"><span class="opt-key">A</span> /etc/oracle.conf</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_1','B')"><span class="opt-key">B</span> /etc/oratab</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_1','B')"><span class="opt-key">C</span> $ORACLE_HOME/dbs/initORCL.ora</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_1','B')"><span class="opt-key">D</span> /etc/sysctl.conf</div>
+          <button class="quiz-btn" onclick="checkQ('q4_1','B','w4-score','w4-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q4_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q4_2">
+          <p class="q-text">Q2. What does the oracle-database-preinstall-19c RPM do?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_2','B')"><span class="opt-key">A</span> Installs the Oracle 19c database software</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_2','B')"><span class="opt-key">B</span> Configures most OS kernel parameters and creates oracle user/groups</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_2','B')"><span class="opt-key">C</span> Creates the Oracle database instance and PDB</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_2','B')"><span class="opt-key">D</span> Installs the Oracle listener</div>
+          <button class="quiz-btn" onclick="checkQ('q4_2','B','w4-score','w4-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q4_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q4_3">
+          <p class="q-text">Q3. You run tnsping ORCLPDB1 and get TNS-12541: no listener. Most likely cause?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_3','C')"><span class="opt-key">A</span> The database is corrupted</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_3','C')"><span class="opt-key">B</span> The oracle user does not have permission</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_3','C')"><span class="opt-key">C</span> The Oracle listener is not running</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_3','C')"><span class="opt-key">D</span> The tnsnames.ora file is missing</div>
+          <button class="quiz-btn" onclick="checkQ('q4_3','C','w4-score','w4-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q4_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q4_4">
+          <p class="q-text">Q4. After starting the CDB, you see ORCLPDB1 in MOUNTED status. Which command opens it?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_4','C')"><span class="opt-key">A</span> START PLUGGABLE DATABASE ORCLPDB1;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_4','C')"><span class="opt-key">B</span> OPEN PLUGGABLE DATABASE ORCLPDB1;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_4','C')"><span class="opt-key">C</span> ALTER PLUGGABLE DATABASE ORCLPDB1 OPEN;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_4','C')"><span class="opt-key">D</span> ALTER DATABASE OPEN PLUGGABLE ORCLPDB1;</div>
+          <button class="quiz-btn" onclick="checkQ('q4_4','C','w4-score','w4-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q4_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q4_5">
+          <p class="q-text">Q5. Which command saves the PDB open state so it auto-opens after the CDB restarts?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_5','A')"><span class="opt-key">A</span> ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_5','A')"><span class="opt-key">B</span> ALTER PLUGGABLE DATABASE ORCLPDB1 AUTO OPEN;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_5','A')"><span class="opt-key">C</span> COMMIT PLUGGABLE DATABASE ORCLPDB1;</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q4_5','A')"><span class="opt-key">D</span> ALTER SYSTEM SAVE PDBS;</div>
+          <button class="quiz-btn" onclick="checkQ('q4_5','A','w4-score','w4-score-val',5)">Check Answer</button>
+          <div class="quiz-feedback" id="q4_5-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:24px 0 8px">
+      <div class="content-section" id="r4">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 4 Daily Runbook</h4></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; Reading</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 4.1 and 4.2 (90 mins)</li><li><span class="step-num">2</span>Print Runbook A &mdash; Pre-Installation Checklist</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; Planning</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 4.3 and 4.4 (90 mins)</li><li><span class="step-num">2</span>Download Oracle 19c RPM from oracle.com (free account required)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; Pre-Install Day</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Work through Runbook B Phases 1-2 (OS config and oracle setup)</li>
+          <li><span class="step-num">2</span>Tick off every item in Runbook A before continuing</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; Installation Day</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Install Oracle software (RPM method)</li>
+          <li><span class="step-num">2</span>Read Lesson 4.5 then run DBCA to create the database</li>
+          <li><span class="step-num">3</span>Watch the 100% progress &mdash; enjoy this moment!</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5-7 &mdash; Listener, Verify, Auto-Start, Quiz</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Configure listener, run post-install verification</li>
+          <li><span class="step-num">2</span>Configure auto-start with systemd</li>
+          <li><span class="step-num">3</span>Complete Quiz 4 and Assignment 4 (installation documentation)</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div style="padding:40px 60px;border-top:1px solid var(--border);margin-top:20px;text-align:center">
+  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;4 of 26</p>
+  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 5 (SQL*Plus &amp; PuTTY Mastery) coming next &bull; Designed for the anxious learner</p>
+</div>
+
+</div><!-- /main -->
+<div id="sticky-progress"><div id="reading-bar"></div></div>
+
+<script>
+// ── SIDEBAR TOGGLE (mobile) ──
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// ── NAV COLLAPSE ──
+function toggleNav(el){
+  el.classList.toggle('collapsed');
+  el.nextElementSibling.classList.toggle('hidden');
+}
+
+// ── WEEK CARD COLLAPSE ──
+function toggleWeek(header){
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.week-toggle');
+  body.classList.toggle('hidden');
+  toggle.classList.toggle('open');
+}
+
+// ── TAB SWITCHING ──
+function switchTab(btn, paneId){
+  // Only touch buttons and panes within this week-body
+  const weekBody = btn.closest('.week-body');
+  if(!weekBody) return;
+  weekBody.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  weekBody.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const target = weekBody.querySelector('#' + paneId);
+  if(target) target.classList.add('active');
+}
+
+// ── SMART NAVIGATION ──
+// Finds element, expands its week card, activates its tab, then scrolls
+function navTo(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+
+  // Step 1: Expand the week card if collapsed
+  const card = el.closest('.week-card');
+  if(card){
+    const body = card.querySelector('.week-body');
+    const toggle = card.querySelector('.week-toggle');
+    if(body && body.classList.contains('hidden')){
+      body.classList.remove('hidden');
+      if(toggle) toggle.classList.add('open');
+    }
+  }
+
+  // Step 2: Find which tab-pane the element lives in and activate it
+  let ancestor = el.parentElement;
+  while(ancestor){
+    if(ancestor.classList && ancestor.classList.contains('tab-pane')){
+      const paneId = ancestor.id;
+      const weekBody = ancestor.closest('.week-body');
+      if(weekBody){
+        weekBody.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        weekBody.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        ancestor.classList.add('active');
+        weekBody.querySelectorAll('.tab-btn').forEach(b => {
+          const oc = b.getAttribute('onclick') || '';
+          if(oc.includes("'" + paneId + "'")){
+            b.classList.add('active');
+          }
+        });
+      }
+      break;
+    }
+    ancestor = ancestor.parentElement;
+  }
+
+  // Step 3: Scroll after DOM updates
+  setTimeout(() => {
+    el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 120);
+
+  // Step 4: Highlight active nav item
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => {
+    const oc = n.getAttribute('onclick') || '';
+    if(oc.includes("'" + id + "'")){
+      n.classList.add('active');
+      n.scrollIntoView({ block:'nearest' });
+    }
+  });
+
+  // Step 5: Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+// ── FLASHCARD FLIP ──
+function flipCard(el){ el.classList.toggle('flipped'); }
+
+// ── CHECKLIST ──
+function toggleCheck(el){
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+// ── QUIZ LOGIC ──
+const quizAnswers = {};
+const quizScores = {};
+
+function pickOpt(el, qId, correct){
+  // clear previous selection for this question
+  el.closest('.quiz-q').querySelectorAll('.quiz-option').forEach(o => {
+    o.classList.remove('correct','wrong');
+    o.style.fontWeight = '';
+  });
+  el.style.fontWeight = '600';
+  quizAnswers[qId] = el.querySelector('.opt-key').textContent.trim();
+}
+
+function checkQ(qId, correct, scoreId, scoreValId, maxScore){
+  const selected = quizAnswers[qId];
+  const qEl = document.getElementById(qId);
+  const fb = document.getElementById(qId + '-fb');
+  if(!selected){ fb.style.display='block'; fb.className='quiz-feedback wrong'; fb.textContent='Please select an answer first.'; return; }
+
+  const opts = qEl.querySelectorAll('.quiz-option');
+  opts.forEach(o => {
+    const key = o.querySelector('.opt-key').textContent.trim();
+    if(key === correct) o.classList.add('correct');
+    else if(key === selected && selected !== correct) o.classList.add('wrong');
+  });
+
+  const isCorrect = selected === correct;
+  fb.style.display = 'block';
+  fb.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+  fb.textContent = isCorrect
+    ? '✓ Correct! Well done.'
+    : '✗ Not quite. The correct answer is ' + correct + '. Review the relevant lesson and try again.';
+
+  // update score
+  if(!quizScores[qId] && isCorrect){
+    quizScores[qId] = 1;
+    const scoreEl = document.getElementById(scoreId);
+    const scoreValEl = document.getElementById(scoreValId);
+    if(scoreEl && scoreValEl){
+      scoreEl.style.display = 'inline-flex';
+      scoreValEl.textContent = parseInt(scoreValEl.textContent || '0') + 1;
+    }
+  }
+}
+
+// ── READING PROGRESS BAR ──
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  document.getElementById('reading-bar').style.width = pct + '%';
+});
+
+// ── SEARCH / FILTER NAV ──
+function filterNav(query){
+  const q = query.toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.style.display = item.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+  });
+}
+
+// ── HIGHLIGHT ACTIVE SECTION ON SCROLL ──
+const sections = ['hero','w1','l11','l12','l13','l14','cs1','cs2','q1','a1','r1',
+  'w2','l21','l22','l23','l24','l25','l26','l27','l28','cs3','cs4','cs5','q2','r2',
+  'w3','l31','l32','l33','l34','l35','l36','l37','l38','cs6','cs7','cs8','fc3','q3','r3',
+  'w4','l41','l42','l43','l44','l45','l46','l47','l48','rbA','rbB','cs9','q4','r4'];
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      const id = e.target.id;
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if(n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'"))
+          n.classList.add('active');
+      });
+    }
+  });
+}, { threshold: 0.2, rootMargin: '-10% 0px -60% 0px' });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if(el) observer.observe(el);
+});
+
+// ── INIT: Weeks 3 & 4 collapsed by default ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Already handled via .hidden class in HTML
+});
+</script>
+
+</body>
+</html>
