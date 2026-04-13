@@ -548,6 +548,30 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
       <a class="nav-item" onclick="navTo('r4')">Week 4 Runbook<span class="tag tag-run">Run</span></a>
     </div>
   </div>
+
+  <div class="nav-week">
+    <div class="nav-week-header" onclick="toggleNav(this)">
+      Module 2 &mdash; DBA Tools <span class="arrow">&#9660;</span>
+    </div>
+    <div class="nav-items">
+      <a class="nav-item" onclick="navTo('w5')">&#128218; Week 5 &mdash; SQL*Plus &amp; PuTTY</a>
+      <a class="nav-item" onclick="navTo('l51')">Lesson 5.1 &mdash; Why DBAs Love SQL*Plus<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l52')">Lesson 5.2 &mdash; Connection Methods<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l53')">Lesson 5.3 &mdash; Formatting and Output<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l54')">Lesson 5.4 &mdash; Scripting .sql Files<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l55')">Lesson 5.5 &mdash; login.sql Prompt<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l56')">Lesson 5.6 &mdash; 20 Essential DBA Queries<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l57')">Lesson 5.7 &mdash; PuTTY Advanced<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l58')">Lesson 5.8 &mdash; SSH Tunneling<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('cs10')">Cheatsheet 10 &mdash; SQL*Plus Reference<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs11')">Cheatsheet 11 &mdash; Connection Methods<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('sl5')">Script Library &mdash; 20 DBA Scripts<span class="tag tag-lab">Lab</span></a>
+      <a class="nav-item" onclick="navTo('q5')">Quiz 5 &mdash; 6 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('a5')">Assignment 5 &mdash; Script Library<span class="tag tag-lab">Lab</span></a>
+      <a class="nav-item" onclick="navTo('r5')">Week 5 Runbook<span class="tag tag-run">Run</span></a>
+    </div>
+  </div>
+
 </nav>
 
 <!-- MAIN -->
@@ -559,14 +583,14 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
   <h1>Oracle DBA<br/><span>Career Training</span></h1>
   <p>From zero to Junior DBA in 6 months. Designed with care for the anxious learner. Bite-sized. Supportive. Comprehensive.</p>
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Weeks Covered</span></div>
-    <div class="stat"><span class="stat-num">28</span><span class="stat-label">Lessons</span></div>
-    <div class="stat"><span class="stat-num">9</span><span class="stat-label">Cheatsheets</span></div>
-    <div class="stat"><span class="stat-num">49</span><span class="stat-label">Quiz Questions</span></div>
-    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Lab Scripts</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Weeks Covered</span></div>
+    <div class="stat"><span class="stat-num">36</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">11</span><span class="stat-label">Cheatsheets</span></div>
+    <div class="stat"><span class="stat-num">61</span><span class="stat-label">Quiz Questions</span></div>
+    <div class="stat"><span class="stat-num">26</span><span class="stat-label">DBA Scripts</span></div>
   </div>
   <div class="progress-bar-outer">
-    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-4 of 26</span></div>
+    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-5 of 26</span></div>
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 </section>
@@ -1919,10 +1943,730 @@ systemctl status oracle-db</div>
 </div>
 </div>
 
+
+<!-- PHASE 2 HEADER -->
+<div class="phase-header">
+  <div class="phase-tag phase-2">Phase 2</div>
+  <h2>DBA Tools &mdash; Week 5</h2>
+  <p>SQL*Plus &bull; PuTTY &bull; Connection Methods &bull; Scripting &bull; 20 Essential DBA Queries</p>
+</div>
+
+<div class="week-section">
+<div class="week-card fade-in" id="w5">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--purple);color:#fff">W5</div>
+      <div>
+        <h3>SQL*Plus Deep Dive &amp; PuTTY Mastery</h3>
+        <p>All connection methods &bull; Formatting &bull; Scripting &bull; login.sql &bull; 20 Essential DBA Queries &bull; SSH Tunneling</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w5-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w5-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w5-scripts')">Script Library</button>
+      <button class="tab-btn" onclick="switchTab(this,'w5-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w5-assign')">Assignment</button>
+      <button class="tab-btn" onclick="switchTab(this,'w5-runbook')">Runbook</button>
+    </div>
+
+    <div class="tab-pane active" id="w5-lessons">
+      <div class="content-section" id="l51">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.1 &mdash; SQL*Plus: What It Is and Why DBAs Love It</h4></div>
+        <p class="body-text">SQL*Plus is Oracle's command-line interface included with EVERY Oracle installation. It gives you a <strong style="color:var(--teal)">SQL&gt;</strong> prompt where you type SQL, PL/SQL blocks, and SQL*Plus commands. It is the foundational DBA tool &mdash; everything else (SQL Developer, OEM, Toad) is built on top of it.</p>
+        <div class="info-box info-tip"><div class="info-box-label">REALITY</div><div class="info-box-body">A DBA who is scared of SQL*Plus is like a carpenter who is scared of a hammer. It is the foundational tool. If you can SSH in, you can use SQL*Plus. No GUI, no network tools, nothing else needed.</div></div>
+        <table class="def-table"><thead><tr><th>Reason</th><th>Why it matters</th></tr></thead><tbody>
+          <tr><td class="key">Always available</td><td class="val">On every Oracle server. If you can SSH in, you can use SQL*Plus.</td></tr>
+          <tr><td class="key">Scriptable</td><td class="val">Write .sql files and run them automatically for backups, health checks, and reports.</td></tr>
+          <tr><td class="key">Fastest for DBA tasks</td><td class="val">Checking tablespace, querying V$ views, granting privileges &mdash; faster than any GUI.</td></tr>
+          <tr><td class="key">SYSDBA access</td><td class="val">Only SQL*Plus and RMAN support OS authentication (no password needed from the server).</td></tr>
+          <tr><td class="key">Used in production</td><td class="val">90% of Oracle DBA scripts in production use SQL*Plus. Learning it is not optional.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l52">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.2 &mdash; All SQL*Plus Connection Methods</h4></div>
+        <p class="body-text">Know every connection method. You will use all of them at different times.</p>
+        <div class="code-block">
+# Method 1: OS Authentication (most common for DBAs on the server)
+sqlplus / as sysdba          # Full admin, no password, local only
+sqlplus / as sysoper         # Start/stop privileges
+sqlplus / as sysbackup       # RMAN backup privileges
+
+# Method 2: Username and Password (local)
+sqlplus sys/YourPassword as sysdba
+sqlplus system/YourPassword
+
+# Method 3: TNS Connection (network - needs tnsnames.ora)
+sqlplus system/password@ORCL
+sqlplus system/password@ORCLPDB1
+
+# Method 4: Easy Connect (NO tnsnames.ora needed!)
+sqlplus system/password@localhost:1521/ORCL
+sqlplus system/password@dbserver.company.com:1521/ORCLPDB1
+
+# Method 5: Prelim (connect when DB is completely DOWN)
+sqlplus -prelim / as sysdba
+SQL&gt; STARTUP;
+
+# Method 6: Silent mode (for scripts - no banner or prompts)
+sqlplus -s / as sysdba @/home/oracle/scripts/check.sql
+        </div>
+        <table class="def-table"><thead><tr><th>Error</th><th>Cause and Fix</th></tr></thead><tbody>
+          <tr><td class="key">ORA-01017</td><td class="val">Wrong username or password. Passwords are case-sensitive in 19c.</td></tr>
+          <tr><td class="key">ORA-28009</td><td class="val">Must use AS SYSDBA: sqlplus sys/pwd@ORCL as sysdba</td></tr>
+          <tr><td class="key">ORA-12154</td><td class="val">TNS alias not found. Check tnsnames.ora and ORACLE_HOME.</td></tr>
+          <tr><td class="key">ORA-12541</td><td class="val">Listener not running. Run: lsnrctl start</td></tr>
+          <tr><td class="key">ORA-12514</td><td class="val">Service not known. Run: ALTER SYSTEM REGISTER; as SYSDBA.</td></tr>
+          <tr><td class="key">command not found</td><td class="val">PATH not set. Run: source ~/.bash_profile</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l53">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.3 &mdash; SQL*Plus Formatting and Output Control</h4></div>
+        <p class="body-text">Raw SQL*Plus output is ugly. These commands make it clean and professional. Always add them at the top of every script you write.</p>
+        <table class="def-table"><thead><tr><th>SET Command</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">SET LINESIZE 200</td><td class="val">Output line width. Default 80 is far too narrow. Always set this.</td></tr>
+          <tr><td class="key">SET PAGESIZE 60</td><td class="val">Lines before headers repeat. Set to 0 to suppress all headers.</td></tr>
+          <tr><td class="key">SET FEEDBACK OFF</td><td class="val">Suppresses "14 rows selected." messages. Use in scripts.</td></tr>
+          <tr><td class="key">SET TRIMSPOOL ON</td><td class="val">Removes trailing spaces from spooled output. Always use with SPOOL.</td></tr>
+          <tr><td class="key">SET SERVEROUTPUT ON</td><td class="val">Required to see DBMS_OUTPUT.PUT_LINE from PL/SQL.</td></tr>
+          <tr><td class="key">SET TIMING ON</td><td class="val">Shows elapsed time after each statement. Great for performance testing.</td></tr>
+          <tr><td class="key">SET AUTOTRACE ON</td><td class="val">Shows execution plan and statistics after each SELECT.</td></tr>
+          <tr><td class="key">SET NULL '[NULL]'</td><td class="val">Shows NULL values as text instead of blank space.</td></tr>
+          <tr><td class="key">SET VERIFY OFF</td><td class="val">Suppresses old/new variable messages in scripts.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+-- COLUMN: Format specific columns
+COLUMN tablespace_name  FORMAT A25         -- Text, 25 chars wide
+COLUMN size_mb          FORMAT 99,999.99   -- Number with commas
+COLUMN pct_used         FORMAT 990.9       -- Percentage format
+COLUMN name             HEADING 'My|Header' -- | = line break in header
+CLEAR COLUMNS                              -- Remove ALL column formats
+
+-- SPOOL: Write output to a file
+SPOOL /home/oracle/reports/space_check.txt
+SET LINESIZE 150 PAGESIZE 60 TRIMSPOOL ON FEEDBACK OFF
+SELECT tablespace_name, status FROM dba_tablespaces;
+SPOOL OFF
+
+-- HOST: Run Linux commands from inside SQL*Plus
+HOST df -h /u01
+HOST tail -20 /u01/app/oracle/diag/rdbms/orcl/ORCL/trace/alert_ORCL.log
+        </div>
+      </div>
+
+      <div class="content-section" id="l54">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.4 &mdash; SQL*Plus Scripting: Running .sql Files</h4></div>
+        <div class="code-block">
+# Run a script from the Linux command line
+sqlplus / as sysdba @/home/oracle/scripts/check_space.sql
+
+# Silent mode (no banner - use in cron jobs)
+sqlplus -s / as sysdba @/home/oracle/scripts/check_space.sql
+
+# Run from inside SQL*Plus
+SQL&gt; @/home/oracle/scripts/check_space.sql
+
+# Pass parameters (&amp;1 = first parameter)
+sqlplus / as sysdba @show_user.sql SCOTT
+
+# Run PL/SQL blocks (the / executes the block)
+SET SERVEROUTPUT ON
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('DB: ' || SYS_CONTEXT('USERENV','DB_NAME'));
+END;
+/
+
+# Exit on any SQL error (always add this to production scripts)
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+        </div>
+      </div>
+
+      <div class="content-section" id="l55">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.5 &mdash; login.sql: Your Professional DBA Prompt</h4></div>
+        <p class="body-text">Every time SQL*Plus starts it automatically runs <strong style="color:var(--teal)">login.sql</strong>. This is where you set your formatting, custom prompt, and useful defaults. Add <strong>export SQLPATH=/home/oracle</strong> to ~/.bash_profile, then create this file.</p>
+        <div class="code-block">
+-- /home/oracle/login.sql  --  Professional DBA Login Script
+
+-- Custom prompt: shows USER@DATABASE&gt;
+SET SQLPROMPT '_USER@_CONNECT_IDENTIFIER&gt; '
+
+-- Standard formatting for all sessions
+SET LINESIZE 200
+SET PAGESIZE 60
+SET TRIMSPOOL ON
+SET FEEDBACK 6
+SET NULL '[NULL]'
+SET LONG 5000
+SET SERVEROUTPUT ON SIZE UNLIMITED
+SET VERIFY OFF
+
+-- Always show dates in full readable format
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
+
+-- Useful global column formats
+COLUMN tablespace_name  FORMAT A20
+COLUMN username         FORMAT A20
+COLUMN object_name      FORMAT A30
+COLUMN status           FORMAT A10
+
+-- Welcome message showing DB info
+PROMPT
+SELECT 'DB: '||name||'  Ver: '||version_full||'  Status: '||status AS info
+FROM   v$instance;
+PROMPT
+
+-- Your prompt now shows:  SYS@ORCL&gt;
+-- After switching PDB:    SYS@ORCLPDB1&gt;
+        </div>
+      </div>
+
+      <div class="content-section" id="l56">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.6 &mdash; The 20 Most Important SQL*Plus DBA Queries</h4></div>
+        <p class="body-text">Run every single one of these on your database. Understand the output. These 20 queries cover 80% of daily DBA monitoring work.</p>
+        <div class="code-block">
+-- 1. Instance overview
+SELECT i.instance_name, i.host_name, i.version_full, i.status, d.log_mode
+FROM   v$instance i, v$database d;
+
+-- 2. PDB status
+SELECT con_id, name, open_mode FROM v$pdbs ORDER BY con_id;
+
+-- 3. Uptime
+SELECT to_char(startup_time,'DD-MON-YYYY HH24:MI') AS started,
+       round((sysdate - startup_time)*24,1) AS hours_up FROM v$instance;
+
+-- 4. Tablespace usage (most used DBA query ever)
+SELECT t.tablespace_name,
+       round(d.total_mb) AS total_mb,
+       round(d.total_mb - nvl(f.free_mb,0)) AS used_mb,
+       round((d.total_mb-nvl(f.free_mb,0))/d.total_mb*100,1) AS pct_used
+FROM   dba_tablespaces t,
+      (SELECT tablespace_name, sum(bytes)/1024/1024 AS total_mb FROM dba_data_files GROUP BY tablespace_name) d,
+      (SELECT tablespace_name, sum(bytes)/1024/1024 AS free_mb FROM dba_free_space GROUP BY tablespace_name) f
+WHERE  t.tablespace_name = d.tablespace_name(+) AND t.tablespace_name = f.tablespace_name(+)
+ORDER BY pct_used DESC NULLS LAST;
+
+-- 5. FRA usage
+SELECT round(space_limit/1024/1024/1024,1) AS limit_gb,
+       round(space_used/1024/1024/1024,1) AS used_gb,
+       round(space_used/space_limit*100,1) AS pct_used FROM v$recovery_file_dest;
+
+-- 6. Active sessions
+SELECT sid, serial#, username, status, machine,
+       to_char(logon_time,'DD-MON HH24:MI') AS logon
+FROM   v$session WHERE type = 'USER' ORDER BY logon_time;
+
+-- 7. What SQL is running right now
+SELECT s.sid, s.username, s.status, substr(q.sql_text,1,80) AS sql
+FROM   v$session s, v$sql q WHERE s.sql_id = q.sql_id(+)
+AND    s.type = 'USER' AND s.status = 'ACTIVE';
+
+-- 8. Blocking locks
+SELECT b.sid AS blocker, b.username, w.sid AS waiter, w.username AS waiting,
+       round(w.seconds_in_wait/60,1) AS wait_mins
+FROM   v$session b, v$session w, v$lock lb, v$lock lw
+WHERE  lb.sid=b.sid AND lw.sid=w.sid AND lb.id1=lw.id1
+AND    lb.block=1 AND lw.request&gt;0;
+
+-- 9. Buffer cache hit ratio (aim for 95%+)
+SELECT round((1-(phys.value/(dbg.value+cg.value)))*100,2) AS hit_ratio_pct
+FROM   v$sysstat phys, v$sysstat dbg, v$sysstat cg
+WHERE  phys.name='physical reads' AND dbg.name='db block gets'
+AND    cg.name='consistent gets';
+
+-- 10. Top 10 slowest SQL
+SELECT * FROM (SELECT round(elapsed_time/1000000,1) AS secs, executions,
+               sql_id, substr(sql_text,1,60) AS sql_text
+               FROM v$sql WHERE executions&gt;0 ORDER BY elapsed_time DESC) WHERE rownum&lt;=10;
+
+-- 11. Current wait events
+SELECT event, wait_class, total_waits, time_waited FROM v$system_event
+WHERE  wait_class != 'Idle' ORDER BY time_waited DESC FETCH FIRST 10 ROWS ONLY;
+
+-- 12. RMAN backup status
+SELECT input_type, status, to_char(start_time,'DD-MON HH24:MI') AS started,
+       round(elapsed_seconds) AS secs FROM v$rman_backup_job_details
+ORDER  BY start_time DESC FETCH FIRST 5 ROWS ONLY;
+
+-- 13. User accounts and status
+SELECT username, account_status, to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       default_tablespace FROM dba_users ORDER BY username;
+
+-- 14. Passwords expiring in 30 days
+SELECT username, to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       round(expiry_date-sysdate) AS days_left FROM dba_users
+WHERE  account_status='OPEN' AND expiry_date-sysdate&lt;=30 ORDER BY expiry_date;
+
+-- 15. Invalid objects (should be 0 in a healthy database)
+SELECT owner, object_type, object_name FROM dba_objects
+WHERE  status='INVALID' ORDER BY owner, object_type;
+
+-- 16. Redo log status
+SELECT group#, members, status, round(bytes/1024/1024) AS size_mb FROM v$log ORDER BY group#;
+
+-- 17. Archive log generation today (how busy is the DB?)
+SELECT trunc(first_time,'HH') AS hour, count(*) AS switches
+FROM   v$archived_log WHERE trunc(first_time)=trunc(sysdate) AND standby_dest='NO'
+GROUP BY trunc(first_time,'HH') ORDER BY 1;
+
+-- 18. SGA component sizes
+SELECT component, round(current_size/1024/1024) AS mb FROM v$sga_dynamic_components
+WHERE  current_size&gt;0 ORDER BY current_size DESC;
+
+-- 19. Database version and patches
+SELECT banner FROM v$version;
+SELECT action_time, description FROM dba_registry_sqlpatch
+ORDER  BY action_time DESC FETCH FIRST 3 ROWS ONLY;
+
+-- 20. Find and kill a session (ALWAYS verify SID first!)
+SELECT sid, serial#, username, status, seconds_in_wait FROM v$session
+WHERE  username='APP_USER' AND status='INACTIVE';
+-- ALTER SYSTEM KILL SESSION 'SID,SERIAL#' IMMEDIATE;
+        </div>
+      </div>
+
+      <div class="content-section" id="l57">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.7 &mdash; PuTTY Advanced Features</h4></div>
+        <table class="def-table"><thead><tr><th>Setting</th><th>Where and what to set</th></tr></thead><tbody>
+          <tr><td class="key">Font</td><td class="val">Window &gt; Appearance &gt; Font &gt; Courier New, 12pt Bold. Much easier to read long output.</td></tr>
+          <tr><td class="key">Scrollback</td><td class="val">Window &gt; Lines of scrollback: 10000. Never lose output again.</td></tr>
+          <tr><td class="key">Keep-alive</td><td class="val">Connection &gt; Seconds between keepalives: 60. Prevents SSH timeout during long operations.</td></tr>
+          <tr><td class="key">Logging</td><td class="val">Session &gt; Logging &gt; All session output. ALWAYS log production sessions.</td></tr>
+          <tr><td class="key">Close on exit</td><td class="val">Session &gt; Close window on exit: Never. Window stays open after disconnect.</td></tr>
+          <tr><td class="key">Saved Sessions</td><td class="val">Name clearly: PROD_DB1, UAT_DB2, DEV_DB3. Save after every configuration change.</td></tr>
+        </tbody></table>
+        <div class="info-box info-danger"><div class="info-box-label">WARNING</div><div class="info-box-body">In PuTTY: Ctrl+C CANCELS a running command. It does NOT copy text. To COPY: just highlight text. To PASTE: right-click or Shift+Insert. Using Ctrl+C while a query is running will kill the query.</div></div>
+        <div class="info-box info-tip"><div class="info-box-label">PRO TIP</div><div class="info-box-body">Always have TWO PuTTY windows open to the same server. Window 1 for your work. Window 2 running: tail -f alert_ORCL.log in real-time. This is standard professional DBA practice worldwide.</div></div>
+      </div>
+
+      <div class="content-section" id="l58">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 5.8 &mdash; PuTTY SSH Tunneling</h4></div>
+        <p class="body-text">In many enterprises, database servers are in a secure network not directly accessible from your laptop. SSH tunneling lets PuTTY create a secure encrypted tunnel through a jump host so your Windows tools (SQL Developer, Toad) can reach the database as if it were local.</p>
+        <div class="code-block">
+# Scenario:
+# Your laptop:  192.168.1.50  (has access to jump host)
+# Jump host:    jumphost.company.com  (accessible from laptop)
+# DB server:    dbserver.internal:1521  (only accessible FROM jump host)
+
+# PuTTY Configuration:
+# 1. Session: Host Name = jumphost.company.com, Port = 22
+# 2. Connection &gt; SSH &gt; Tunnels:
+#    Source port:  15210
+#    Destination:  dbserver.internal:1521
+#    Click ADD then Save the session
+# 3. Connect and log in to the jump host
+
+# Now connect SQL Developer to:
+# Host: localhost   Port: 15210   Service: ORCL
+# Traffic tunnels securely through PuTTY to the production DB!
+
+# SSH Key Setup (password-free login):
+# 1. Open PuTTYgen, generate RSA 4096 key
+# 2. Save .ppk private key file (keep SECRET - never share!)
+# 3. Copy public key text to server: ~/.ssh/authorized_keys
+# 4. In PuTTY: Connection &gt; SSH &gt; Auth &gt; load your .ppk file
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w5-sheets">
+      <div class="content-section" id="cs10">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 10 &mdash; SQL*Plus Commands and Formatting</h4></div>
+        <div class="code-block">
+# CONNECTION
+sqlplus / as sysdba                    # OS auth, SYSDBA, local only
+sqlplus sys/pwd as sysdba              # Password auth, SYSDBA
+sqlplus system/pwd@ORCL                # TNS to CDB
+sqlplus system/pwd@ORCLPDB1            # TNS to PDB
+sqlplus system/pwd@host:1521/ORCL      # Easy Connect (no tnsnames!)
+sqlplus -s / as sysdba                 # Silent mode for scripts
+sqlplus -prelim / as sysdba            # DB is shut down
+
+# FORMATTING
+SET LINESIZE 200        # Line width (default 80 = too narrow)
+SET PAGESIZE 60         # Lines per page
+SET TRIMSPOOL ON        # Remove trailing spaces in spool
+SET FEEDBACK OFF        # No "N rows selected"
+SET TIMING ON           # Show elapsed time
+SET SERVEROUTPUT ON     # Enable DBMS_OUTPUT display
+SET AUTOTRACE ON        # Show execution plan + stats
+SET VERIFY OFF          # No old/new variable messages
+SET NULL '[NULL]'       # Show NULLs as text
+
+# COLUMN FORMATTING
+COLUMN col FORMAT A25           # Text, 25 chars wide
+COLUMN col FORMAT 999,999.99    # Number with commas and decimals
+COLUMN col HEADING 'My|Header'  # | creates line break in header
+CLEAR COLUMNS                   # Remove all column formats
+
+# SCRIPTS AND SPOOL
+@/path/to/script.sql            # Run a script
+SPOOL /path/output.txt          # Start writing output to file
+SPOOL OFF                       # Stop spooling
+SPOOL /path/file.txt APPEND     # Append to existing file
+PROMPT Your message here        # Print a message (not executed)
+HOST linux_command              # Run a Linux command
+WHENEVER SQLERROR EXIT SQL.SQLCODE  # Exit on any SQL error
+
+# USEFUL COMMANDS
+SHOW PARAMETER param_name   # Show init parameter value
+SHOW SGA                    # Show SGA summary
+SHOW USER                   # Who am I connected as?
+SHOW CON_NAME               # Which container (CDB or PDB)?
+DESCRIBE table_name         # Show table/view structure
+DESC table_name             # Short form of DESCRIBE
+CONNECT / AS SYSDBA         # Reconnect without exiting
+DISCONNECT                  # Disconnect but stay in SQL*Plus
+EXIT                        # Exit SQL*Plus completely
+        </div>
+      </div>
+
+      <div class="content-section" id="cs11">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 11 &mdash; Connection Methods and Error Quick Fix</h4></div>
+        <table class="def-table"><thead><tr><th>Method</th><th>Syntax and When to Use</th></tr></thead><tbody>
+          <tr><td class="key">OS Auth SYSDBA</td><td class="val">sqlplus / as sysdba &mdash; Local server only. No password. oracle user must be in dba group.</td></tr>
+          <tr><td class="key">Password Local</td><td class="val">sqlplus user/pwd &mdash; Connects to current ORACLE_SID. No listener needed.</td></tr>
+          <tr><td class="key">TNS Named</td><td class="val">sqlplus user/pwd@ALIAS &mdash; Alias must be in tnsnames.ora. Uses listener.</td></tr>
+          <tr><td class="key">Easy Connect</td><td class="val">sqlplus user/pwd@host:port/service &mdash; No tnsnames.ora needed at all.</td></tr>
+          <tr><td class="key">Prelim</td><td class="val">sqlplus -prelim / as sysdba &mdash; Connect even when DB is completely shut down.</td></tr>
+          <tr><td class="key">Silent</td><td class="val">sqlplus -s &mdash; No banner or prompts. Always use in cron jobs and automation scripts.</td></tr>
+        </tbody></table>
+        <div class="section-title" style="margin-top:16px"><h4 style="font-size:0.88rem;color:var(--teal)">Error Quick Fix Guide</h4></div>
+        <table class="def-table"><thead><tr><th>Error</th><th>Cause and Fix</th></tr></thead><tbody>
+          <tr><td class="key">ORA-01017</td><td class="val">Wrong password. Case-sensitive in 19c. Check capslock.</td></tr>
+          <tr><td class="key">ORA-28009</td><td class="val">SYS requires AS SYSDBA. Add: as sysdba to command.</td></tr>
+          <tr><td class="key">ORA-01031</td><td class="val">Not in dba group. Check: id oracle</td></tr>
+          <tr><td class="key">ORA-12154</td><td class="val">TNS alias not found. Check tnsnames.ora. Verify ORACLE_HOME.</td></tr>
+          <tr><td class="key">ORA-12541</td><td class="val">Listener not running. Run: lsnrctl start</td></tr>
+          <tr><td class="key">ORA-12514</td><td class="val">Service not known. Run: ALTER SYSTEM REGISTER;</td></tr>
+          <tr><td class="key">ORA-01034</td><td class="val">Oracle not started. Use prelim connection then STARTUP;</td></tr>
+          <tr><td class="key">command not found</td><td class="val">PATH not set. Run: source ~/.bash_profile</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w5-scripts">
+      <div class="content-section" id="sl5">
+        <div class="section-title"><div class="section-icon icon-lab">&#128218;</div><h4>Script Library &mdash; 20 Essential DBA Scripts</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">SETUP</div><div class="info-box-body">Save all scripts to /home/oracle/scripts/ and run chmod 755 on shell scripts. These form the foundation of your personal DBA toolkit.</div></div>
+        <div class="code-block">
+-- SCRIPT 1: daily_health.sql  --  Run every morning
+SET LINESIZE 200 PAGESIZE 60 FEEDBACK OFF TRIMSPOOL ON
+SPOOL /home/oracle/logs/daily_health.log
+PROMPT === DAILY HEALTH CHECK ===
+SELECT to_char(sysdate,'DD-MON-YYYY HH24:MI:SS') AS run_time FROM dual;
+PROMPT --- Instance and Database ---
+SELECT instance_name, status, database_status FROM v$instance;
+SELECT name, log_mode FROM v$database;
+PROMPT --- PDB Status ---
+SELECT name, open_mode FROM v$pdbs ORDER BY name;
+PROMPT --- Tablespaces Over 80% Used ---
+SELECT t.tablespace_name,
+       round((d.total_mb-nvl(f.free_mb,0))/d.total_mb*100,1) AS pct_used
+FROM dba_tablespaces t,
+    (SELECT tablespace_name, sum(bytes)/1024/1024 total_mb FROM dba_data_files GROUP BY tablespace_name) d,
+    (SELECT tablespace_name, sum(bytes)/1024/1024 free_mb FROM dba_free_space GROUP BY tablespace_name) f
+WHERE t.tablespace_name=d.tablespace_name(+) AND t.tablespace_name=f.tablespace_name(+)
+AND (d.total_mb-nvl(f.free_mb,0))/d.total_mb*100&gt;80;
+PROMPT --- Invalid Objects (should be 0) ---
+SELECT count(*) AS invalid_objects FROM dba_objects WHERE status='INVALID';
+PROMPT --- Active User Sessions ---
+SELECT count(*) AS active_sessions FROM v$session WHERE type='USER';
+SPOOL OFF
+        </div>
+        <div class="code-block">
+-- SCRIPT 2: show_sessions.sql  --  Who is connected?
+COLUMN username FORMAT A15
+COLUMN machine  FORMAT A25
+COLUMN program  FORMAT A30
+SELECT sid, serial#, username, status, osuser,
+       substr(machine,1,25) AS machine,
+       to_char(logon_time,'DD-MON HH24:MI:SS') AS logon
+FROM   v$session WHERE type='USER' ORDER BY logon_time;
+
+-- SCRIPT 3: show_locks.sql  --  Any blocking sessions?
+SELECT b.sid AS blocking_sid, b.username AS blocker,
+       w.sid AS waiting_sid, w.username AS waiter,
+       round(w.seconds_in_wait/60,1) AS wait_minutes
+FROM   v$session b, v$session w, v$lock lb, v$lock lw, dba_objects o
+WHERE  lb.sid=b.sid AND lw.sid=w.sid AND lb.id1=lw.id1 AND lb.id2=lw.id2
+AND    lb.block=1 AND lw.request&gt;0 AND lb.id1=o.object_id(+)
+ORDER  BY wait_minutes DESC;
+        </div>
+        <div class="code-block">
+-- SCRIPT 4: check_space.sql  --  Full tablespace space report
+COLUMN tablespace_name FORMAT A25 HEADING 'Tablespace'
+COLUMN total_mb FORMAT 99,999   HEADING 'Total MB'
+COLUMN used_mb  FORMAT 99,999   HEADING 'Used MB'
+COLUMN free_mb  FORMAT 99,999   HEADING 'Free MB'
+COLUMN pct_used FORMAT 990.9    HEADING 'Pct Used'
+SELECT t.tablespace_name,
+       round(d.total_mb) AS total_mb,
+       round(d.total_mb-nvl(f.free_mb,0)) AS used_mb,
+       round(nvl(f.free_mb,0)) AS free_mb,
+       round((d.total_mb-nvl(f.free_mb,0))/d.total_mb*100,1) AS pct_used
+FROM   dba_tablespaces t,
+      (SELECT tablespace_name, sum(bytes)/1024/1024 total_mb FROM dba_data_files GROUP BY tablespace_name) d,
+      (SELECT tablespace_name, sum(bytes)/1024/1024 free_mb FROM dba_free_space GROUP BY tablespace_name) f
+WHERE  t.tablespace_name=d.tablespace_name(+) AND t.tablespace_name=f.tablespace_name(+)
+ORDER BY pct_used DESC NULLS LAST;
+
+-- SCRIPT 5: check_alert_log.sh  --  Scan for ORA- errors
+#!/bin/bash
+source ~/.bash_profile
+ALERT=$ORACLE_BASE/diag/rdbms/${ORACLE_SID,,}/$ORACLE_SID/trace/alert_$ORACLE_SID.log
+echo '=== Alert Log Error Check ===' $(date)
+echo '--- ORA- errors in last 200 lines ---'
+tail -200 $ALERT | grep 'ORA-'
+echo '--- Last 5 lines of alert log ---'
+tail -5 $ALERT
+        </div>
+        <div class="code-block">
+-- SCRIPT 6: top_sql.sql  --  Top 10 slowest SQL statements
+COLUMN sql_text FORMAT A60
+SELECT * FROM (
+  SELECT round(elapsed_time/1000000,1) AS elapsed_secs, executions,
+         round(elapsed_time/decode(executions,0,1,executions)/1000000,3) AS avg_secs,
+         sql_id, substr(sql_text,1,60) AS sql_text
+  FROM v$sql WHERE executions&gt;0 ORDER BY elapsed_time DESC
+) WHERE rownum&lt;=10;
+
+-- SCRIPT 7: buffer_cache_hit.sql
+SELECT round((1-(phys.value/(dbg.value+cg.value)))*100,2) || '%' AS cache_hit_ratio
+FROM   v$sysstat phys, v$sysstat dbg, v$sysstat cg
+WHERE  phys.name='physical reads' AND dbg.name='db block gets' AND cg.name='consistent gets';
+
+-- SCRIPT 8: show_waits.sql  --  Current wait events
+SELECT event, wait_class, total_waits, time_waited FROM v$system_event
+WHERE  wait_class != 'Idle' ORDER BY time_waited DESC FETCH FIRST 15 ROWS ONLY;
+
+-- SCRIPT 9: show_memory.sql
+PROMPT === SGA Components ===
+SELECT component, round(current_size/1024/1024) AS mb FROM v$sga_dynamic_components
+WHERE  current_size&gt;0 ORDER BY current_size DESC;
+PROMPT === PGA Summary ===
+SELECT name, round(value/1024/1024,1) AS mb FROM v$pgastat
+WHERE  name IN ('total PGA inuse','total PGA allocated','aggregate PGA target parameter');
+
+-- SCRIPT 10: show_plan.sql  --  Execution plan for a SQL_ID
+-- Usage: @show_plan.sql abc123def
+COLUMN plan_table_output FORMAT A180
+SELECT * FROM table(DBMS_XPLAN.DISPLAY_CURSOR('&amp;1', NULL, 'ALLSTATS LAST'));
+        </div>
+        <div class="code-block">
+-- SCRIPT 11: show_users.sql
+COLUMN username FORMAT A25
+COLUMN account_status FORMAT A20
+SELECT username, account_status, to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       default_tablespace, profile FROM dba_users ORDER BY username;
+
+-- SCRIPT 12: show_privs.sql  --  Usage: @show_privs.sql SCOTT
+SET VERIFY OFF
+PROMPT === System Privileges ===
+SELECT privilege, admin_option FROM dba_sys_privs WHERE grantee=UPPER('&amp;1') ORDER BY privilege;
+PROMPT === Role Memberships ===
+SELECT granted_role, admin_option FROM dba_role_privs WHERE grantee=UPPER('&amp;1');
+
+-- SCRIPT 13: expiring_passwords.sql
+SELECT username, to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       round(expiry_date-sysdate) AS days_left FROM dba_users
+WHERE  account_status='OPEN' AND expiry_date-sysdate&lt;=30 ORDER BY expiry_date;
+
+-- SCRIPT 14: invalid_objects.sql
+SELECT owner, object_type, object_name FROM dba_objects
+WHERE  status='INVALID' ORDER BY owner, object_type;
+-- To recompile all: EXEC UTL_RECOMP.RECOMP_SERIAL;
+
+-- SCRIPT 15: kill_session.sql  --  CAUTION: verify SID first!
+-- Usage: @kill_session.sql SID SERIAL#
+SET VERIFY OFF
+PROMPT About to kill SID=&amp;1 SERIAL#=&amp;2
+PAUSE Press Enter to confirm, Ctrl+C to cancel
+ALTER SYSTEM KILL SESSION '&amp;1,&amp;2' IMMEDIATE;
+        </div>
+        <div class="code-block">
+-- SCRIPT 16: check_rman_backups.sql
+SELECT input_type, status, to_char(start_time,'DD-MON HH24:MI') AS started,
+       round(elapsed_seconds) AS secs, round(input_bytes/1024/1024) AS input_mb
+FROM   v$rman_backup_job_details ORDER BY start_time DESC FETCH FIRST 10 ROWS ONLY;
+
+-- SCRIPT 17: show_fra.sql
+SELECT round(space_limit/1024/1024/1024,1) AS limit_gb,
+       round(space_used/1024/1024/1024,1) AS used_gb,
+       round(space_used/space_limit*100,1) AS pct_used FROM v$recovery_file_dest;
+
+-- SCRIPT 18: show_table_size.sql  --  Usage: @show_table_size.sql HR
+SELECT owner, segment_name, round(sum(bytes)/1024/1024,1) AS size_mb
+FROM   dba_segments WHERE owner=UPPER('&amp;1') AND segment_type LIKE 'TABLE%'
+GROUP BY owner, segment_name ORDER BY size_mb DESC FETCH FIRST 20 ROWS ONLY;
+
+-- SCRIPT 19: show_redologs.sql
+SELECT l.group#, l.members, l.status, round(l.bytes/1024/1024) AS mb,
+       to_char(l.first_time,'DD-MON HH24:MI') AS first_time, m.member
+FROM   v$log l, v$logfile m WHERE l.group#=m.group# ORDER BY l.group#;
+
+-- SCRIPT 20: startup_db.sh  --  Start Oracle and open all PDBs
+#!/bin/bash
+source ~/.bash_profile
+echo $(date)' -- Starting Oracle '$ORACLE_SID
+sqlplus -s / as sysdba &lt;&lt;EOF
+STARTUP;
+ALTER PLUGGABLE DATABASE ALL OPEN;
+SELECT instance_name, status FROM v\$instance;
+SELECT name, open_mode FROM v\$pdbs;
+EXIT
+EOF
+echo $(date)' -- Startup complete'
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w5-quiz">
+      <div class="content-section" id="q5">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 5 &mdash; SQL*Plus and PuTTY Mastery</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">OPEN BOOK</div><div class="info-box-body">Use all cheatsheets freely. 6 questions. Select your answer and click Check Answer.</div></div>
+        <div id="w5-score" class="score-badge" style="display:none">Score: <span id="w5-score-val">0</span>/6</div>
+
+        <div class="quiz-q" id="q5_1">
+          <p class="q-text">Q1. Which SQL*Plus connection method allows you to connect WITHOUT a password from the Linux server itself?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_1','B')"><span class="opt-key">A</span> sqlplus system/password@ORCL</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_1','B')"><span class="opt-key">B</span> sqlplus / as sysdba</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_1','B')"><span class="opt-key">C</span> sqlplus -prelim sys/password</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_1','B')"><span class="opt-key">D</span> sqlplus /nolog</div>
+          <button class="quiz-btn" onclick="checkQ('q5_1','B','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q5_2">
+          <p class="q-text">Q2. Your SQL*Plus output is cut off at 80 characters per line. Which command fixes this?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_2','C')"><span class="opt-key">A</span> SET PAGESIZE 200</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_2','C')"><span class="opt-key">B</span> SET WIDTH 200</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_2','C')"><span class="opt-key">C</span> SET LINESIZE 200</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_2','C')"><span class="opt-key">D</span> SET WRAP OFF</div>
+          <button class="quiz-btn" onclick="checkQ('q5_2','C','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q5_3">
+          <p class="q-text">Q3. What does SPOOL /home/oracle/report.txt do in SQL*Plus?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_3','B')"><span class="opt-key">A</span> Reads the file into SQL*Plus</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_3','B')"><span class="opt-key">B</span> Sends all subsequent SQL*Plus output to that file</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_3','B')"><span class="opt-key">C</span> Prints the file to a network printer</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_3','B')"><span class="opt-key">D</span> Executes the file as a SQL script</div>
+          <button class="quiz-btn" onclick="checkQ('q5_3','B','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q5_4">
+          <p class="q-text">Q4. In PuTTY, what is the correct way to COPY text from the terminal?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_4','C')"><span class="opt-key">A</span> Press Ctrl+C after highlighting</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_4','C')"><span class="opt-key">B</span> Press Ctrl+Shift+C</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_4','C')"><span class="opt-key">C</span> Simply highlight the text &mdash; it is automatically copied</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_4','C')"><span class="opt-key">D</span> Right-click and choose Copy</div>
+          <button class="quiz-btn" onclick="checkQ('q5_4','C','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q5_5">
+          <p class="q-text">Q5. Which file runs automatically every time SQL*Plus starts, letting you set your custom prompt and defaults?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_5','B')"><span class="opt-key">A</span> $ORACLE_HOME/sqlplus/admin/sqlplus.ini</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_5','B')"><span class="opt-key">B</span> /home/oracle/login.sql (with SQLPATH=/home/oracle set)</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_5','B')"><span class="opt-key">C</span> /etc/oracle/sqlplus.conf</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_5','B')"><span class="opt-key">D</span> ~/.sqlplus_profile</div>
+          <button class="quiz-btn" onclick="checkQ('q5_5','B','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_5-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q5_6">
+          <p class="q-text">Q6. Easy Connect (sqlplus user/pwd@host:port/service) requires a configured tnsnames.ora entry. True or False?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_6','B')"><span class="opt-key">A</span> True &mdash; tnsnames.ora is always required</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_6','B')"><span class="opt-key">B</span> False &mdash; Easy Connect has all info in the string itself</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_6','B')"><span class="opt-key">C</span> Only required for PDB connections</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q5_6','B')"><span class="opt-key">D</span> Only required when connecting remotely</div>
+          <button class="quiz-btn" onclick="checkQ('q5_6','B','w5-score','w5-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q5_6-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w5-assign">
+      <div class="content-section" id="a5">
+        <div class="section-title"><div class="section-icon icon-lab">&#128203;</div><h4>Assignment 5 &mdash; Build Your Personal Script Library</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">GOAL</div><div class="info-box-body">Run all 20 scripts, customise your login.sql, and write 2 original scripts of your own. This is the start of your professional DBA toolkit.</div></div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create directories: mkdir -p /home/oracle/scripts /home/oracle/logs</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Copy all 20 scripts from the Script Library tab into /home/oracle/scripts/</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 1 (daily_health.sql) and verify the output file was created</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 2 (show_sessions.sql) and see who is connected to your DB</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 4 (check_space.sql) and understand every column of the output</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 7 (buffer_cache_hit.sql) &mdash; what is your hit ratio percentage?</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 11 (show_users.sql) and list all users in your database</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Script 14 (invalid_objects.sql) &mdash; a healthy DB should return 0 rows</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create /home/oracle/login.sql using the template from Lesson 5.5</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Add SQLPATH=/home/oracle to ~/.bash_profile then source it</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Start SQL*Plus and confirm your custom prompt appears (USER@DATABASE&gt;)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Apply all professional PuTTY settings from Lesson 5.7</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Write Script 21: an original script that does something not in the library</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Write Script 22: a second original script with a proper comment header</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Reflection: which script will you use most often and why?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="w5-runbook">
+      <div class="content-section" id="r5">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 5 Runbook &mdash; Your Daily Guide</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">KEY TIP</div><div class="info-box-body">SQL*Plus mastery comes from USING it, not reading about it. Open your terminal and type every command as you read each lesson. Muscle memory is built by doing.</div></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 5.1 &mdash; Why DBAs Love SQL*Plus (20 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 5.2 &mdash; All Connection Methods (45 mins)</li>
+          <li><span class="step-num">3</span>Practice ALL 6 connection methods on your database (30 mins)</li>
+          <li><span class="step-num">4</span>Deliberately cause each connection error and read the message carefully</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 5.3 &mdash; Formatting and Output Control (50 mins)</li>
+          <li><span class="step-num">2</span>Try every SET command in the lesson on a real query</li>
+          <li><span class="step-num">3</span>Read Lesson 5.4 &mdash; SQL*Plus Scripting (40 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; approx 2 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 5.5 &mdash; login.sql (30 mins). Create it and get your custom prompt working.</li>
+          <li><span class="step-num">2</span>Read Lesson 5.6 &mdash; 20 Essential DBA Queries (60 mins)</li>
+          <li><span class="step-num">3</span>Run ALL 20 queries on your database &mdash; read every single output carefully</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 5.7 &mdash; PuTTY Advanced Features (35 mins)</li>
+          <li><span class="step-num">2</span>Apply every professional setting to your PuTTY &mdash; save the session</li>
+          <li><span class="step-num">3</span>Read Lesson 5.8 &mdash; SSH Tunneling (30 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Review Cheatsheets 10 and 11 (20 mins)</li>
+          <li><span class="step-num">2</span>Complete Quiz 5 (15 mins)</li>
+          <li><span class="step-num">3</span>Review any wrong answers &mdash; find the lesson that covers them</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 6-7 &mdash; approx 2.5 hours &mdash; Assignment</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Install all 20 scripts to /home/oracle/scripts/</li>
+          <li><span class="step-num">2</span>Run each one and tick off the checklist items</li>
+          <li><span class="step-num">3</span>Write your 2 original scripts with proper comment headers</li>
+          <li><span class="step-num">4</span>Celebrate &mdash; you now have a professional DBA script library!</li>
+        </ul></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
 <!-- FOOTER -->
 <div style="padding:40px 60px;border-top:1px solid var(--border);margin-top:20px;text-align:center">
-  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;4 of 26</p>
-  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 5 (SQL*Plus &amp; PuTTY Mastery) coming next &bull; Designed for the anxious learner</p>
+  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;5 of 26</p>
+  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 6 (Oracle SQL Developer) coming next &bull; Designed for the anxious learner</p>
 </div>
 
 </div><!-- /main -->
@@ -2094,7 +2838,8 @@ function filterNav(query){
 const sections = ['hero','w1','l11','l12','l13','l14','cs1','cs2','q1','a1','r1',
   'w2','l21','l22','l23','l24','l25','l26','l27','l28','cs3','cs4','cs5','q2','r2',
   'w3','l31','l32','l33','l34','l35','l36','l37','l38','cs6','cs7','cs8','fc3','q3','r3',
-  'w4','l41','l42','l43','l44','l45','l46','l47','l48','rbA','rbB','cs9','q4','r4'];
+  'w4','l41','l42','l43','l44','l45','l46','l47','l48','rbA','rbB','cs9','q4','r4',
+  'w5','l51','l52','l53','l54','l55','l56','l57','l58','cs10','cs11','sl5','q5','a5','r5'];
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
