@@ -583,14 +583,14 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
   <h1>Oracle DBA<br/><span>Career Training</span></h1>
   <p>From zero to Junior DBA in 6 months. Designed with care for the anxious learner. Bite-sized. Supportive. Comprehensive.</p>
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Weeks Covered</span></div>
-    <div class="stat"><span class="stat-num">36</span><span class="stat-label">Lessons</span></div>
-    <div class="stat"><span class="stat-num">11</span><span class="stat-label">Cheatsheets</span></div>
-    <div class="stat"><span class="stat-num">61</span><span class="stat-label">Quiz Questions</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Weeks Covered</span></div>
+    <div class="stat"><span class="stat-num">44</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">13</span><span class="stat-label">Cheatsheets</span></div>
+    <div class="stat"><span class="stat-num">73</span><span class="stat-label">Quiz Questions</span></div>
     <div class="stat"><span class="stat-num">26</span><span class="stat-label">DBA Scripts</span></div>
   </div>
   <div class="progress-bar-outer">
-    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-5 of 26</span></div>
+    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-6 of 26</span></div>
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 </section>
@@ -2663,10 +2663,740 @@ echo $(date)' -- Startup complete'
 </div>
 </div>
 
+
+<!-- WEEK 6 -->
+<div class="week-section">
+<div class="week-card fade-in" id="w6">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--gold);color:#000">W6</div>
+      <div>
+        <h3>Oracle SQL Developer</h3>
+        <p>Install &bull; Connections &bull; SQL Worksheet &bull; DBA Navigator &bull; Execution Plans &bull; Reports &bull; SSH Tunnel</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w6-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-assign')">Assignment</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-runbook')">Runbook</button>
+    </div>
+
+    <div class="tab-pane active" id="w6-lessons">
+      <div class="content-section" id="l61">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.1 &mdash; What is SQL Developer and Why DBAs Use It</h4></div>
+        <p class="body-text">Oracle SQL Developer is a free, fully-featured graphical IDE from Oracle. It connects to your Oracle database over the network and gives you a point-and-click interface for everything from writing SQL to managing users to viewing execution plans. It runs on your Windows laptop. It talks to Oracle on the Linux server.</p>
+        <div class="info-box info-tip"><div class="info-box-label">KEY POINT</div><div class="info-box-body">SQL Developer does NOT replace SQL*Plus. Professional DBAs use both &mdash; SQL Developer for visual exploration and development, SQL*Plus for automation, scripting, and server-side work.</div></div>
+        <table class="def-table"><thead><tr><th>Use SQL Developer when...</th><th>Use SQL*Plus when...</th></tr></thead><tbody>
+          <tr><td class="key">Browsing objects visually</td><td class="val">Running automated scripts via cron or shell</td></tr>
+          <tr><td class="key">Viewing execution plans graphically</td><td class="val">Connecting to a server with no GUI available</td></tr>
+          <tr><td class="key">Generating DBA reports</td><td class="val">Writing scheduled monitoring scripts</td></tr>
+          <tr><td class="key">Developing and debugging PL/SQL</td><td class="val">Quick one-liner admin commands over SSH</td></tr>
+          <tr><td class="key">Data import/export via GUI wizard</td><td class="val">Emergency access when tools are unavailable</td></tr>
+        </tbody></table>
+        <table class="def-table" style="margin-top:12px"><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">SQL Worksheet</td><td class="val">Write, format, and execute SQL. View results in a grid. Format with Ctrl+F7.</td></tr>
+          <tr><td class="key">Object Browser</td><td class="val">Expand any schema and see all tables, indexes, views, sequences, procedures, triggers.</td></tr>
+          <tr><td class="key">DBA Navigator</td><td class="val">Manage tablespaces, datafiles, users, roles, sessions, redo logs from a tree view.</td></tr>
+          <tr><td class="key">Execution Plan</td><td class="val">Press F10 on any SELECT -- graphical plan showing scans, index usage, join methods, cost.</td></tr>
+          <tr><td class="key">Reports</td><td class="val">Built-in DBA reports: space, sessions, invalid objects, top SQL, locks, and more.</td></tr>
+          <tr><td class="key">PL/SQL Debugger</td><td class="val">Set breakpoints, step through code, inspect variable values.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l62">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.2 &mdash; Installing SQL Developer on Windows</h4></div>
+        <p class="body-text">SQL Developer is free. Download it from Oracle. Always get the "Windows 64-bit with JDK included" version &mdash; no separate Java install needed.</p>
+        <div class="info-box info-danger"><div class="info-box-label">IMPORTANT</div><div class="info-box-body">Do NOT extract to C:\Program Files (Windows blocks settings writing there). Do NOT leave in Downloads folder (it gets deleted). Recommended location: C:\Oracle\SQLDeveloper\</div></div>
+        <div class="code-block">
+1. Download: https://www.oracle.com/database/sqldeveloper/technologies/download/
+   Select: Windows 64-bit with JDK included
+
+2. Extract the .zip to C:OracleSQLDeveloper
+3. Find sqldeveloper.exe inside the folder
+   Right-click &gt; Send to &gt; Desktop (create shortcut)
+
+4. Launch and configure:
+   Tools &gt; Preferences &gt; Code Editor &gt; Fonts: set size to 14+
+   Tools &gt; Preferences &gt; Code Editor &gt; Line Gutter: enable Show Line Numbers</div>
+      </div>
+
+      <div class="content-section" id="l63">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.3 &mdash; Creating and Organising Connection Profiles</h4></div>
+        <p class="body-text">A connection profile stores all the information SQL Developer needs to connect to a specific Oracle database. Create one profile per database environment and reuse it every time. Use a consistent naming convention from day one.</p>
+        <table class="def-table"><thead><tr><th>Field</th><th>What to enter</th></tr></thead><tbody>
+          <tr><td class="key">Connection Name</td><td class="val">Descriptive name you choose. Format: ENV_DBNAME_USER. Example: LAB_ORCL_SYS</td></tr>
+          <tr><td class="key">Username</td><td class="val">Oracle user. Use SYS or SYSTEM for DBA work.</td></tr>
+          <tr><td class="key">Role</td><td class="val">Select SYSDBA when connecting as SYS.</td></tr>
+          <tr><td class="key">Hostname</td><td class="val">IP address or hostname of the Linux server.</td></tr>
+          <tr><td class="key">Port</td><td class="val">1521 (default Oracle listener port).</td></tr>
+          <tr><td class="key">Service Name</td><td class="val">Use Service Name not SID. For CDB: ORCL. For PDB: ORCLPDB1.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+Create these 3 connections for your lab:
+
+Connection 1: LAB_ORCL_SYS
+  Username: SYS  Role: SYSDBA  Service: ORCL
+
+Connection 2: LAB_ORCL_SYSTEM
+  Username: SYSTEM  Service: ORCL
+
+Connection 3: LAB_ORCLPDB_SYSTEM
+  Username: SYSTEM  Service: ORCLPDB1
+
+Organisation:
+  Right-click Connections panel &gt; New Folder
+  Create folder: LAB
+  Drag connections into the folder</div>
+      </div>
+
+      <div class="content-section" id="l64">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.4 &mdash; The SQL Worksheet: Writing and Running Queries</h4></div>
+        <p class="body-text">The SQL Worksheet is where you write and execute SQL. Learn every shortcut &mdash; Ctrl+F7 alone will save you hours every week.</p>
+        <table class="def-table"><thead><tr><th>Shortcut</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">F9 or Ctrl+Enter</td><td class="val">Execute the current statement (where cursor is). Most used shortcut.</td></tr>
+          <tr><td class="key">F5</td><td class="val">Execute ALL statements in the worksheet as a script.</td></tr>
+          <tr><td class="key">F10</td><td class="val">Show Explain Plan WITHOUT running the query.</td></tr>
+          <tr><td class="key">F11</td><td class="val">COMMIT the current transaction.</td></tr>
+          <tr><td class="key">F12</td><td class="val">ROLLBACK the current transaction.</td></tr>
+          <tr><td class="key">Ctrl+F7</td><td class="val">Format SQL automatically &mdash; fixes indentation and capitalisation.</td></tr>
+          <tr><td class="key">Ctrl+/</td><td class="val">Toggle comment/uncomment on selected lines.</td></tr>
+          <tr><td class="key">Ctrl+Space</td><td class="val">Auto-complete table names, columns, keywords.</td></tr>
+        </tbody></table>
+        <div class="info-box info-tip"><div class="info-box-label">PRO TIP</div><div class="info-box-body">Highlight PART of your SQL and press F9 &mdash; only the highlighted portion runs. Perfect for testing sub-queries without running the full statement.</div></div>
+      </div>
+
+      <div class="content-section" id="l65">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.5 &mdash; The DBA Navigator: Visual Database Management</h4></div>
+        <p class="body-text">Open the DBA Navigator: View &gt; DBA (Alt+F7). Click + and select your SYS connection. A tree of database management categories expands. This is the control panel for your database.</p>
+        <table class="def-table"><thead><tr><th>DBA Navigator Node</th><th>What you can do</th></tr></thead><tbody>
+          <tr><td class="key">Storage &gt; Tablespaces</td><td class="val">See size, free space, datafiles. Right-click: Add Datafile, Make Offline, Drop.</td></tr>
+          <tr><td class="key">Storage &gt; Redo Log Groups</td><td class="val">See all redo groups, members, status. Right-click to add members.</td></tr>
+          <tr><td class="key">Storage &gt; Control Files</td><td class="val">See all control file locations.</td></tr>
+          <tr><td class="key">Security &gt; Users</td><td class="val">All users, status, tablespace, profile. Right-click: Edit, Create, Lock/Unlock, Drop.</td></tr>
+          <tr><td class="key">Security &gt; Roles</td><td class="val">All roles and their grantees. Right-click to create roles.</td></tr>
+          <tr><td class="key">Performance &gt; Top Activity</td><td class="val">Real-time view of top SQL. Updates every few seconds.</td></tr>
+          <tr><td class="key">RMAN Backup/Recovery</td><td class="val">Backup history, backup sets, restore points.</td></tr>
+          <tr><td class="key">Database Configuration</td><td class="val">Init parameters, Memory Advisor, NLS settings.</td></tr>
+        </tbody></table>
+        <div class="info-box info-tip"><div class="info-box-label">LEARNING TIP</div><div class="info-box-body">Every action in the DBA Navigator runs SQL behind the scenes. Check the Log panel at the bottom to see what SQL was executed &mdash; this is how you learn the SQL that powers DBA tasks.</div></div>
+      </div>
+
+      <div class="content-section" id="l66">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.6 &mdash; Viewing and Reading Execution Plans</h4></div>
+        <p class="body-text">An execution plan is Oracle's roadmap for executing a SQL query. It shows EXACTLY how Oracle will fetch the data. Press F10 on any SELECT to see it. This is how DBAs diagnose slow SQL.</p>
+        <table class="def-table"><thead><tr><th>Operation</th><th>What it means for performance</th></tr></thead><tbody>
+          <tr><td class="key">TABLE ACCESS FULL</td><td class="val">Reads every block in the table. SLOW for large tables. Red flag &mdash; look for this.</td></tr>
+          <tr><td class="key">INDEX RANGE SCAN</td><td class="val">Uses index to find a range of values. FAST. What you want to see.</td></tr>
+          <tr><td class="key">INDEX UNIQUE SCAN</td><td class="val">Uses index to find exactly one row. FASTEST. Primary key or unique constraint lookup.</td></tr>
+          <tr><td class="key">NESTED LOOPS</td><td class="val">Good for small result sets. For each row in outer table, finds matching row in inner.</td></tr>
+          <tr><td class="key">HASH JOIN</td><td class="val">Good for large result sets. Builds a hash table from one input and probes with the other.</td></tr>
+        </tbody></table>
+        <div class="info-box info-tip"><div class="info-box-label">EXPLAIN vs AUTOTRACE</div><div class="info-box-body">F10 (Explain Plan) = ESTIMATED plan BEFORE running. Autotrace = ACTUAL statistics AFTER running. Use Explain Plan to check without running. Use Autotrace to compare estimates vs reality.</div></div>
+        <div class="code-block">
+-- If Cardinality estimate is very wrong (10k estimated, 5M actual):
+-- Statistics are stale. Fix:
+EXEC DBMS_STATS.GATHER_TABLE_STATS('SCHEMA_NAME', 'TABLE_NAME');
+-- Then press F10 again -- Cardinality should be closer to reality.</div>
+      </div>
+
+      <div class="content-section" id="l67">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.7 &mdash; Built-In DBA Reports</h4></div>
+        <p class="body-text">View &gt; Reports opens dozens of pre-built DBA reports. Expand: All Reports &gt; Data Dictionary Reports.</p>
+        <table class="def-table"><thead><tr><th>Report</th><th>What it shows</th></tr></thead><tbody>
+          <tr><td class="key">DB Admin &gt; Space &gt; Tablespace</td><td class="val">All tablespaces: size, used, free, pct used. Export to Excel instantly.</td></tr>
+          <tr><td class="key">DB Admin &gt; Space &gt; Segments</td><td class="val">Largest objects by size. Find what is consuming space.</td></tr>
+          <tr><td class="key">DB Admin &gt; Users</td><td class="val">All users: status, tablespace, profile, creation date.</td></tr>
+          <tr><td class="key">DB Admin &gt; Sessions</td><td class="val">Active sessions: SID, username, status, machine, program.</td></tr>
+          <tr><td class="key">DB Admin &gt; Locks</td><td class="val">Locked objects and the sessions holding the locks.</td></tr>
+          <tr><td class="key">DB Admin &gt; Invalid Objects</td><td class="val">All invalid objects. Should always be empty in production.</td></tr>
+          <tr><td class="key">DB Admin &gt; Top SQL</td><td class="val">Top SQL by logical reads, executions, elapsed time.</td></tr>
+        </tbody></table>
+        <p class="body-text" style="margin-top:12px">Create a custom report: Reports panel &gt; User Defined Reports &gt; right-click &gt; Add Report. Paste your SQL. It runs with one click forever after.</p>
+      </div>
+
+      <div class="content-section" id="l68">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.8 &mdash; Connecting SQL Developer via SSH Tunnel</h4></div>
+        <p class="body-text">When port 1521 is blocked by a firewall, use the SSH tunnel from Week 5. PuTTY forwards your local port 1521 through SSH to the server's port 1521. SQL Developer connects to localhost and reaches the database through the tunnel.</p>
+        <div class="code-block">
+Method 1: Using the PuTTY tunnel (from Week 5)
+  1. Open PuTTY session with port 1521 forwarded (set up in Lesson 5.8)
+  2. In SQL Developer create a new connection:
+     Hostname:     localhost   (NOT the server IP)
+     Port:         1521        (your local tunnel port)
+     Service Name: ORCL
+
+Method 2: SQL Developer built-in SSH
+  1. New connection &gt; Connection Type: SSH
+  2. SSH section: jump server IP, port 22, oracle username, private key
+  3. Oracle section: database server, port 1521, service name
+  4. SQL Developer manages the tunnel automatically</div>
+      </div>
+    </div><!-- /w6-lessons -->
+
+    <div class="tab-pane" id="w6-sheets">
+      <div class="content-section" id="cs12">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 12 &mdash; SQL Developer Keyboard Shortcuts</h4></div>
+        <table class="def-table"><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody>
+          <tr><td class="key">F9 or Ctrl+Enter</td><td class="val">Execute current statement only</td></tr>
+          <tr><td class="key">F5</td><td class="val">Execute all statements as a script</td></tr>
+          <tr><td class="key">F10</td><td class="val">Show Explain Plan (no execution)</td></tr>
+          <tr><td class="key">F11</td><td class="val">COMMIT transaction</td></tr>
+          <tr><td class="key">F12</td><td class="val">ROLLBACK transaction</td></tr>
+          <tr><td class="key">Ctrl+F7</td><td class="val">Format (beautify) SQL</td></tr>
+          <tr><td class="key">Ctrl+/</td><td class="val">Toggle comment/uncomment</td></tr>
+          <tr><td class="key">Ctrl+Space</td><td class="val">Auto-complete</td></tr>
+          <tr><td class="key">Ctrl+Shift+U</td><td class="val">Toggle UPPERCASE/lowercase</td></tr>
+          <tr><td class="key">Ctrl+D</td><td class="val">Clear editor</td></tr>
+          <tr><td class="key">Ctrl+S</td><td class="val">Save script to file</td></tr>
+          <tr><td class="key">Ctrl+O</td><td class="val">Open .sql file from disk</td></tr>
+          <tr><td class="key">Alt+F10</td><td class="val">Open new SQL Worksheet</td></tr>
+          <tr><td class="key">Alt+F7</td><td class="val">Open/focus DBA Navigator</td></tr>
+          <tr><td class="key">F4</td><td class="val">Describe object under cursor</td></tr>
+          <tr><td class="key">Ctrl+Z / Ctrl+Y</td><td class="val">Undo / Redo</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs13">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 13 &mdash; DBA Navigator Reference</h4></div>
+        <table class="def-table"><thead><tr><th>DBA Navigator Node</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">Storage &gt; Tablespaces</td><td class="val">Size, free space, datafiles, autoextend. Right-click: Add Datafile, Drop.</td></tr>
+          <tr><td class="key">Storage &gt; Datafiles</td><td class="val">Every .dbf file, size, status. Right-click to resize.</td></tr>
+          <tr><td class="key">Storage &gt; Redo Log Groups</td><td class="val">All redo groups, members, status. Right-click to add members.</td></tr>
+          <tr><td class="key">Storage &gt; Archive Logs</td><td class="val">Archive logs in the FRA. Size and creation date.</td></tr>
+          <tr><td class="key">Storage &gt; Control Files</td><td class="val">All control file locations.</td></tr>
+          <tr><td class="key">Security &gt; Users</td><td class="val">All users. Status, tablespace, profile. Right-click: Edit, Create, Lock, Drop.</td></tr>
+          <tr><td class="key">Security &gt; Roles</td><td class="val">All roles and grantees. Right-click to create.</td></tr>
+          <tr><td class="key">Security &gt; Profiles</td><td class="val">Password and resource profiles. Edit expiry, grace time, failed logins.</td></tr>
+          <tr><td class="key">Performance &gt; Top Activity</td><td class="val">Real-time top SQL by CPU, I/O, waits. Updates every few seconds.</td></tr>
+          <tr><td class="key">Performance &gt; SQL Monitor</td><td class="val">Detailed real-time monitoring of long-running SQL.</td></tr>
+          <tr><td class="key">RMAN Backup/Recovery</td><td class="val">Backup history, backup sets, restore points. Schedule backups.</td></tr>
+          <tr><td class="key">DB Config &gt; Init Parameters</td><td class="val">View and edit all init parameters. Equivalent to SHOW PARAMETER.</td></tr>
+          <tr><td class="key">DB Config &gt; Memory Advisor</td><td class="val">Oracle's SGA and PGA sizing recommendations.</td></tr>
+        </tbody></table>
+        <div class="section-title" style="margin-top:16px"><h4 style="font-size:0.88rem;color:var(--teal)">SQL Behind DBA Navigator Actions</h4></div>
+        <table class="def-table"><thead><tr><th>Action</th><th>SQL that runs</th></tr></thead><tbody>
+          <tr><td class="key">Kill a session</td><td class="val">ALTER SYSTEM KILL SESSION 'sid,serial#' IMMEDIATE</td></tr>
+          <tr><td class="key">Lock a user</td><td class="val">ALTER USER username ACCOUNT LOCK</td></tr>
+          <tr><td class="key">Add datafile</td><td class="val">ALTER TABLESPACE ts ADD DATAFILE '/path' SIZE 500M AUTOEXTEND ON</td></tr>
+          <tr><td class="key">Create user</td><td class="val">CREATE USER name IDENTIFIED BY pwd DEFAULT TABLESPACE ts</td></tr>
+          <tr><td class="key">Drop user</td><td class="val">DROP USER name CASCADE</td></tr>
+        </tbody></table>
+      </div>
+    </div><!-- /w6-sheets -->
+
+    <div class="tab-pane" id="w6-quiz">
+      <div class="content-section" id="q6">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 6 &mdash; Oracle SQL Developer</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">OPEN BOOK</div><div class="info-box-body">Use all cheatsheets. 6 questions. Select your answer and click Check Answer.</div></div>
+        <div id="w6-score" class="score-badge" style="display:none">Score: <span id="w6-score-val">0</span>/6</div>
+
+        <div class="quiz-q" id="q6_1">
+          <p class="q-text">Q1. Which keyboard shortcut shows the execution plan WITHOUT running the query?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','C')"><span class="opt-key">A</span> F5</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','C')"><span class="opt-key">B</span> F9</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','C')"><span class="opt-key">C</span> F10</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','C')"><span class="opt-key">D</span> F11</div>
+          <button class="quiz-btn" onclick="checkQ('q6_1','C','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q6_2">
+          <p class="q-text">Q2. You see TABLE ACCESS FULL on a 50-million-row table in the execution plan. What does this mean?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','B')"><span class="opt-key">A</span> The query is using an index efficiently</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','B')"><span class="opt-key">B</span> Oracle is reading every block &mdash; a full table scan &mdash; likely the cause of slowness</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','B')"><span class="opt-key">C</span> The table has 50 million index entries</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','B')"><span class="opt-key">D</span> The query returned all 50 million rows</div>
+          <button class="quiz-btn" onclick="checkQ('q6_2','B','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q6_3">
+          <p class="q-text">Q3. Which shortcut formats your SQL automatically &mdash; fixing indentation and capitalisation?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">A</span> Ctrl+S</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">B</span> Ctrl+F7</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">C</span> Ctrl+Space</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">D</span> Ctrl+/</div>
+          <button class="quiz-btn" onclick="checkQ('q6_3','B','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q6_4">
+          <p class="q-text">Q4. Where in the DBA Navigator would you go to add a new datafile to a tablespace?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','C')"><span class="opt-key">A</span> Security &gt; Users</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','C')"><span class="opt-key">B</span> Performance &gt; Top Activity</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','C')"><span class="opt-key">C</span> Storage &gt; Tablespaces, then right-click the tablespace</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','C')"><span class="opt-key">D</span> Database Configuration &gt; Memory Advisor</div>
+          <button class="quiz-btn" onclick="checkQ('q6_4','C','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q6_5">
+          <p class="q-text">Q5. Port 1521 is blocked by a firewall. How do you connect SQL Developer to the database?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">A</span> Use a different port number in the connection profile</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">B</span> Configure an SSH tunnel via PuTTY or SQL Developer built-in SSH, forwarding through port 22</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">C</span> Use Easy Connect instead of Service Name</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">D</span> Connect directly to the server IP address</div>
+          <button class="quiz-btn" onclick="checkQ('q6_5','B','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_5-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q6_6">
+          <p class="q-text">Q6. SQL Developer completely replaces SQL*Plus for professional DBAs. True or False?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">A</span> True &mdash; SQL Developer can do everything SQL*Plus can</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">B</span> False &mdash; both are essential. SQL Developer for visual work, SQL*Plus for automation and server-side scripting</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">C</span> True &mdash; only beginners use SQL*Plus</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">D</span> False &mdash; SQL*Plus is better for all DBA tasks</div>
+          <button class="quiz-btn" onclick="checkQ('q6_6','B','w6-score','w6-score-val',6)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_6-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div><!-- /w6-quiz -->
+
+    <div class="tab-pane" id="w6-assign">
+      <div class="content-section" id="a6">
+        <div class="section-title"><div class="section-icon icon-lab">&#128203;</div><h4>Assignment 6 &mdash; Your Professional Connection Library</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">GOAL</div><div class="info-box-body">Build a fully configured SQL Developer environment with professional connection profiles, custom reports, and execution plan analysis. This setup will be your primary GUI tool for the rest of the course.</div></div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Install SQL Developer (Windows 64-bit with JDK bundled version)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Set font size to 14+ in Tools > Preferences > Code Editor > Fonts</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Enable line numbers in Code Editor > Line Gutter</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create connection: LAB_ORCL_SYS (SYS as SYSDBA, service ORCL)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create connection: LAB_ORCL_SYSTEM (SYSTEM, service ORCL)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create connection: LAB_ORCLPDB_SYSTEM (SYSTEM, service ORCLPDB1)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create a LAB folder and move all connections into it</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Test all 3 connections -- all must show Status: Success</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run the 4 SQL Worksheet queries from Task 3 and screenshot results</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Open DBA Navigator, navigate Storage > Tablespaces, screenshot</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Navigate Security > Users and screenshot user list</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Press F10 on the Task 5 query and analyse the execution plan</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create custom report "Tablespace Usage" using the SQL from Lesson 6.7</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Export the report to Excel and screenshot the result</li>
+        </ul>
+      </div>
+    </div><!-- /w6-assign -->
+
+    <div class="tab-pane" id="w6-runbook">
+      <div class="content-section" id="r6">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 6 Runbook &mdash; Your Daily Guide</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">NOTE</div><div class="info-box-body">This is a practical week. Most of it is hands-on with SQL Developer. Open SQL Developer alongside this guide and try everything as you read.</div></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; Install and Configure</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 6.1 and 6.2 (55 mins)</li>
+          <li><span class="step-num">2</span>Download and install SQL Developer with JDK bundled</li>
+          <li><span class="step-num">3</span>Configure preferences: font size 14+, line numbers on</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; Connections</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.3 (45 mins)</li>
+          <li><span class="step-num">2</span>Create all 3 connection profiles and test them</li>
+          <li><span class="step-num">3</span>Create the LAB folder and organise connections</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; SQL Worksheet</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.4 (50 mins)</li>
+          <li><span class="step-num">2</span>Practice every shortcut in Cheatsheet 12</li>
+          <li><span class="step-num">3</span>Try highlighting part of a query and pressing F9</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; DBA Navigator</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.5 (60 mins)</li>
+          <li><span class="step-num">2</span>Spend 30 mins clicking through every DBA Navigator node</li>
+          <li><span class="step-num">3</span>For each action -- check the Log panel to see what SQL ran</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5 &mdash; Execution Plans and Reports</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 6.6 and 6.7 (85 mins)</li>
+          <li><span class="step-num">2</span>Press F10 on 5 different queries and study the plans</li>
+          <li><span class="step-num">3</span>Run 3 built-in DBA reports and create your first custom report</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 6 &mdash; SSH Tunnel and Quiz</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.8 (30 mins)</li>
+          <li><span class="step-num">2</span>Review Cheatsheets 12 and 13 (20 mins)</li>
+          <li><span class="step-num">3</span>Complete Quiz 6 (30 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 7 &mdash; Assignment</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Complete all tasks in Assignment 6</li>
+          <li><span class="step-num">2</span>Take all required screenshots</li>
+          <li><span class="step-num">3</span>Celebrate: you now have a professional SQL Developer setup!</li>
+        </ul></div>
+      </div>
+    </div><!-- /w6-runbook -->
+
+  </div>
+</div>
+</div>
+
+<div class="week-section">
+<div class="week-card fade-in" id="w6">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--gold);color:#000">W6</div>
+      <div>
+        <h3>Oracle SQL Developer</h3>
+        <p>Install &bull; Connections &bull; SQL Worksheet &bull; DBA Navigator &bull; Reports &bull; Execution Plans &bull; SSH Tunnel</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w6-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-assign')">Assignment</button>
+      <button class="tab-btn" onclick="switchTab(this,'w6-runbook')">Runbook</button>
+    </div>
+    <div class="tab-pane active" id="w6-lessons">
+
+      <div class="content-section" id="l61">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.1 &mdash; What is SQL Developer and Why DBAs Use It</h4></div>
+        <p class="body-text">Oracle SQL Developer is Oracle's free, fully-featured graphical IDE. It runs on your Windows laptop and connects to Oracle over the network. Write SQL, manage objects, browse schemas, view execution plans, run DBA reports &mdash; all without the command line.</p>
+        <div class="info-box info-tip"><div class="info-box-label">KEY POINT</div><div class="info-box-body">SQL Developer does NOT replace SQL*Plus. A professional DBA uses both. SQL*Plus = the engine room. SQL Developer = the control panel.</div></div>
+        <table class="def-table"><thead><tr><th>Use SQL Developer when...</th><th>Use SQL*Plus when...</th></tr></thead><tbody>
+          <tr><td class="key">Browsing objects visually</td><td class="val">Running automated scripts via cron</td></tr>
+          <tr><td class="key">Viewing execution plans graphically</td><td class="val">Connecting when no GUI is available</td></tr>
+          <tr><td class="key">Running built-in DBA reports</td><td class="val">Writing scheduled monitoring scripts</td></tr>
+          <tr><td class="key">Developing and debugging PL/SQL</td><td class="val">Quick admin commands over SSH</td></tr>
+          <tr><td class="key">Viewing sessions and locks visually</td><td class="val">RMAN backups, health checks, reporting</td></tr>
+          <tr><td class="key">Data import/export via GUI wizard</td><td class="val">Anything that must run unattended</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l62">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.2 &mdash; Installing SQL Developer</h4></div>
+        <p class="body-text">SQL Developer is free from Oracle. Always download the version with JDK bundled &mdash; this avoids Java issues and works immediately.</p>
+        <div class="code-block">
+# Download: oracle.com/tools/downloads/sqldev-downloads.html
+# Choose:   Windows 64-bit with JDK 21 included
+# Extract:  C:\Oracle\sqldeveloper\
+# Run:      sqldeveloper.exe  (no install wizard)
+
+# CRITICAL first-time settings:
+Tools > Preferences > Database > Advanced > Autocommit = OFF
+Tools > Preferences > Database > NLS > Date Format = DD-MON-YYYY HH24:MI:SS</div>
+        <div class="info-box info-danger"><div class="info-box-label">CRITICAL</div><div class="info-box-body">Always turn Autocommit OFF immediately. With it ON every DML commits permanently with no chance to rollback. Check this every time you install SQL Developer on a new machine.</div></div>
+      </div>
+
+      <div class="content-section" id="l63">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.3 &mdash; Creating and Managing Connection Profiles</h4></div>
+        <p class="body-text">A connection profile stores all the details SQL Developer needs. Create one per database per environment. Colour-code them: PROD = Red, UAT = Amber, DEV = Green.</p>
+        <table class="def-table"><thead><tr><th>Field</th><th>What to enter</th></tr></thead><tbody>
+          <tr><td class="key">Connection Name</td><td class="val">ENVIRONMENT_DBNAME: PROD_ORCL, DEV_SATURN, UAT_DB2</td></tr>
+          <tr><td class="key">Username</td><td class="val">system or your DBA username</td></tr>
+          <tr><td class="key">Hostname</td><td class="val">IP address or hostname of the Linux server</td></tr>
+          <tr><td class="key">Port</td><td class="val">1521 (default Oracle listener port)</td></tr>
+          <tr><td class="key">SID</td><td class="val">Your ORACLE_SID (ORCL, SATURN, JUPITER etc.)</td></tr>
+          <tr><td class="key">Role</td><td class="val">Default for normal users. SYSDBA for SYS connections.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+# Through a firewall: use the Week 5 PuTTY tunnel
+# Connection Type: Basic  |  Host: localhost  |  Port: 1521
+# PuTTY tunnel forwards localhost:1521 to server:1521
+# SQL Developer thinks the database is running locally</div>
+      </div>
+
+      <div class="content-section" id="l64">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.4 &mdash; The SQL Worksheet</h4></div>
+        <p class="body-text">The SQL Worksheet is the heart of SQL Developer. Learn the keyboard shortcuts &mdash; they save enormous time every single day.</p>
+        <table class="def-table"><thead><tr><th>Shortcut</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">F9 / Ctrl+Enter</td><td class="val">Run current statement (where cursor is)</td></tr>
+          <tr><td class="key">F5</td><td class="val">Run entire script</td></tr>
+          <tr><td class="key">F10</td><td class="val">Show Execution Plan</td></tr>
+          <tr><td class="key">F8</td><td class="val">Open SQL History</td></tr>
+          <tr><td class="key">Ctrl+F7</td><td class="val">Format and auto-indent SQL</td></tr>
+          <tr><td class="key">Ctrl+/</td><td class="val">Comment / uncomment lines</td></tr>
+          <tr><td class="key">Ctrl+Space</td><td class="val">Autocomplete names and keywords</td></tr>
+          <tr><td class="key">Ctrl+D</td><td class="val">Clear the worksheet</td></tr>
+          <tr><td class="key">Right-click result grid</td><td class="val">Export to CSV, Excel, INSERT, HTML</td></tr>
+        </tbody></table>
+        <div class="info-box info-tip"><div class="info-box-label">PRO TIP</div><div class="info-box-body">Drag a table from the Connections panel into the Worksheet to auto-generate a SELECT *. Right-click any result column header to sort or filter instantly.</div></div>
+      </div>
+
+      <div class="content-section" id="l65">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.5 &mdash; The DBA Navigator</h4></div>
+        <p class="body-text">Open via: View &gt; DBA. Add your connection. Manage almost everything visually &mdash; no SQL needed.</p>
+        <table class="def-table"><thead><tr><th>Section</th><th>What you can do</th></tr></thead><tbody>
+          <tr><td class="key">Storage &gt; Tablespaces</td><td class="val">View usage %, create, resize (add datafiles), drop</td></tr>
+          <tr><td class="key">Storage &gt; Datafiles</td><td class="val">See all datafiles, sizes, autoextend settings</td></tr>
+          <tr><td class="key">Storage &gt; Redo Log Groups</td><td class="val">View and manage redo log groups and members</td></tr>
+          <tr><td class="key">Security &gt; Users</td><td class="val">Create, lock, unlock, drop, reset passwords</td></tr>
+          <tr><td class="key">Security &gt; Roles</td><td class="val">Create roles and manage memberships</td></tr>
+          <tr><td class="key">Performance &gt; Sessions</td><td class="val">Real-time session grid. Kill sessions.</td></tr>
+          <tr><td class="key">Performance &gt; Blocking</td><td class="val">See blocking and waiting sessions</td></tr>
+          <tr><td class="key">Database Status</td><td class="val">Instance status, archive mode, DB name instantly</td></tr>
+          <tr><td class="key">Database Configuration</td><td class="val">View and modify init parameters</td></tr>
+          <tr><td class="key">RMAN Backup/Recovery</td><td class="val">View backup history and configure RMAN</td></tr>
+        </tbody></table>
+        <div class="info-box info-success"><div class="info-box-label">POWER MOVES</div><div class="info-box-body">Tablespace full? Storage &gt; Tablespaces &gt; right-click &gt; Edit &gt; Add datafile.<br/>User locked? Security &gt; Users &gt; right-click &gt; Edit &gt; unlock &amp; reset password.<br/>Kill a session? Performance &gt; Sessions &gt; right-click &gt; Kill Session.</div></div>
+      </div>
+
+      <div class="content-section" id="l66">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.6 &mdash; SQL Developer Built-in Reports</h4></div>
+        <p class="body-text">Open via: View &gt; Reports. Dozens of pre-built DBA reports. Instant visibility without writing SQL. To create a custom report: right-click User Defined Reports &gt; Add Report &gt; paste your SQL &gt; Apply.</p>
+        <table class="def-table"><thead><tr><th>Category</th><th>Key Reports</th></tr></thead><tbody>
+          <tr><td class="key">All Objects</td><td class="val">Invalid objects, recently created, by type and owner</td></tr>
+          <tr><td class="key">Sessions</td><td class="val">Active sessions, blocking sessions, by wait event</td></tr>
+          <tr><td class="key">SQL</td><td class="val">Top SQL by elapsed time, longest running, high logical reads</td></tr>
+          <tr><td class="key">Storage</td><td class="val">Tablespace usage %, segments near max extent</td></tr>
+          <tr><td class="key">Security</td><td class="val">Users and privileges, roles and members, password expiry</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l67">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.7 &mdash; Viewing Execution Plans</h4></div>
+        <p class="body-text">Write your query, press F10. The Explain Plan tab shows exactly how Oracle retrieves your data &mdash; the starting point for all SQL tuning.</p>
+        <div class="code-block">
+-- Write query, press F10 to see the plan
+
+-- Or view a cached plan by SQL_ID:
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR('sql_id',NULL,'ALLSTATS LAST'));
+
+-- Get your last statement's SQL_ID:
+SELECT prev_sql_id FROM v$session WHERE sid = SYS_CONTEXT('USERENV','SID');</div>
+        <table class="def-table"><thead><tr><th>Plan Element</th><th>What to look for</th></tr></thead><tbody>
+          <tr><td class="key">TABLE ACCESS FULL</td><td class="val">Reading every row. Fine for small tables. Investigate on large ones.</td></tr>
+          <tr><td class="key">INDEX RANGE SCAN</td><td class="val">Using an index. Usually good. Check filter matches index columns.</td></tr>
+          <tr><td class="key">Cost</td><td class="val">Oracle's estimate of work. Lower = better. Compare before/after tuning.</td></tr>
+          <tr><td class="key">Cardinality (Rows)</td><td class="val">Row estimate per step. Large mismatch vs actual = stale stats. Run DBMS_STATS.</td></tr>
+          <tr><td class="key">HASH JOIN</td><td class="val">Good for large table joins. Builds hash table in memory.</td></tr>
+          <tr><td class="key">SORT ORDER BY</td><td class="val">Uses PGA. Spills to TEMP if PGA is small.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l68">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 6.8 &mdash; SQL Developer Through SSH Tunnel</h4></div>
+        <p class="body-text">SQL Developer connects through the PuTTY tunnel from Week 5. Use Connection Type: Basic, Host: localhost, Port: 1521. The tunnel makes the server's database appear local to SQL Developer. This is how enterprise DBAs work every day.</p>
+        <div class="info-box info-success"><div class="info-box-label">RECAP</div><div class="info-box-body">Week 5 PuTTY tunnel: localhost:1521 forwards to server:1521 through SSH port 22. In SQL Developer: Basic connection to localhost:1521. Full GUI access to a database behind any firewall.</div></div>
+      </div>
+
+    </div><!-- /w6-lessons -->
+
+    <div class="tab-pane" id="w6-sheets">
+      <div class="content-section" id="cs12">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 12 &mdash; SQL Developer Keyboard Shortcuts</h4></div>
+        <table class="def-table"><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody>
+          <tr><td class="key">F9 / Ctrl+Enter</td><td class="val">Run current statement</td></tr>
+          <tr><td class="key">F5</td><td class="val">Run entire script</td></tr>
+          <tr><td class="key">F10</td><td class="val">Explain Plan for current query</td></tr>
+          <tr><td class="key">F8</td><td class="val">SQL History panel</td></tr>
+          <tr><td class="key">Ctrl+F7</td><td class="val">Format / auto-indent SQL</td></tr>
+          <tr><td class="key">Ctrl+/</td><td class="val">Comment / uncomment selected lines</td></tr>
+          <tr><td class="key">Ctrl+Space</td><td class="val">Autocomplete</td></tr>
+          <tr><td class="key">Ctrl+D</td><td class="val">Clear worksheet</td></tr>
+          <tr><td class="key">Ctrl+S</td><td class="val">Save to .sql file</td></tr>
+          <tr><td class="key">Alt+F10</td><td class="val">New SQL Worksheet tab</td></tr>
+          <tr><td class="key">Ctrl+Tab</td><td class="val">Switch between open worksheets</td></tr>
+          <tr><td class="key">Ctrl+G</td><td class="val">Go to line number</td></tr>
+          <tr><td class="key">Ctrl+Z / Ctrl+Y</td><td class="val">Undo / Redo</td></tr>
+          <tr><td class="key">Ctrl+Shift+U</td><td class="val">To UPPERCASE</td></tr>
+          <tr><td class="key">Ctrl+Shift+L</td><td class="val">to lowercase</td></tr>
+          <tr><td class="key">Right-click column header</td><td class="val">Sort, filter, freeze column in grid</td></tr>
+          <tr><td class="key">Right-click result grid</td><td class="val">Export to CSV, Excel, INSERT, HTML</td></tr>
+        </tbody></table>
+      </div>
+      <div class="content-section" id="cs13">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 13 &mdash; DBA Navigator Quick Reference</h4></div>
+        <table class="def-table"><thead><tr><th>Task</th><th>DBA Navigator Path &amp; Action</th></tr></thead><tbody>
+          <tr><td class="key">Check tablespace usage %</td><td class="val">Storage &gt; Tablespaces &mdash; % Used column</td></tr>
+          <tr><td class="key">Add datafile to tablespace</td><td class="val">Storage &gt; Tablespaces &gt; right-click &gt; Edit &gt; Add datafile</td></tr>
+          <tr><td class="key">Create a new user</td><td class="val">Security &gt; Users &gt; right-click Users &gt; Create User</td></tr>
+          <tr><td class="key">Unlock a locked user</td><td class="val">Security &gt; Users &gt; right-click user &gt; Edit &gt; uncheck Locked</td></tr>
+          <tr><td class="key">Reset a user password</td><td class="val">Security &gt; Users &gt; right-click user &gt; Edit &gt; enter new password</td></tr>
+          <tr><td class="key">Grant a role to a user</td><td class="val">Security &gt; Users &gt; Edit &gt; Granted Roles tab &gt; Grant</td></tr>
+          <tr><td class="key">View active sessions</td><td class="val">Performance &gt; Sessions (real-time, sortable, filterable grid)</td></tr>
+          <tr><td class="key">Kill a session</td><td class="val">Performance &gt; Sessions &gt; right-click session &gt; Kill Session</td></tr>
+          <tr><td class="key">View blocking locks</td><td class="val">Performance &gt; Blocking Sessions tab</td></tr>
+          <tr><td class="key">Check archive log mode</td><td class="val">Database Status panel &mdash; shows immediately</td></tr>
+          <tr><td class="key">View init parameters</td><td class="val">Database Configuration &gt; Initialization Parameters</td></tr>
+          <tr><td class="key">Check RMAN backup history</td><td class="val">RMAN Backup/Recovery &gt; Backup Jobs</td></tr>
+          <tr><td class="key">View redo log status</td><td class="val">Storage &gt; Redo Log Groups &mdash; CURRENT/ACTIVE/INACTIVE</td></tr>
+          <tr><td class="key">Check FRA usage</td><td class="val">Storage &gt; Recovery Area &mdash; limit, used %, and files</td></tr>
+        </tbody></table>
+      </div>
+    </div><!-- /w6-sheets -->
+
+    <div class="tab-pane" id="w6-quiz">
+      <div class="content-section" id="q6">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 6 &mdash; Oracle SQL Developer</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">OPEN BOOK</div><div class="info-box-body">10 questions. Use your cheatsheets freely. Select your answer and click Check Answer.</div></div>
+        <div id="w6-score" class="score-badge" style="display:none">Score: <span id="w6-score-val">0</span>/10</div>
+
+        <div class="quiz-q" id="q6_1">
+          <p class="q-text">Q1. What keyboard shortcut runs ONLY the statement the cursor is currently in?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','B')"><span class="opt-key">A</span> F5</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','B')"><span class="opt-key">B</span> F9 or Ctrl+Enter</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','B')"><span class="opt-key">C</span> F10</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_1','B')"><span class="opt-key">D</span> Ctrl+R</div>
+          <button class="quiz-btn" onclick="checkQ('q6_1','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_1-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_2">
+          <p class="q-text">Q2. What does pressing F10 do in the SQL Worksheet?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','C')"><span class="opt-key">A</span> Runs the entire script</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','C')"><span class="opt-key">B</span> Opens SQL History</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','C')"><span class="opt-key">C</span> Shows the Execution Plan for the current query</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_2','C')"><span class="opt-key">D</span> Formats the SQL</div>
+          <button class="quiz-btn" onclick="checkQ('q6_2','C','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_2-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_3">
+          <p class="q-text">Q3. Where in SQL Developer do you resize a tablespace by adding a datafile?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">A</span> Tools &gt; Database Management</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">B</span> DBA Navigator &gt; Storage &gt; Tablespaces &gt; right-click &gt; Edit</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">C</span> View &gt; Reports &gt; Storage</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_3','B')"><span class="opt-key">D</span> Tools &gt; Preferences &gt; Storage</div>
+          <button class="quiz-btn" onclick="checkQ('q6_3','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_3-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_4">
+          <p class="q-text">Q4. Why should Autocommit ALWAYS be set to OFF?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','B')"><span class="opt-key">A</span> It makes queries run faster</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','B')"><span class="opt-key">B</span> It prevents accidental permanent DML changes before you can rollback</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','B')"><span class="opt-key">C</span> It is required by Oracle licensing</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_4','B')"><span class="opt-key">D</span> It enables the DBA Navigator</div>
+          <button class="quiz-btn" onclick="checkQ('q6_4','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_4-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_5">
+          <p class="q-text">Q5. TABLE ACCESS FULL in an execution plan means:</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">A</span> An index was used successfully</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">B</span> Oracle read every row in the table without using an index</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">C</span> The query returned all columns</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_5','B')"><span class="opt-key">D</span> A full backup ran during the query</div>
+          <button class="quiz-btn" onclick="checkQ('q6_5','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_5-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_6">
+          <p class="q-text">Q6. What naming convention should you use for SQL Developer connection profiles?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">A</span> Any short name you remember</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">B</span> ENVIRONMENT_DBNAME &mdash; e.g. PROD_ORCL, DEV_SATURN, UAT_DB2</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">C</span> The database IP address</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_6','B')"><span class="opt-key">D</span> Your username followed by the date</div>
+          <button class="quiz-btn" onclick="checkQ('q6_6','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_6-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_7">
+          <p class="q-text">Q7. How do you connect SQL Developer to a database behind a firewall?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_7','B')"><span class="opt-key">A</span> SQL Developer cannot work with firewalled databases</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_7','B')"><span class="opt-key">B</span> Use PuTTY SSH tunnel (localhost:1521 to server:1521) or SSH connection type</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_7','B')"><span class="opt-key">C</span> Connect using port 8080 instead of 1521</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_7','B')"><span class="opt-key">D</span> Use SQL Developer offline mode</div>
+          <button class="quiz-btn" onclick="checkQ('q6_7','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_7-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_8">
+          <p class="q-text">Q8. Where do you find the real-time list of active database sessions in SQL Developer?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_8','C')"><span class="opt-key">A</span> Tools &gt; Session Manager</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_8','C')"><span class="opt-key">B</span> View &gt; Sessions</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_8','C')"><span class="opt-key">C</span> DBA Navigator &gt; Performance &gt; Sessions</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_8','C')"><span class="opt-key">D</span> Reports &gt; All Sessions</div>
+          <button class="quiz-btn" onclick="checkQ('q6_8','C','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_8-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_9">
+          <p class="q-text">Q9. How do you save your own SQL as a permanent one-click report in SQL Developer?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_9','C')"><span class="opt-key">A</span> Stored Procedures panel</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_9','C')"><span class="opt-key">B</span> Favourites panel</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_9','C')"><span class="opt-key">C</span> User Defined Reports &mdash; right-click in Reports panel &gt; Add Report</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_9','C')"><span class="opt-key">D</span> Query Builder</div>
+          <button class="quiz-btn" onclick="checkQ('q6_9','C','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_9-fb" style="display:none"></div>
+        </div>
+        <div class="quiz-q" id="q6_10">
+          <p class="q-text">Q10. A large Cardinality estimate in the plan that is very different from actual row count usually means:</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_10','B')"><span class="opt-key">A</span> The query is well optimised</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_10','B')"><span class="opt-key">B</span> Stale optimizer statistics &mdash; consider running DBMS_STATS</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_10','B')"><span class="opt-key">C</span> The database is low on memory</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q6_10','B')"><span class="opt-key">D</span> The index is corrupt</div>
+          <button class="quiz-btn" onclick="checkQ('q6_10','B','w6-score','w6-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q6_10-fb" style="display:none"></div>
+        </div>
+      </div>
+    </div><!-- /w6-quiz -->
+
+    <div class="tab-pane" id="w6-assign">
+      <div class="content-section" id="a6">
+        <div class="section-title"><div class="section-icon icon-lab">&#128203;</div><h4>Assignment 6 &mdash; Build Your SQL Developer Workspace</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">TIME</div><div class="info-box-body">Estimated 2-3 hours. Requires your running planet database from Week 4. Submit screenshots as evidence.</div></div>
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 1 &mdash; Install and Configure</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Download and install SQL Developer with JDK bundled</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Set Autocommit OFF, Date Format, and Font (see Lesson 6.2)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create connection profile for your planet database (SYSTEM user)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create second profile as SYS / SYSDBA</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Colour-code both connections green (DEV)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 1: SQL Developer with both connections visible</li>
+        </ul>
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 2 &mdash; SQL Worksheet Practice</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run the tablespace usage query from Week 5 using F9</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run 5 DBA monitoring queries as a script using F5</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Format a query using Ctrl+F7 then export results to CSV</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 2: SQL Worksheet with formatted query and results</li>
+        </ul>
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 3 &mdash; DBA Navigator</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Open DBA Navigator (View &gt; DBA) and add your connection</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Record % used for each tablespace in Storage &gt; Tablespaces</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Check Performance &gt; Sessions and count active sessions</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Check Storage &gt; Redo Log Groups and note each status</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 3: DBA Navigator showing Tablespaces panel</li>
+        </ul>
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 4 &mdash; Reports</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run All Objects &gt; Invalid Objects (should return 0 rows)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run Storage &gt; Tablespace Usage report</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create one custom User Defined Report with your own SQL</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 4: Reports panel with custom report highlighted</li>
+        </ul>
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 5 &mdash; Execution Plan</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run: SELECT username, account_status FROM dba_users ORDER BY username; then press F10</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Note what operation appears (TABLE ACCESS FULL or INDEX?)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 5: Explain Plan tab for this query</li>
+        </ul>
+      </div>
+    </div><!-- /w6-assign -->
+
+    <div class="tab-pane" id="w6-runbook">
+      <div class="content-section" id="r6">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 6 Runbook &mdash; Your Daily Guide</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">REMINDER</div><div class="info-box-body">SQL Developer is a tool you learn by using it. Open it and click everything as you read each lesson. Do not just read &mdash; do.</div></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.1 (20 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 6.2 and install SQL Developer (40 mins) &mdash; set Autocommit OFF immediately</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.3 &mdash; Connection Profiles (45 mins)</li>
+          <li><span class="step-num">2</span>Create all profiles, test each one connects, colour-code by environment (45 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.4 &mdash; SQL Worksheet (40 mins)</li>
+          <li><span class="step-num">2</span>Practice EVERY keyboard shortcut from Cheatsheet 12 on your database (50 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 6.5 &mdash; DBA Navigator (40 mins)</li>
+          <li><span class="step-num">2</span>Explore every DBA Navigator section. Click everything you can see. (50 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 6.6, 6.7, 6.8 (75 mins)</li>
+          <li><span class="step-num">2</span>Run 5 DBA reports. View execution plans for 3 different queries.</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 6-7 &mdash; approx 3 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Review Cheatsheets 12 and 13 (15 mins)</li>
+          <li><span class="step-num">2</span>Complete Quiz 6 (20 mins)</li>
+          <li><span class="step-num">3</span>Complete all 5 Assignment 6 tasks and take all 5 screenshots (2+ hours)</li>
+          <li><span class="step-num">4</span>Celebrate &mdash; you can now manage Oracle databases visually like a professional DBA!</li>
+        </ul></div>
+      </div>
+    </div><!-- /w6-runbook -->
+
+  </div><!-- /week-body -->
+</div><!-- /week-card w6 -->
+</div><!-- /week-section -->
 <!-- FOOTER -->
 <div style="padding:40px 60px;border-top:1px solid var(--border);margin-top:20px;text-align:center">
-  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;5 of 26</p>
-  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 6 (Oracle SQL Developer) coming next &bull; Designed for the anxious learner</p>
+  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;6 of 26</p>
+  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 7 (OEM &amp; Toad) coming next &bull; Designed for the anxious learner</p>
 </div>
 
 </div><!-- /main -->
@@ -2839,7 +3569,8 @@ const sections = ['hero','w1','l11','l12','l13','l14','cs1','cs2','q1','a1','r1'
   'w2','l21','l22','l23','l24','l25','l26','l27','l28','cs3','cs4','cs5','q2','r2',
   'w3','l31','l32','l33','l34','l35','l36','l37','l38','cs6','cs7','cs8','fc3','q3','r3',
   'w4','l41','l42','l43','l44','l45','l46','l47','l48','rbA','rbB','cs9','q4','r4',
-  'w5','l51','l52','l53','l54','l55','l56','l57','l58','cs10','cs11','sl5','q5','a5','r5'];
+  'w5','l51','l52','l53','l54','l55','l56','l57','l58','cs10','cs11','sl5','q5','a5','r5',
+  'w6','l61','l62','l63','l64','l65','l66','l67','l68','cs12','cs13','q6','a6','r6'];
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
