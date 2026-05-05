@@ -477,6 +477,23 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
   </div>
   <input id="search-box" type="text" placeholder="Search content..." oninput="filterNav(this.value)"/>
 
+  <div style="padding:0 14px 10px;">
+    <div onclick="navTo('curriculum')" style="
+      display:flex;align-items:center;gap:10px;padding:10px 12px;
+      background:linear-gradient(135deg,rgba(240,165,0,0.15),rgba(240,165,0,0.05));
+      border:1px solid rgba(240,165,0,0.4);border-radius:8px;
+      cursor:pointer;transition:all 0.2s;
+    " onmouseover="this.style.background='linear-gradient(135deg,rgba(240,165,0,0.25),rgba(240,165,0,0.1))'"
+       onmouseout="this.style.background='linear-gradient(135deg,rgba(240,165,0,0.15),rgba(240,165,0,0.05))'">
+      <span style="font-size:1.1rem">&#128218;</span>
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;color:var(--gold);font-family:'Space Mono',monospace">FULL CURRICULUM</div>
+        <div style="font-size:0.65rem;color:var(--grey)">All 26 Weeks at a Glance</div>
+      </div>
+      <span style="margin-left:auto;font-size:0.65rem;color:var(--gold)">&#9660;</span>
+    </div>
+  </div>
+
   <div class="nav-week">
     <div class="nav-week-header" onclick="toggleNav(this)">
       Phase 1 &mdash; Foundations <span class="arrow">&#9660;</span>
@@ -616,6 +633,484 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 </section>
+
+
+<!-- CURRICULUM MAP -->
+<div id="curriculum" style="padding:32px 60px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#0a1220,#0f1b2d);">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+    <span style="font-size:1.6rem">&#128218;</span>
+    <div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--gold);margin:0">Full 26-Week Curriculum</h2>
+      <p style="color:var(--grey);font-size:0.82rem;margin:4px 0 0">Complete course map &mdash; all phases, weeks, and topics at a glance</p>
+    </div>
+  </div>
+
+  
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(46,116,181,0.1);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--blue);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 1 &mdash; Foundations</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w1')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 1</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Intro to Databases & Oracle</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">ACID, Relational Model, DBA Role, Oracle Products</div>
+        </div>
+        <div onclick="navTo('w2')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 2</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Linux Fundamentals</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">PuTTY, 40 Commands, Permissions, vi, Env Vars</div>
+        </div>
+        <div onclick="navTo('w3')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 3</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle 19c Architecture</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Instance, SGA, PGA, Background Processes, Files, Startup</div>
+        </div>
+        <div onclick="navTo('w4')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 4</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Installation on Linux</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">OS Config, DBCA, Listener, Verification, Auto-Start</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(0,184,160,0.1);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--teal);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 2 &mdash; DBA Tools</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w5')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 5</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">SQL*Plus & PuTTY Mastery</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">6 Connection Methods, Scripting, login.sql, 20 DBA Queries, SSH Tunnel</div>
+        </div>
+        <div onclick="navTo('w6')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(34,197,94,0.08);
+          border:1px solid rgba(34,197,94,0.25);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(34,197,94,0.08)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 6</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(34,197,94,0.2);
+              color:var(--green)">COMPLETE</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle SQL Developer</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Install, Connections, SQL Worksheet, DBA Navigator, Reports, Exec Plans</div>
+        </div>
+        <div onclick="navTo('w7')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 7</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">OEM & Toad</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">OEM Express, Performance Hub, Toad Schema Browser, Tool Comparison</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(91,44,141,0.1);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--purple);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 3 &mdash; Core Administration</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w8')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 8</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">User & Schema Management</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">CREATE USER, Roles, Privileges, Profiles, Password Policies</div>
+        </div>
+        <div onclick="navTo('w9')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 9</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Tablespace & Storage</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">CREATE TABLESPACE, Datafiles, Autoextend, Space Monitoring</div>
+        </div>
+        <div onclick="navTo('w10')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 10</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Table & Object Management</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Tables, Indexes, Constraints, Sequences, Views, DBMS_STATS</div>
+        </div>
+        <div onclick="navTo('w11')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 11</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle Data Pump</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">expdp/impdp, DIRECTORY, Export/Import Modes, REMAP, Monitoring</div>
+        </div>
+        <div onclick="navTo('w12')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 12</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">SQL*Loader & External Tables</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Control Files, Direct Path, Bad Files, External Tables</div>
+        </div>
+        <div onclick="navTo('w13')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 13</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Undo, Temp & Redo Logs</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">UNDO_RETENTION, Temp Management, Redo Groups, Archive Logs</div>
+        </div>
+        <div onclick="navTo('w14')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 14</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle Networking</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">listener.ora, tnsnames.ora, LSNRCTL, Troubleshooting ORA-12xxx</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(240,165,0,0.08);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--gold);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 4 &mdash; Backup, Recovery &amp; HA</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w15')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 15</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">RMAN Fundamentals</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Backup Types, Channels, FRA, Retention Policy, Compression</div>
+        </div>
+        <div onclick="navTo('w16')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 16</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">RMAN Recovery</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Restore & Recover, PITR, Block Recovery, RESETLOGS</div>
+        </div>
+        <div onclick="navTo('w17')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 17</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Flashback Technology</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Flashback Query, Table, Database, Recycle Bin</div>
+        </div>
+        <div onclick="navTo('w18')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 18</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle Patching</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">OPatch, RU Patches, Pre/Post Steps, DBA_REGISTRY_SQLPATCH</div>
+        </div>
+        <div onclick="navTo('w19')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 19</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Oracle Data Guard</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Physical Standby, Redo Transport, Switchover, Failover, Active DG</div>
+        </div>
+        <div onclick="navTo('w20')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 20</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">GoldenGate Concepts</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Extract, Replicat, Trails, Use Cases, Comparing to Data Guard</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(240,165,0,0.08);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--gold);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 5 &mdash; Performance Tuning</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w21')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 21</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">AWR, ADDM & Wait Events</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">AWR Reports, ADDM Findings, ASH, Top Wait Events</div>
+        </div>
+        <div onclick="navTo('w22')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 22</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">SQL Performance Tuning</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Execution Plans, Index Access, Join Methods, Hints, SQL Tuning Advisor</div>
+        </div>
+        <div onclick="navTo('w23')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 23</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Memory & I/O Tuning</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Buffer Cache, Shared Pool, PGA, I/O Wait Analysis, ASM Basics</div>
+        </div>
+        <div onclick="navTo('w24')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 24</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">DBMS_SCHEDULER & Automation</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">Scheduled Jobs, Chains, Monitoring, Automated Health Checks</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+      <div style="padding:10px 16px;background:rgba(31,56,100,0.2);border-bottom:1px solid rgba(255,255,255,0.06)">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--navy);font-family:'Space Mono',monospace;letter-spacing:0.06em">Phase 6 &mdash; Security &amp; Career Launch</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:10px">
+        
+        <div onclick="navTo('w25')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 25</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Security & Auditing</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">TDE, Unified Auditing, FGA, VPD, Privilege Analysis, Hardening</div>
+        </div>
+        <div onclick="navTo('w26')" style="
+          padding:10px 12px;border-radius:7px;cursor:pointer;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(255,255,255,0.07);
+          transition:all 0.15s;
+        " onmouseover="this.style.background='rgba(255,255,255,0.07)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--grey)">WEEK 26</span>
+            <span style="font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;
+              background:rgba(100,100,100,0.2);
+              color:var(--grey)">PLANNED</span>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:3px">Career Launch</div>
+          <div style="font-size:0.68rem;color:var(--grey);line-height:1.4">ORA Errors, On-Call Runbook, OCP Roadmap, Resume, 50 Interview Q&A</div>
+        </div>
+      </div>
+    </div>
+</div>
 
 <!-- PHASE 1 HEADER -->
 <div class="phase-header">
