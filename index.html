@@ -611,6 +611,28 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
     </div>
   </div>
 
+  <div class="nav-week">
+    <div class="nav-week-header" onclick="toggleNav(this)">
+      Phase 3 &mdash; Core Administration <span class="arrow">&#9660;</span>
+    </div>
+    <div class="nav-items">
+      <a class="nav-item" onclick="navTo('w7')">&#128218; Week 7 &mdash; User &amp; Schema Management</a>
+      <a class="nav-item" onclick="navTo('l71')">Lesson 7.1 &mdash; Schema vs User<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l72')">Lesson 7.2 &mdash; CREATE USER<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l73')">Lesson 7.3 &mdash; ALTER USER<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l74')">Lesson 7.4 &mdash; System vs Object Privileges<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l75')">Lesson 7.5 &mdash; Roles<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l76')">Lesson 7.6 &mdash; Password Profiles<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l77')">Lesson 7.7 &mdash; DROP USER &amp; Queries<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('l78')">Lesson 7.8 &mdash; Real-World Scenarios<span class="tag tag-lesson">Lesson</span></a>
+      <a class="nav-item" onclick="navTo('cs14')">Cheatsheet 14 &mdash; User Management SQL<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('cs15')">Cheatsheet 15 &mdash; Monitoring Queries<span class="tag tag-sheet">Sheet</span></a>
+      <a class="nav-item" onclick="navTo('q7')">Quiz 7 &mdash; 10 Questions<span class="tag tag-quiz">Quiz</span></a>
+      <a class="nav-item" onclick="navTo('a7')">Assignment 7 &mdash; User Management<span class="tag tag-lab">Lab</span></a>
+      <a class="nav-item" onclick="navTo('r7')">Week 7 Runbook<span class="tag tag-run">Run</span></a>
+    </div>
+  </div>
+
 </nav>
 
 <!-- MAIN -->
@@ -622,14 +644,14 @@ p.body-text { font-size: 0.9rem; color: #b8cce0; line-height: 1.8; margin-bottom
   <h1>Oracle DBA<br/><span>Career Training</span></h1>
   <p>From zero to Junior DBA in 6 months. Designed with care for the anxious learner. Bite-sized. Supportive. Comprehensive.</p>
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Weeks Covered</span></div>
-    <div class="stat"><span class="stat-num">44</span><span class="stat-label">Lessons</span></div>
-    <div class="stat"><span class="stat-num">13</span><span class="stat-label">Cheatsheets</span></div>
-    <div class="stat"><span class="stat-num">73</span><span class="stat-label">Quiz Questions</span></div>
+    <div class="stat"><span class="stat-num">7</span><span class="stat-label">Weeks Covered</span></div>
+    <div class="stat"><span class="stat-num">52</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">15</span><span class="stat-label">Cheatsheets</span></div>
+    <div class="stat"><span class="stat-num">83</span><span class="stat-label">Quiz Questions</span></div>
     <div class="stat"><span class="stat-num">26</span><span class="stat-label">DBA Scripts</span></div>
   </div>
   <div class="progress-bar-outer">
-    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-6 of 26</span></div>
+    <div class="progress-label"><span>Course Progress</span><span>Weeks 1-7 of 26</span></div>
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 </section>
@@ -3549,10 +3571,522 @@ SELECT prev_sql_id FROM v$session WHERE sid = SYS_CONTEXT('USERENV','SID');</div
   </div><!-- /week-body -->
 </div><!-- /week-card w6 -->
 </div><!-- /week-section -->
+
+<div class="phase-header">
+  <div class="phase-tag phase-2" style="background:rgba(91,44,141,0.15);color:#a78bfa">Phase 3</div>
+  <h2>Core Administration &mdash; Week 7</h2>
+  <p>User &amp; Schema Management &bull; Privileges &bull; Roles &bull; Profiles &bull; Security</p>
+</div>
+
+<div class="week-section">
+<div class="week-card fade-in" id="w7">
+  <div class="week-card-header" onclick="toggleWeek(this)">
+    <div class="week-title">
+      <div class="week-num" style="background:var(--purple);color:#fff">W7</div>
+      <div>
+        <h3>User &amp; Schema Management</h3>
+        <p>CREATE/ALTER/DROP USER &bull; System &amp; Object Privileges &bull; Roles &bull; Password Profiles &bull; Security Scenarios</p>
+      </div>
+    </div>
+    <span class="week-toggle open">&#9660;</span>
+  </div>
+  <div class="week-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'w7-lessons')">Lessons</button>
+      <button class="tab-btn" onclick="switchTab(this,'w7-sheets')">Cheatsheets</button>
+      <button class="tab-btn" onclick="switchTab(this,'w7-quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'w7-assign')">Assignment</button>
+      <button class="tab-btn" onclick="switchTab(this,'w7-runbook')">Runbook</button>
+    </div>
+
+    <div class="tab-pane active" id="w7-lessons">
+
+      <div class="content-section" id="l71">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.1 &mdash; Schema vs User: The Oracle Distinction</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">KEY CONCEPT</div><div class="info-box-body">USER = an account that can log in. SCHEMA = the collection of objects owned by that user. When you CREATE USER SCOTT, Oracle automatically creates the SCOTT schema. The schema name always matches the username.</div></div>
+        <table class="def-table"><thead><tr><th>Concept</th><th>What it means</th></tr></thead><tbody>
+          <tr><td class="key">User</td><td class="val">An account that authenticates to Oracle. Has a password, privileges, and profile.</td></tr>
+          <tr><td class="key">Schema</td><td class="val">The collection of database objects (tables, views, indexes) owned by a user. Created automatically with the user.</td></tr>
+          <tr><td class="key">Schema name</td><td class="val">Always identical to the username. HR.EMPLOYEES = table EMPLOYEES owned by user HR.</td></tr>
+          <tr><td class="key">DROP USER CASCADE</td><td class="val">Drops the user AND all objects in their schema. Permanent. Cannot be undone.</td></tr>
+          <tr><td class="key">Schema prefix in SQL</td><td class="val">SELECT * FROM HR.EMPLOYEES accesses the EMPLOYEES table in the HR schema.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="content-section" id="l72">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.2 &mdash; CREATE USER</h4></div>
+        <div class="code-block">
+-- Full professional CREATE USER:
+CREATE USER app_user
+  IDENTIFIED BY SecurePass_2024#
+  DEFAULT TABLESPACE app_data
+  TEMPORARY TABLESPACE temp
+  QUOTA 500M ON app_data
+  QUOTA UNLIMITED ON app_indexes
+  PROFILE app_profile
+  ACCOUNT UNLOCK
+  PASSWORD EXPIRE;</div>
+        <table class="def-table"><thead><tr><th>Parameter</th><th>What it does</th></tr></thead><tbody>
+          <tr><td class="key">DEFAULT TABLESPACE</td><td class="val">Where the user's objects are created. NEVER set to SYSTEM or SYSAUX.</td></tr>
+          <tr><td class="key">TEMPORARY TABLESPACE</td><td class="val">For sort operations. Always set to TEMP.</td></tr>
+          <tr><td class="key">QUOTA amount ON ts</td><td class="val">Space the user can use in that tablespace. Required to create objects.</td></tr>
+          <tr><td class="key">PROFILE</td><td class="val">Password and resource policy. Defaults to DEFAULT profile if omitted.</td></tr>
+          <tr><td class="key">PASSWORD EXPIRE</td><td class="val">Forces password change on first login. Best practice for new accounts.</td></tr>
+        </tbody></table>
+        <div class="info-box info-danger"><div class="info-box-label">NEVER</div><div class="info-box-body">Never set DEFAULT TABLESPACE to SYSTEM or SYSAUX. A user filling up the SYSTEM tablespace can crash the entire database.</div></div>
+      </div>
+
+      <div class="content-section" id="l73">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.3 &mdash; ALTER USER</h4></div>
+        <div class="code-block">
+-- Unlock account (most common DBA task):
+ALTER USER username ACCOUNT UNLOCK;
+
+-- Reset password:
+ALTER USER username IDENTIFIED BY NewPass_2024#;
+
+-- Lock account (employee leaving):
+ALTER USER username ACCOUNT LOCK;
+
+-- Force password change on next login:
+ALTER USER username PASSWORD EXPIRE;
+
+-- Change quota:
+ALTER USER username QUOTA UNLIMITED ON app_data;
+
+-- Combine changes:
+ALTER USER username
+  IDENTIFIED BY NewPass_2024#
+  ACCOUNT UNLOCK
+  QUOTA UNLIMITED ON app_data;</div>
+        <div class="info-box info-success"><div class="info-box-label">WORKFLOW</div><div class="info-box-body">When someone cannot log in: 1) Check account_status in DBA_USERS. 2) ACCOUNT UNLOCK if locked. 3) Reset password with PASSWORD EXPIRE. 4) Confirm they update their connection string if password changed.</div></div>
+      </div>
+
+      <div class="content-section" id="l74">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.4 &mdash; System Privileges vs Object Privileges</h4></div>
+        <p class="body-text">System privileges are database-wide capabilities. Object privileges are access rights to specific objects. Both are granted with GRANT and revoked with REVOKE.</p>
+        <table class="def-table"><thead><tr><th>System Privilege</th><th>What it allows</th></tr></thead><tbody>
+          <tr><td class="key">CREATE SESSION</td><td class="val">Log in to the database. Without this, nothing else works.</td></tr>
+          <tr><td class="key">CREATE TABLE</td><td class="val">Create tables in own schema. Also needs QUOTA on a tablespace.</td></tr>
+          <tr><td class="key">SELECT ANY TABLE</td><td class="val">Query tables in ANY schema. Powerful &mdash; grant carefully.</td></tr>
+          <tr><td class="key">UNLIMITED TABLESPACE</td><td class="val">Use unlimited space in any tablespace. Overrides all QUOTA settings.</td></tr>
+          <tr><td class="key">CREATE ANY TABLE</td><td class="val">Create tables in any schema. DBA-level power &mdash; rarely granted.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+-- System privilege:
+GRANT CREATE SESSION TO username;
+GRANT SELECT ANY TABLE TO username;
+
+-- Object privilege (specific table):
+GRANT SELECT ON hr.employees TO username;
+GRANT INSERT, UPDATE, DELETE ON hr.employees TO username;
+GRANT EXECUTE ON hr.process_payroll TO username;
+
+-- Revoke:
+REVOKE SELECT ON hr.employees FROM username;
+REVOKE CREATE TABLE FROM username;</div>
+      </div>
+
+      <div class="content-section" id="l75">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.5 &mdash; Roles: Bundling Privileges Together</h4></div>
+        <p class="body-text">Instead of granting 20 privileges to every developer individually, create one role with those privileges and grant just the role. Security management becomes vastly simpler.</p>
+        <table class="def-table"><thead><tr><th>Built-in Role</th><th>What it contains</th></tr></thead><tbody>
+          <tr><td class="key">CONNECT</td><td class="val">CREATE SESSION only. Minimum to log in.</td></tr>
+          <tr><td class="key">RESOURCE</td><td class="val">CREATE TABLE, PROCEDURE, SEQUENCE, VIEW, TRIGGER + UNLIMITED TABLESPACE. For developers.</td></tr>
+          <tr><td class="key">DBA</td><td class="val">All system privileges. For DBAs ONLY. Never grant to application accounts.</td></tr>
+          <tr><td class="key">SELECT_CATALOG_ROLE</td><td class="val">SELECT on all DBA_ and V$ views. For read-only monitoring accounts.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+-- Create and use a custom role:
+CREATE ROLE app_developer_role;
+GRANT CREATE SESSION  TO app_developer_role;
+GRANT CREATE TABLE    TO app_developer_role;
+GRANT CREATE VIEW     TO app_developer_role;
+GRANT CREATE SEQUENCE TO app_developer_role;
+GRANT app_developer_role TO scott;
+
+-- Audit who has DBA role:
+SELECT grantee FROM dba_role_privs WHERE granted_role = 'DBA';</div>
+        <div class="info-box info-danger"><div class="info-box-label">NEVER</div><div class="info-box-body">Never grant the DBA role to application service accounts. Use custom roles with only the privileges the application actually needs &mdash; this is the principle of least privilege.</div></div>
+      </div>
+
+      <div class="content-section" id="l76">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.6 &mdash; Password Profiles</h4></div>
+        <p class="body-text">A profile is a named set of password and resource limits. Every user has a profile. If you do not assign one they get the DEFAULT profile &mdash; which in Oracle 19c has PASSWORD_LIFE_TIME = 180 days.</p>
+        <table class="def-table"><thead><tr><th>Parameter</th><th>What it controls</th></tr></thead><tbody>
+          <tr><td class="key">FAILED_LOGIN_ATTEMPTS</td><td class="val">Wrong passwords before lockout. Industry standard: 5 or 10.</td></tr>
+          <tr><td class="key">PASSWORD_LIFE_TIME</td><td class="val">Days until password expires. 90 days typical. UNLIMITED for service accounts.</td></tr>
+          <tr><td class="key">PASSWORD_LOCK_TIME</td><td class="val">Days account stays locked after too many failures. 1/1440 = 1 minute.</td></tr>
+          <tr><td class="key">PASSWORD_REUSE_TIME</td><td class="val">Days before a password can be reused.</td></tr>
+          <tr><td class="key">SESSIONS_PER_USER</td><td class="val">Maximum concurrent connections for this user.</td></tr>
+          <tr><td class="key">IDLE_TIME</td><td class="val">Disconnect idle sessions after N minutes.</td></tr>
+        </tbody></table>
+        <div class="code-block">
+-- Production user profile:
+CREATE PROFILE developer_profile LIMIT
+  FAILED_LOGIN_ATTEMPTS  5
+  PASSWORD_LIFE_TIME     90
+  PASSWORD_LOCK_TIME     1
+  SESSIONS_PER_USER      5;
+
+-- Service account profile (no password expiry):
+CREATE PROFILE service_profile LIMIT
+  FAILED_LOGIN_ATTEMPTS  3
+  PASSWORD_LIFE_TIME     UNLIMITED
+  PASSWORD_LOCK_TIME     1/1440;
+
+-- Assign to user:
+ALTER USER scott PROFILE developer_profile;</div>
+        <div class="info-box info-warn"><div class="info-box-label">WATCH OUT</div><div class="info-box-body">The Oracle 19c DEFAULT profile has PASSWORD_LIFE_TIME = 180 days. Application service accounts will start failing after 180 days. Always create a service account profile with PASSWORD_LIFE_TIME = UNLIMITED.</div></div>
+      </div>
+
+      <div class="content-section" id="l77">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.7 &mdash; DROP USER and Monitoring Queries</h4></div>
+        <div class="code-block">
+-- Check before dropping:
+SELECT count(*) FROM dba_objects WHERE owner = 'SCOTT';
+
+-- Drop user (no objects):
+DROP USER scott;
+
+-- Drop user AND all schema objects:
+DROP USER scott CASCADE;
+
+-- Key monitoring queries:
+-- All users and status:
+SELECT username, account_status, to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       default_tablespace, profile FROM dba_users ORDER BY username;
+
+-- Passwords expiring in 30 days:
+SELECT username, round(expiry_date-sysdate) AS days_left
+FROM   dba_users WHERE account_status='OPEN' AND expiry_date-sysdate&lt;=30;
+
+-- Locked accounts:
+SELECT username, account_status, lock_date FROM dba_users
+WHERE  account_status LIKE '%LOCKED%';
+
+-- Who has DBA role (run weekly!):
+SELECT grantee FROM dba_role_privs WHERE granted_role='DBA' ORDER BY grantee;</div>
+      </div>
+
+      <div class="content-section" id="l78">
+        <div class="section-title"><div class="section-icon icon-lesson">&#128214;</div><h4>Lesson 7.8 &mdash; Real-World User Management Scenarios</h4></div>
+        <table class="def-table"><thead><tr><th>Scenario</th><th>Correct DBA Response</th></tr></thead><tbody>
+          <tr><td class="key">Developer needs a new schema</td><td class="val">CREATE USER with correct default tablespace, temp tablespace, quota, and profile. Grant minimum required privileges. Never grant DBA role.</td></tr>
+          <tr><td class="key">Service account password expired</td><td class="val">ALTER USER IDENTIFIED BY new password ACCOUNT UNLOCK. Update app config. Review profile &mdash; service accounts need PASSWORD_LIFE_TIME UNLIMITED.</td></tr>
+          <tr><td class="key">Account locked (LOCKED TIMED)</td><td class="val">Verify legitimate user. ACCOUNT UNLOCK. Investigate why it locked &mdash; possible brute force attempt.</td></tr>
+          <tr><td class="key">Employee leaves company</td><td class="val">ACCOUNT LOCK immediately. Do NOT drop yet. Retain 30-90 days per policy for audit trail, then DROP USER CASCADE after approval.</td></tr>
+          <tr><td class="key">Read-only reporting account</td><td class="val">CREATE USER. Grant CREATE SESSION and SELECT_CATALOG_ROLE. Grant SELECT on specific tables/views. No quota needed.</td></tr>
+          <tr><td class="key">"I cannot log in" call from developer</td><td class="val">Check account_status in DBA_USERS. Unlock and reset if needed. Verify correct SID/service. Check listener is running.</td></tr>
+          <tr><td class="key">Security audit on sensitive table</td><td class="val">SELECT from DBA_TAB_PRIVS where table_name matches. Also check via roles using DBA_ROLE_PRIVS. Check any PUBLIC grants.</td></tr>
+        </tbody></table>
+      </div>
+
+    </div><!-- /w7-lessons -->
+
+    <div class="tab-pane" id="w7-sheets">
+      <div class="content-section" id="cs14">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 14 &mdash; User Management SQL Reference</h4></div>
+        <div class="code-block">
+-- CREATE USER
+CREATE USER username IDENTIFIED BY 'password'
+  DEFAULT TABLESPACE app_data  TEMPORARY TABLESPACE temp
+  QUOTA 500M ON app_data       PROFILE app_profile  PASSWORD EXPIRE;
+
+-- ALTER USER
+ALTER USER username IDENTIFIED BY 'newpassword';
+ALTER USER username ACCOUNT UNLOCK;
+ALTER USER username ACCOUNT LOCK;
+ALTER USER username PASSWORD EXPIRE;
+ALTER USER username QUOTA UNLIMITED ON app_data;
+ALTER USER username PROFILE new_profile;
+
+-- DROP USER
+DROP USER username;            -- only if no schema objects
+DROP USER username CASCADE;    -- drops user AND all objects
+
+-- GRANT SYSTEM PRIVILEGES
+GRANT CREATE SESSION TO username;
+GRANT CREATE TABLE   TO username;
+GRANT UNLIMITED TABLESPACE TO username;
+GRANT SELECT ANY TABLE TO username;
+
+-- GRANT OBJECT PRIVILEGES
+GRANT SELECT ON owner.table TO username;
+GRANT INSERT, UPDATE, DELETE ON owner.table TO username;
+GRANT EXECUTE ON owner.procedure TO username;
+GRANT READ, WRITE ON DIRECTORY dir TO username;
+
+-- REVOKE
+REVOKE CREATE TABLE FROM username;
+REVOKE SELECT ON owner.table FROM username;
+
+-- ROLES
+CREATE ROLE rolename;
+GRANT privilege TO rolename;
+GRANT rolename TO username;
+REVOKE rolename FROM username;
+DROP ROLE rolename;
+
+-- PROFILES
+CREATE PROFILE profilename LIMIT
+  FAILED_LOGIN_ATTEMPTS 5  PASSWORD_LIFE_TIME 90
+  PASSWORD_LOCK_TIME 1     SESSIONS_PER_USER 10;
+ALTER USER username PROFILE profilename;
+DROP PROFILE profilename CASCADE;</div>
+      </div>
+
+      <div class="content-section" id="cs15">
+        <div class="section-title"><div class="section-icon icon-sheet">&#128203;</div><h4>Cheatsheet 15 &mdash; User Monitoring Queries</h4></div>
+        <div class="code-block">
+-- All users, status, expiry, profile:
+SELECT username, account_status,
+       to_char(expiry_date,'DD-MON-YYYY') AS expires,
+       default_tablespace, profile
+FROM   dba_users ORDER BY username;
+
+-- Passwords expiring in 30 days:
+SELECT username, round(expiry_date-sysdate) AS days_left
+FROM   dba_users
+WHERE  account_status='OPEN' AND expiry_date-sysdate&lt;=30
+ORDER BY expiry_date;
+
+-- Locked accounts:
+SELECT username, account_status, lock_date
+FROM   dba_users WHERE account_status LIKE '%LOCKED%';
+
+-- Who has DBA role:
+SELECT grantee FROM dba_role_privs WHERE granted_role='DBA' ORDER BY grantee;
+
+-- All privileges for a user:
+SELECT 'SYS PRIV' AS type, privilege FROM dba_sys_privs WHERE grantee='SCOTT'
+UNION ALL
+SELECT 'ROLE', granted_role FROM dba_role_privs WHERE grantee='SCOTT'
+UNION ALL
+SELECT 'OBJ PRIV', owner||'.'||table_name||' ('||privilege||')'
+FROM   dba_tab_privs WHERE grantee='SCOTT';
+
+-- Tablespace quotas:
+SELECT tablespace_name,
+       decode(max_bytes,-1,'UNLIMITED',max_bytes/1024/1024||' MB') AS quota,
+       round(bytes/1024/1024,1) AS used_mb
+FROM   dba_ts_quotas WHERE username='SCOTT';
+
+-- Objects in a schema (by type):
+SELECT object_type, count(*) AS cnt
+FROM   dba_objects WHERE owner='SCOTT'
+GROUP BY object_type ORDER BY object_type;
+
+-- Users created in last 30 days:
+SELECT username, created FROM dba_users
+WHERE  created &gt; sysdate-30 ORDER BY created DESC;
+
+-- What privileges does a role have:
+SELECT privilege FROM role_sys_privs WHERE role='APP_DEVELOPER_ROLE';
+SELECT table_name, privilege FROM role_tab_privs WHERE role='APP_DEVELOPER_ROLE';</div>
+      </div>
+    </div><!-- /w7-sheets -->
+
+    <div class="tab-pane" id="w7-quiz">
+      <div class="content-section" id="q7">
+        <div class="section-title"><div class="section-icon icon-quiz">&#10067;</div><h4>Quiz 7 &mdash; User &amp; Schema Management</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">OPEN BOOK</div><div class="info-box-body">10 questions. Use your cheatsheets. Select your answer and click Check Answer.</div></div>
+        <div id="w7-score" class="score-badge" style="display:none">Score: <span id="w7-score-val">0</span>/10</div>
+
+        <div class="quiz-q" id="q7_1">
+          <p class="q-text">Q1. You create a new user for an application. Which DEFAULT TABLESPACE should you assign?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_1','C')"><span class="opt-key">A</span> SYSTEM</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_1','C')"><span class="opt-key">B</span> SYSAUX</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_1','C')"><span class="opt-key">C</span> A dedicated application tablespace you created for this purpose</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_1','C')"><span class="opt-key">D</span> TEMP</div>
+          <button class="quiz-btn" onclick="checkQ('q7_1','C','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_1-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_2">
+          <p class="q-text">Q2. An account shows status LOCKED(TIMED) in DBA_USERS. What caused this?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_2','B')"><span class="opt-key">A</span> A DBA manually locked the account</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_2','B')"><span class="opt-key">B</span> The account exceeded the FAILED_LOGIN_ATTEMPTS limit in its profile</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_2','B')"><span class="opt-key">C</span> The password expired</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_2','B')"><span class="opt-key">D</span> The account was created with ACCOUNT LOCK</div>
+          <button class="quiz-btn" onclick="checkQ('q7_2','B','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_2-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_3">
+          <p class="q-text">Q3. An application service account password keeps expiring every 90 days. What is the correct fix?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_3','B')"><span class="opt-key">A</span> Grant UNLIMITED TABLESPACE to the account</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_3','B')"><span class="opt-key">B</span> Create a profile with PASSWORD_LIFE_TIME = UNLIMITED and assign it to the account</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_3','B')"><span class="opt-key">C</span> Grant the DBA role to the account</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_3','B')"><span class="opt-key">D</span> Run ALTER USER ACCOUNT UNLOCK every 90 days</div>
+          <button class="quiz-btn" onclick="checkQ('q7_3','B','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_3-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_4">
+          <p class="q-text">Q4. You run DROP USER scott; and get ORA-01922: CASCADE must be specified. What does this mean?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_4','C')"><span class="opt-key">A</span> You do not have DBA privileges</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_4','C')"><span class="opt-key">B</span> The user has a profile assigned to them</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_4','C')"><span class="opt-key">C</span> SCOTT has objects in their schema &mdash; use DROP USER scott CASCADE</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_4','C')"><span class="opt-key">D</span> SCOTT is currently logged in to the database</div>
+          <button class="quiz-btn" onclick="checkQ('q7_4','C','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_4-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_5">
+          <p class="q-text">Q5. Which built-in Oracle role grants SELECT on all DBA_ and V$ monitoring views without giving DBA-level access?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_5','D')"><span class="opt-key">A</span> DBA</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_5','D')"><span class="opt-key">B</span> RESOURCE</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_5','D')"><span class="opt-key">C</span> CONNECT</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_5','D')"><span class="opt-key">D</span> SELECT_CATALOG_ROLE</div>
+          <button class="quiz-btn" onclick="checkQ('q7_5','D','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_5-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_6">
+          <p class="q-text">Q6. An employee leaves the company today. What is the FIRST thing you should do to their Oracle account?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_6','B')"><span class="opt-key">A</span> DROP USER CASCADE immediately</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_6','B')"><span class="opt-key">B</span> ALTER USER ACCOUNT LOCK immediately</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_6','B')"><span class="opt-key">C</span> DELETE the user from DBA_USERS</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_6','B')"><span class="opt-key">D</span> Change their password to something random</div>
+          <button class="quiz-btn" onclick="checkQ('q7_6','B','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_6-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_7">
+          <p class="q-text">Q7. What is the difference between WITH ADMIN OPTION and WITH GRANT OPTION?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_7','B')"><span class="opt-key">A</span> They are identical &mdash; both work with any privilege type</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_7','B')"><span class="opt-key">B</span> WITH ADMIN OPTION is for system privileges; WITH GRANT OPTION is for object privileges</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_7','B')"><span class="opt-key">C</span> WITH GRANT OPTION is for system privileges; WITH ADMIN OPTION is for object privileges</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_7','B')"><span class="opt-key">D</span> Neither exists in Oracle 19c</div>
+          <button class="quiz-btn" onclick="checkQ('q7_7','B','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_7-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_8">
+          <p class="q-text">Q8. Which view shows the tablespace quota assigned to a user and how much they have used?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_8','C')"><span class="opt-key">A</span> DBA_USERS</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_8','C')"><span class="opt-key">B</span> DBA_SYS_PRIVS</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_8','C')"><span class="opt-key">C</span> DBA_TS_QUOTAS</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_8','C')"><span class="opt-key">D</span> DBA_TABLESPACES</div>
+          <button class="quiz-btn" onclick="checkQ('q7_8','C','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_8-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_9">
+          <p class="q-text">Q9. In Oracle, if USER HR exists, what is the name of HR's schema?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_9','C')"><span class="opt-key">A</span> PUBLIC</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_9','C')"><span class="opt-key">B</span> SYSTEM</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_9','C')"><span class="opt-key">C</span> HR &mdash; schema name always matches username</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_9','C')"><span class="opt-key">D</span> The schema must be created separately</div>
+          <button class="quiz-btn" onclick="checkQ('q7_9','C','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_9-fb" style="display:none"></div>
+        </div>
+
+        <div class="quiz-q" id="q7_10">
+          <p class="q-text">Q10. Which query correctly shows all users who have been granted the DBA role?</p>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_10','B')"><span class="opt-key">A</span> SELECT * FROM v$session WHERE role='DBA'</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_10','B')"><span class="opt-key">B</span> SELECT grantee FROM dba_role_privs WHERE granted_role='DBA'</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_10','B')"><span class="opt-key">C</span> SELECT username FROM dba_users WHERE profile='DBA'</div>
+          <div class="quiz-option" onclick="pickOpt(this,'q7_10','B')"><span class="opt-key">D</span> SELECT * FROM dba_sys_privs WHERE privilege='DBA'</div>
+          <button class="quiz-btn" onclick="checkQ('q7_10','B','w7-score','w7-score-val',10)">Check Answer</button>
+          <div class="quiz-feedback" id="q7_10-fb" style="display:none"></div>
+        </div>
+
+      </div>
+    </div><!-- /w7-quiz -->
+
+    <div class="tab-pane" id="w7-assign">
+      <div class="content-section" id="a7">
+        <div class="section-title"><div class="section-icon icon-lab">&#128203;</div><h4>Assignment 7 &mdash; Build a Complete User Management Environment</h4></div>
+        <div class="info-box info-tip"><div class="info-box-label">TIME</div><div class="info-box-body">Estimated 2 hours. Requires your running planet database. Screenshot each verification step.</div></div>
+
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 1 &mdash; Create Profiles</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create DEVELOPER_PROFILE: FAILED_LOGIN_ATTEMPTS=5, PASSWORD_LIFE_TIME=90, PASSWORD_LOCK_TIME=1, SESSIONS_PER_USER=5</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create SERVICE_PROFILE: FAILED_LOGIN_ATTEMPTS=3, PASSWORD_LIFE_TIME=UNLIMITED, PASSWORD_LOCK_TIME=1/1440</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Verify: SELECT * FROM dba_profiles WHERE profile IN ('DEVELOPER_PROFILE','SERVICE_PROFILE');</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 1: Both profiles in DBA_PROFILES</li>
+        </ul>
+
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 2 &mdash; Create Users</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create APP_DEV: DEVELOPER_PROFILE, default tablespace USERS, quota 100MB, PASSWORD EXPIRE</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create APP_SERVICE: SERVICE_PROFILE, default tablespace USERS, QUOTA UNLIMITED</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create APP_READONLY: no quota (read-only users don't create objects)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 2: All three users in DBA_USERS showing correct profiles</li>
+        </ul>
+
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 3 &mdash; Grants and Roles</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Create role APP_DEVELOPER_ROLE with: CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE SEQUENCE, CREATE PROCEDURE</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Grant APP_DEVELOPER_ROLE to APP_DEV</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Grant CREATE SESSION and SELECT_CATALOG_ROLE to APP_READONLY</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 3: DBA_SYS_PRIVS and DBA_ROLE_PRIVS showing correct privileges for APP_DEV</li>
+        </ul>
+
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 4 &mdash; Test Lock and Unlock</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Attempt to connect as APP_DEV with the WRONG password 6 times</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Confirm account shows LOCKED(TIMED) in DBA_USERS</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Unlock: ALTER USER APP_DEV ACCOUNT UNLOCK and reset password</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 4: DBA_USERS showing APP_DEV back in OPEN status</li>
+        </ul>
+
+        <h5 style="color:var(--teal);margin:16px 0 8px;font-size:0.9rem">Task 5 &mdash; Run Monitoring Queries</h5>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run the password expiry check (which users expire in next 30 days?)</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run the locked accounts query</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Run the DBA role audit query &mdash; who in your database has DBA role?</li>
+          <li><span class="check-box" onclick="toggleCheck(this)">&#10003;</span>Screenshot 5: All three monitoring queries and results</li>
+        </ul>
+      </div>
+    </div><!-- /w7-assign -->
+
+    <div class="tab-pane" id="w7-runbook">
+      <div class="content-section" id="r7">
+        <div class="section-title"><div class="section-icon icon-run">&#128218;</div><h4>Week 7 Runbook &mdash; Your Daily Guide</h4></div>
+        <div class="info-box info-warn"><div class="info-box-label">REMINDER</div><div class="info-box-body">User management is the most common day-to-day DBA task. Practice every command on your planet database as you read each lesson.</div></div>
+        <div class="runbook-day"><h5>Day 1 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 7.1 (Schema vs User) &mdash; make sure this distinction is crystal clear (20 mins)</li>
+          <li><span class="step-num">2</span>Read Lesson 7.2 (CREATE USER) and create 3 test users on your database (40 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 2 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 7.3 (ALTER USER) &mdash; practice EVERY ALTER USER command (60 mins)</li>
+          <li><span class="step-num">2</span>Test unlock, lock, expire, quota change on your test users</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 3 &mdash; approx 1.5 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 7.4 (Privileges) &mdash; practice GRANT and REVOKE for both system and object privileges (90 mins)</li>
+          <li><span class="step-num">2</span>Test connecting as each user and verify what they can and cannot do</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 4 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 7.5 (Roles) &mdash; create custom roles, grant privileges to roles, grant roles to users (60 mins)</li>
+          <li><span class="step-num">2</span>Verify the DBA role audit query on your database</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 5 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lesson 7.6 (Profiles) &mdash; create DEVELOPER_PROFILE and SERVICE_PROFILE (30 mins)</li>
+          <li><span class="step-num">2</span>Test account lockout by using wrong passwords &mdash; confirm LOCKED(TIMED) status (30 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 6 &mdash; approx 1 hour</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Read Lessons 7.7 and 7.8 (DROP USER and Real-World Scenarios) (40 mins)</li>
+          <li><span class="step-num">2</span>Run ALL monitoring queries from Cheatsheet 15 against your database (20 mins)</li>
+        </ul></div>
+        <div class="runbook-day"><h5>Day 7 &mdash; approx 2 hours</h5><ul class="step-list">
+          <li><span class="step-num">1</span>Review Cheatsheets 14 and 15 (15 mins)</li>
+          <li><span class="step-num">2</span>Complete Quiz 7 (20 mins)</li>
+          <li><span class="step-num">3</span>Complete all 5 Assignment 7 tasks and take all 5 screenshots (90 mins)</li>
+          <li><span class="step-num">4</span>Celebrate &mdash; user management is the skill DBAs use every single working day!</li>
+        </ul></div>
+      </div>
+    </div><!-- /w7-runbook -->
+
+  </div>
+</div>
+</div>
 <!-- FOOTER -->
 <div style="padding:40px 60px;border-top:1px solid var(--border);margin-top:20px;text-align:center">
-  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;6 of 26</p>
-  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 7 (OEM &amp; Toad) coming next &bull; Designed for the anxious learner</p>
+  <p style="color:var(--grey);font-size:0.82rem">Oracle 19c DBA Career Training Program &bull; Weeks 1&ndash;7 of 26</p>
+  <p style="color:var(--grey);font-size:0.75rem;margin-top:6px">Week 8 (Tablespace &amp; Storage Management) coming next &bull; Designed for the anxious learner</p>
 </div>
 
 </div><!-- /main -->
@@ -3726,7 +4260,8 @@ const sections = ['hero','w1','l11','l12','l13','l14','cs1','cs2','q1','a1','r1'
   'w3','l31','l32','l33','l34','l35','l36','l37','l38','cs6','cs7','cs8','fc3','q3','r3',
   'w4','l41','l42','l43','l44','l45','l46','l47','l48','rbA','rbB','cs9','q4','r4',
   'w5','l51','l52','l53','l54','l55','l56','l57','l58','cs10','cs11','sl5','q5','a5','r5',
-  'w6','l61','l62','l63','l64','l65','l66','l67','l68','cs12','cs13','q6','a6','r6'];
+  'w6','l61','l62','l63','l64','l65','l66','l67','l68','cs12','cs13','q6','a6','r6',
+  'w7','l71','l72','l73','l74','l75','l76','l77','l78','cs14','cs15','q7','a7','r7'];
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
